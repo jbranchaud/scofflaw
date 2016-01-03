@@ -5,7 +5,7 @@ feature 'User creates an item type' do
     scenario 'a new item type is created' do
       visit new_item_type_path
 
-      within 'form' do
+      within '#rails-form' do
         fill_in 'Name', with: 'Bitters'
         click_on 'Submit'
       end
@@ -19,7 +19,7 @@ feature 'User creates an item type' do
     scenario 'an error is displayed' do
       visit new_item_type_path
 
-      within 'form' do
+      within '#rails-form' do
         fill_in 'Name', with: ''
         click_on 'Submit'
       end

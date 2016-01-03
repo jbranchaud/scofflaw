@@ -1,12 +1,16 @@
 <h1>New Item Type</h1>
 
 <% if flash[:alert] %>
-  <div class="alert"><%= flash[:alert] %></div>
+  <div class='alert'><%= flash[:alert] %></div>
 <% end %>
 
-<%= form_for item_type do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+<div id='rails-form'>
+  <h3>Rails Form</h3>
 
-  <%= f.submit "Submit" %>
-<% end %>
+  <%= form_for item_type do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.submit 'Submit' %>
+  <% end %>
+</div>
