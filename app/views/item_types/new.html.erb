@@ -1,11 +1,13 @@
-<h1>New Item Type</h1>
+<h1>New Item Type Form</h1>
 
-<% if flash[:alert] %>
-  <div class='alert'><%= flash[:alert] %></div>
-<% end %>
+<%= react_component('NewItemType') %>
 
 <div id='rails-form'>
   <h3>Rails Form</h3>
+
+  <% if flash[:alert] %>
+    <div class='alert'><%= flash[:alert] %></div>
+  <% end %>
 
   <%= form_for item_type do |f| %>
     <%= f.label :name %>

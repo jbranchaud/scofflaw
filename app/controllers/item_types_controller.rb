@@ -1,10 +1,19 @@
-class ItemTypesController < ActionController::Base
+class ItemTypesController < ApplicationController
   def create
     if item_type.update(item_type_params)
       redirect_to action: 'index'
     else
       flash[:alert] = error_message(item_type)
       render action: 'new'
+    end
+  end
+
+  def react_create
+    if item_type.update(item_type_params)
+      render json: {}, status: 200
+    else
+      errors = item_type.errors.messages.each_with_object({}) { |(attr_name,messages), errors| errors[attr_name.to_s] = "#{attr_name.to_s.capitalize} #{messages.first}" }
+      render json: { errors: errors }, status: 400
     end
   end
 
