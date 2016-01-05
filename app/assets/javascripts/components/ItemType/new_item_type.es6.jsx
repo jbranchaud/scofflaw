@@ -7,6 +7,14 @@ class NewItemType extends React.Component {
     };
   }
 
+  static propTypes = {
+    name: React.PropTypes.string
+  }
+
+  static defaultProps = {
+    name: ''
+  }
+
   handleChangeName(e) {
     this.setState({ name: e.target.value });
   }
@@ -49,12 +57,3 @@ class NewItemType extends React.Component {
     );
   }
 }
-
-NewItemType.propTypes = {
-  name: React.PropTypes.string
-}
-
-NewItemType.defaultProps = {
-  name: ''
-}
-
