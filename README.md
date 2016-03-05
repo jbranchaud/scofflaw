@@ -1,6 +1,6 @@
-# mix-list
+# scofflaw
 
-> a tool for recording cocktail recipes
+> a tool for recording and finding cocktail recipes
 
 ## Models
 
