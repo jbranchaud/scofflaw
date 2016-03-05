@@ -4,10 +4,11 @@
 
 ## Models
 
-- Recipe
 - Ingredient
-- Item
-- ItemType
+- Ingredient Amount
+- Ingredient Type
+- Recipe
+- User
 
 ## Development
 
