@@ -5,14 +5,14 @@ default: &default
 
 development:
   <<: *default
-  database: mix-list_development
+  database: scofflaw_development
 
 test:
   <<: *default
-  database: mix-list_test
+  database: scofflaw_test
 
 # production:
 #   <<: *default
-#   database: mix-list_production
-#   username: mix-list
-#   password: <%= ENV['MIX-LIST_DATABASE_PASSWORD'] %>
+#   database: scofflaw_production
+#   username: scofflaw
+#   password: <%= ENV['SCOFFLAW_DATABASE_PASSWORD'] %>
