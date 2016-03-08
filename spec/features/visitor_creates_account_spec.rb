@@ -1,0 +1,58 @@
+require 'rails_helper'
+
+describe 'Visitor creates account' do
+  context 'when a valid email and password are provided' do
+    scenario 'the account is created' do
+      visit root_path
+      click_on 'Sign Up'
+      expect(page).to have_selector('h2', text: 'Sign up')
+
+      fill_in 'Email', with: 'lizlemon@nbc.com'
+      fill_in 'Password', with: 'cheesyblasters'
+      fill_in 'Password confirmation', with: 'cheesyblasters'
+
+      click_on 'Sign up'
+
+      expect(page).to have_selector('h1', text: 'Recipes')
+      expect(page).to have_content 'lizlemon@nbc.com'
+    end
+  end
+
+  context 'when an unavailable email is provided' do
+    before do
+      FactoryGirl.create(:user, email: 'jackdonaghy@nbc.com')
+    end
+
+    scenario 'an Email Taken message is displayed' do
+      visit root_path
+      click_on 'Sign Up'
+      expect(page).to have_selector('h2', text: 'Sign up')
+
+      fill_in 'Email', with: 'jackdonaghy@nbc.com'
+      fill_in 'Password', with: 'reganomics'
+      fill_in 'Password confirmation', with: 'reganomics'
+
+      click_on 'Sign up'
+
+      expect(page).to have_selector('h2', text: 'Sign up')
+      expect(page).to have_selector('div#error_explanation', text: 'Email has already been taken')
+    end
+  end
+
+  context 'when the fields are left blank' do
+    scenario 'a Fields Cannot Be Blank message is displayed' do
+      visit root_path
+      click_on 'Sign Up'
+      expect(page).to have_selector('h2', text: 'Sign up')
+
+      fill_in 'Email', with: 'kennethparcell@nbc.com'
+      fill_in 'Password', with: ''
+      fill_in 'Password confirmation', with: ''
+
+      click_on 'Sign up'
+
+      expect(page).to have_selector('h2', text: 'Sign up')
+      expect(page).to have_selector('div#error_explanation', text: "Password can't be blank")
+    end
+  end
+end
