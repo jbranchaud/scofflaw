@@ -1,0 +1,13 @@
+<h1>Recipes</h1>
+
+<% if recipes.present? %>
+  <ul>
+  <% recipes.each do |recipe| %>
+    <li>
+      <%= recipe.name %>
+    </li>
+  <% end %>
+  </ul>
+<% else %>
+  <p>There are no recipes yet.</p>
+<% end %>
