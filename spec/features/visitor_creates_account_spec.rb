@@ -2,11 +2,14 @@ require 'rails_helper'
 
 describe 'Visitor creates account' do
   context 'when a valid email and password are provided' do
+    let(:user_registration_page) { Pages::UserRegistration.new }
+    let(:recipes_index) { Pages::Recipes.new }
+    let(:navigation) { Pages::Navigation.new }
+
     scenario 'the account is created' do
       visit root_path
       click_on 'Sign Up'
 
-      user_registration_page = Pages::UserRegistration.new
       expect(user_registration_page).to be_on_page
 
       user_registration_page.fill_in_user_info(
@@ -16,9 +19,7 @@ describe 'Visitor creates account' do
       )
       user_registration_page.click_sign_up
 
-      recipes_index = Pages::Recipes.new
       expect(recipes_index).to be_on_page
-      navigation = Pages::Navigation.new
       expect(navigation).to have_user_signed_in(email: 'lizlemon@nbc.com')
     end
   end
