@@ -5,13 +5,16 @@ describe 'Visitor creates account' do
     scenario 'the account is created' do
       visit root_path
       click_on 'Sign Up'
-      expect(page).to have_selector('h2', text: 'Sign up')
 
-      fill_in 'Email', with: 'lizlemon@nbc.com'
-      fill_in 'Password', with: 'cheesyblasters'
-      fill_in 'Password confirmation', with: 'cheesyblasters'
+      user_registration_page = Pages::UserRegistration.new
+      expect(user_registration_page).to be_on_page
 
-      click_on 'Sign up'
+      user_registration_page.fill_in_user_info(
+        email: 'lizlemon@nbc.com',
+        password: 'cheesyblasters',
+        password_confirmation: 'cheesyblasters',
+      )
+      user_registration_page.click_sign_up
 
       expect(page).to have_selector('h1', text: 'Recipes')
       expect(page).to have_content 'lizlemon@nbc.com'
