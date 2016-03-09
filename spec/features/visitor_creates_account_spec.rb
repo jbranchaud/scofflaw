@@ -16,8 +16,10 @@ describe 'Visitor creates account' do
       )
       user_registration_page.click_sign_up
 
-      expect(page).to have_selector('h1', text: 'Recipes')
-      expect(page).to have_content 'lizlemon@nbc.com'
+      recipes_index = Pages::Recipes.new
+      expect(recipes_index).to be_on_page
+      navigation = Pages::Navigation.new
+      expect(navigation).to have_user_signed_in(email: 'lizlemon@nbc.com')
     end
   end
 
