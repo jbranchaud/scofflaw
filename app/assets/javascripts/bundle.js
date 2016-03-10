@@ -143,7 +143,7 @@
 	}(_react2.default.Component);
 
 	NewItemType2.propTypes = {
-	  name: _react2.default.PropTypes.string
+	  name: _react.PropTypes.string
 	};
 	NewItemType2.defaultProps = {
 	  name: ''

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import ReactDom from 'react-dom';
 
 class NewItemType2 extends React.Component {
@@ -11,7 +11,7 @@ class NewItemType2 extends React.Component {
   }
 
   static propTypes = {
-    name: React.PropTypes.string
+    name: PropTypes.string
   }
 
   static defaultProps = {
