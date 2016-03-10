@@ -46,8 +46,6 @@
 
 	'use strict';
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -56,103 +54,15 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
+	var _new_item_type = __webpack_require__(159);
+
+	var _new_item_type2 = _interopRequireDefault(_new_item_type);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var NewItemType = function (_React$Component) {
-	  _inherits(NewItemType, _React$Component);
-
-	  function NewItemType() {
-	    _classCallCheck(this, NewItemType);
-
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(NewItemType).call(this));
-
-	    _this.state = {
-	      name: '',
-	      errors: {}
-	    };
-	    return _this;
-	  }
-
-	  _createClass(NewItemType, [{
-	    key: 'handleChangeName',
-	    value: function handleChangeName(e) {
-	      this.setState({ name: e.target.value });
-	    }
-	  }, {
-	    key: 'handleSubmit',
-	    value: function handleSubmit(e) {
-	      var _this2 = this;
-
-	      e.preventDefault();
-	      return $.ajax({
-	        method: 'POST',
-	        url: '/item_types/react_create',
-	        dataType: 'json',
-	        data: { item_type: { name: this.state.name } }
-	      }).done(function (xhr, status, err) {
-	        location.assign('/item_types');
-	      }).fail(function (xhr, status, err) {
-	        _this2.setState({ errors: xhr.responseJSON.errors });
-	      });
-	    }
-	  }, {
-	    key: 'displayFlashMessage',
-	    value: function displayFlashMessage() {
-	      if (this.state.errors.name) {
-	        return _react2.default.createElement(
-	          'div',
-	          { className: 'alert' },
-	          this.state.errors.name
-	        );
-	      }
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        { id: 'react-form' },
-	        _react2.default.createElement(
-	          'h3',
-	          null,
-	          'Webpack React Form'
-	        ),
-	        this.displayFlashMessage(),
-	        _react2.default.createElement(
-	          'form',
-	          { className: 'new_item_type', id: 'react_new_item_type', onSubmit: this.handleSubmit.bind(this) },
-	          _react2.default.createElement(
-	            'label',
-	            { htmlFor: 'item_type_name' },
-	            'Name'
-	          ),
-	          _react2.default.createElement('input', { type: 'text', name: 'item_type[name]', id: 'item_type_name', value: this.state.name, onChange: this.handleChangeName.bind(this) }),
-	          _react2.default.createElement('input', { type: 'submit', name: 'commit', value: 'Submit' })
-	        )
-	      );
-	    }
-	  }]);
-
-	  return NewItemType;
-	}(_react2.default.Component);
-
-	NewItemType.propTypes = {
-	  name: _react.PropTypes.string
-	};
-	NewItemType.defaultProps = {
-	  name: ''
-	};
-
 
 	document.addEventListener('DOMContentLoaded', function () {
 	  if (document.getElementById('webpack-react-form')) {
-	    _reactDom2.default.render(_react2.default.createElement(NewItemType, null), document.getElementById('webpack-react-form'));
+	    _reactDom2.default.render(_react2.default.createElement(_new_item_type2.default, null), document.getElementById('webpack-react-form'));
 	  }
 	});
 
@@ -19756,6 +19666,120 @@
 
 	module.exports = __webpack_require__(3);
 
+
+/***/ },
+/* 159 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(158);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var NewItemType = function (_React$Component) {
+	  _inherits(NewItemType, _React$Component);
+
+	  function NewItemType() {
+	    _classCallCheck(this, NewItemType);
+
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(NewItemType).call(this));
+
+	    _this.state = {
+	      name: '',
+	      errors: {}
+	    };
+	    return _this;
+	  }
+
+	  _createClass(NewItemType, [{
+	    key: 'handleChangeName',
+	    value: function handleChangeName(e) {
+	      this.setState({ name: e.target.value });
+	    }
+	  }, {
+	    key: 'handleSubmit',
+	    value: function handleSubmit(e) {
+	      var _this2 = this;
+
+	      e.preventDefault();
+	      return $.ajax({
+	        method: 'POST',
+	        url: '/item_types/react_create',
+	        dataType: 'json',
+	        data: { item_type: { name: this.state.name } }
+	      }).done(function (xhr, status, err) {
+	        location.assign('/item_types');
+	      }).fail(function (xhr, status, err) {
+	        _this2.setState({ errors: xhr.responseJSON.errors });
+	      });
+	    }
+	  }, {
+	    key: 'displayFlashMessage',
+	    value: function displayFlashMessage() {
+	      if (this.state.errors.name) {
+	        return _react2.default.createElement(
+	          'div',
+	          { className: 'alert' },
+	          this.state.errors.name
+	        );
+	      }
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { id: 'react-form' },
+	        _react2.default.createElement(
+	          'h3',
+	          null,
+	          'Webpack React Form'
+	        ),
+	        this.displayFlashMessage(),
+	        _react2.default.createElement(
+	          'form',
+	          { className: 'new_item_type', id: 'react_new_item_type', onSubmit: this.handleSubmit.bind(this) },
+	          _react2.default.createElement(
+	            'label',
+	            { htmlFor: 'item_type_name' },
+	            'Name'
+	          ),
+	          _react2.default.createElement('input', { type: 'text', name: 'item_type[name]', id: 'item_type_name', value: this.state.name, onChange: this.handleChangeName.bind(this) }),
+	          _react2.default.createElement('input', { type: 'submit', name: 'commit', value: 'Submit' })
+	        )
+	      );
+	    }
+	  }]);
+
+	  return NewItemType;
+	}(_react2.default.Component);
+
+	NewItemType.propTypes = {
+	  name: _react.PropTypes.string
+	};
+	NewItemType.defaultProps = {
+	  name: ''
+	};
+	exports.default = NewItemType;
 
 /***/ }
 /******/ ]);
