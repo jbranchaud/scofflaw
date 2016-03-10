@@ -152,7 +152,7 @@
 
 	document.addEventListener('DOMContentLoaded', function () {
 	  if (document.getElementById('webpack-react-form')) {
-	    ReactDOM.render(_react2.default.createElement(NewItemType, null), document.getElementById('webpack-react-form'));
+	    _reactDom2.default.render(_react2.default.createElement(NewItemType, null), document.getElementById('webpack-react-form'));
 	  }
 	});
 
