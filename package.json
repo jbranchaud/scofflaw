@@ -1,0 +1,27 @@
+{
+  "name": "scofflaw",
+  "version": "0.0.1",
+  "description": "> a tool for recording and finding cocktail recipes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Josh Branchaud <jbranchaud@gmail.com> (http://joshbranchaud.com)",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "react-redux": "^4.4.0",
+    "redux": "^3.3.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.7.0",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "jsx-loader": "^0.13.2",
+    "redux-devtools": "^3.1.1",
+    "webpack": "^1.12.14"
+  }
+}
