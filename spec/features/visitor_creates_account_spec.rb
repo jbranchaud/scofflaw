@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 describe 'Visitor creates account' do
-  context 'when a valid email and password are provided' do
-    let(:user_registration_page) { Pages::UserRegistration.new }
-    let(:recipes_index) { Pages::Recipes.new }
-    let(:navigation) { Pages::Navigation.new }
+  let(:user_registration_page) { Pages::UserRegistration.new }
+  let(:recipes_index) { Pages::Recipes.new }
+  let(:navigation) { Pages::Navigation.new }
 
+  context 'when a valid email and password are provided' do
     scenario 'the account is created' do
       visit root_path
       click_on 'Sign Up'
@@ -34,13 +34,16 @@ describe 'Visitor creates account' do
       click_on 'Sign Up'
       expect(page).to have_selector('h2', text: 'Sign up')
 
-      fill_in 'Email', with: 'jackdonaghy@nbc.com'
-      fill_in 'Password', with: 'reganomics'
-      fill_in 'Password confirmation', with: 'reganomics'
+      expect(user_registration_page).to be_on_page
 
-      click_on 'Sign up'
+      user_registration_page.fill_in_user_info(
+        email: 'jackdonaghy@nbc.com',
+        password: 'reganomics',
+        password_confirmation: 'reganomics'
+      )
+      user_registration_page.click_sign_up
 
-      expect(page).to have_selector('h2', text: 'Sign up')
+      expect(user_registration_page).to be_on_page
       expect(page).to have_selector('div#error_explanation', text: 'Email has already been taken')
     end
   end

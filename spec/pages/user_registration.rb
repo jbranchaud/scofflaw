@@ -7,9 +7,9 @@ module Pages
     end
 
     def fill_in_user_info(email:, password:, password_confirmation:)
-      fill_in 'Email', with: 'lizlemon@nbc.com'
-      fill_in 'Password', with: 'cheesyblasters'
-      fill_in 'Password confirmation', with: 'cheesyblasters'
+      fill_in 'Email', with: email
+      fill_in 'Password', with: password
+      fill_in 'Password confirmation', with: password_confirmation
     end
 
     def click_sign_up
