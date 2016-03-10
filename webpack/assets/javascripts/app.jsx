@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import ReactDom from 'react-dom';
 
-class NewItemType2 extends React.Component {
+class NewItemType extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -46,7 +46,7 @@ class NewItemType2 extends React.Component {
 
   render () {
     return (
-      <div id='other-react-form'>
+      <div id='react-form'>
         <h3>Webpack React Form</h3>
 
         { this.displayFlashMessage() }
@@ -64,7 +64,7 @@ class NewItemType2 extends React.Component {
 document.addEventListener('DOMContentLoaded', function() {
   if (document.getElementById('webpack-react-form')) {
     ReactDOM.render(
-      <NewItemType2 />,
+      <NewItemType />,
       document.getElementById('webpack-react-form')
     );
   }
