@@ -5,10 +5,13 @@ describe 'User creates a recipe', :js do
     let(:navigation) { Pages::Navigation.new }
     let(:recipes_page) { Pages::Recipes.new }
     let(:new_recipe_page) { Pages::NewRecipe.new }
+    let(:user) {}
+
+    before do
+      user = FactoryGirl.create(:user)
+    end
 
     it 'creates the recipe' do
-      user = FactoryGirl.create(:user)
-
       visit recipes_path
 
       expect(recipes_page).to be_on_page
