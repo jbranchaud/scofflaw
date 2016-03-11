@@ -58,11 +58,19 @@
 
 	var _new_item_type2 = _interopRequireDefault(_new_item_type);
 
+	var _new_recipe = __webpack_require__(160);
+
+	var _new_recipe2 = _interopRequireDefault(_new_recipe);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	document.addEventListener('DOMContentLoaded', function () {
 	  if (document.getElementById('webpack-react-form')) {
 	    _reactDom2.default.render(_react2.default.createElement(_new_item_type2.default, null), document.getElementById('webpack-react-form'));
+	  }
+
+	  if (document.getElementById('new_recipe')) {
+	    _reactDom2.default.render(_react2.default.createElement(_new_recipe2.default, null), document.getElementById('new_recipe'));
 	  }
 	});
 
@@ -19683,10 +19691,6 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(158);
-
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -19780,6 +19784,133 @@
 	  name: ''
 	};
 	exports.default = NewItemType;
+
+/***/ },
+/* 160 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var NewRecipe = function (_React$Component) {
+	  _inherits(NewRecipe, _React$Component);
+
+	  function NewRecipe() {
+	    _classCallCheck(this, NewRecipe);
+
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(NewRecipe).call(this));
+
+	    _this.state = {
+	      name: '',
+	      description: '',
+	      errors: {}
+	    };
+	    return _this;
+	  }
+
+	  _createClass(NewRecipe, [{
+	    key: 'handleChangeInput',
+	    value: function handleChangeInput(name, e) {
+	      this.setState(_defineProperty({}, name, e.target.value));
+	    }
+	  }, {
+	    key: 'handleSubmit',
+	    value: function handleSubmit(e) {
+	      var _this2 = this;
+
+	      e.preventDefault();
+
+	      return $.ajax({
+	        method: 'POST',
+	        url: '/recipes',
+	        dataType: 'json',
+	        data: { recipe: { name: this.state.name, description: this.state.description } }
+	      }).done(function (xhr, status, err) {
+	        console.log('CREATED NEW RECIPE SUCCESSFULLY');
+	        location.assign('/recipes');
+	      }).fail(function (xhr, status, err) {
+	        console.log('FAILED TO CREATE NEW RECIPE');
+	        _this2.setState({ errors: xhr.responseJSON.errors });
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'h1',
+	          null,
+	          'New Recipe'
+	        ),
+	        _react2.default.createElement(
+	          'form',
+	          {
+	            className: 'new_item_type',
+	            id: 'react_new_item_type',
+	            onSubmit: this.handleSubmit.bind(this)
+	          },
+	          _react2.default.createElement(
+	            'label',
+	            { htmlFor: 'recipe_name' },
+	            'Name'
+	          ),
+	          _react2.default.createElement('input', {
+	            id: 'recipe_name',
+	            name: 'recipe_name',
+	            type: 'text',
+	            value: this.state.name,
+	            onChange: this.handleChangeInput.bind(this, 'name')
+	          }),
+	          _react2.default.createElement(
+	            'label',
+	            { htmlFor: 'recipe_description' },
+	            'Description'
+	          ),
+	          _react2.default.createElement('textarea', {
+	            id: 'recipe_description',
+	            name: 'recipe_description',
+	            value: this.state.description,
+	            onChange: this.handleChangeInput.bind(this, 'description')
+	          }),
+	          _react2.default.createElement('input', { type: 'submit', name: 'commit', value: 'Create Recipe' })
+	        )
+	      );
+	    }
+	  }]);
+
+	  return NewRecipe;
+	}(_react2.default.Component);
+
+	NewRecipe.propTypes = {
+	  name: _react.PropTypes.string,
+	  description: _react.PropTypes.string
+	};
+	NewRecipe.defaultProps = {
+	  name: '',
+	  description: ''
+	};
+	exports.default = NewRecipe;
 
 /***/ }
 /******/ ]);
