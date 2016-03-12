@@ -3,9 +3,10 @@ class RecipesController < ApplicationController
   def create
     new_recipe = Recipe.new(recipe_params)
     if new_recipe.save
-      render json: { status: 200 }
+      render json: {}, status: 200
     else
-      render json: { status: 400 }
+      errors = errors_to_json(new_recipe.errors)
+      render json: { errors: errors }, status: 400
     end
   end
 
@@ -19,4 +20,11 @@ class RecipesController < ApplicationController
     Recipe.all
   end
   helper_method :recipes
+
+  def errors_to_json(errors)
+    errors.each_with_object({}) do |error, hsh|
+      hsh[error.first] = error.last
+      hsh
+    end
+  end
 end

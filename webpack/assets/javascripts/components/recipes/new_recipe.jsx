@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react';
 
+import FormField from '../form_field'
+
 class NewRecipe extends React.Component {
   constructor() {
     super();
@@ -53,24 +55,21 @@ class NewRecipe extends React.Component {
           id='react_new_item_type'
           onSubmit={this.handleSubmit.bind(this)}
         >
-          <label htmlFor='recipe_name'>
-            Name
-          </label>
-          <input
-            id='recipe_name'
-            name='recipe_name'
-            type="text"
+          <FormField
+            label='Name'
+            fieldId='recipe_name'
+            type='text'
             value={this.state.name}
+            error={this.state.errors['name']}
             onChange={this.handleChangeInput.bind(this, 'name')}
           />
 
-          <label htmlFor='recipe_description'>
-            Description
-          </label>
-          <textarea
-            id='recipe_description'
-            name='recipe_description'
+          <FormField
+            label='Description'
+            fieldId='recipe_description'
+            type='textarea'
             value={this.state.description}
+            error={this.state.errors['description']}
             onChange={this.handleChangeInput.bind(this, 'description')}
           />
 
