@@ -9,7 +9,7 @@ module.exports = {
   },
   resolve: {
     root: [path.join(__dirname, "assets/javascripts")],
-    extensions: ["", ".js", ".jsx"]
+    extensions: ["", ".js", ".jsx",".css"]
   },
   module: {
     loaders: [
@@ -17,6 +17,10 @@ module.exports = {
         "test": /\.(js|jsx)$/,
         "exclude": /node_modules/,
         "loader": "babel-loader"
+      },
+      {
+        "test": /\.css$/,
+        "loader": 'style!css',
       },
     ]
   }

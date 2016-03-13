@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 
 import FormField from '../form_field'
+import AddIngredient from './add_ingredient'
 
 class NewRecipe extends React.Component {
   constructor() {
@@ -8,6 +9,18 @@ class NewRecipe extends React.Component {
     this.state = {
       name: '',
       description: '',
+      ingredientOptions: {
+        liquor: [
+          'bourbon',
+          'gin',
+          'vodka',
+        ],
+        fruit: [
+          'orange',
+          'lemon',
+          'lime',
+        ],
+      },
       errors: {}
     };
   }
@@ -71,6 +84,10 @@ class NewRecipe extends React.Component {
             value={this.state.description}
             error={this.state.errors['description']}
             onChange={this.handleChangeInput.bind(this, 'description')}
+          />
+
+          <AddIngredient
+            ingredientOptions={this.state.ingredientOptions}
           />
 
           <input type='submit' name='commit' value='Create Recipe' />

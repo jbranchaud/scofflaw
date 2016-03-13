@@ -22,6 +22,16 @@ describe 'User creates a recipe', :js do
         name: 'Old Fashioned',
         description: 'the classic whiskey cocktail'
       )
+
+      new_recipe_page.add_ingredient(
+        ingredient_type: 'liquor',
+        name: 'bourbon',
+        amount: '3',
+        amount_type: 'ounce'
+      )
+      new_recipe_page.click_add_ingredient
+      expect(new_recipe_page).to have_ingredient('3 ounces bourbon')
+
       new_recipe_page.click_create_recipe
 
       expect(recipes_page).to be_on_page
