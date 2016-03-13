@@ -19947,6 +19947,28 @@
 	  }
 
 	  _createClass(FormField, [{
+	    key: 'renderInput',
+	    value: function renderInput() {
+	      switch (this.props.type) {
+	        case 'textarea':
+	          return _react2.default.createElement('textarea', {
+	            id: this.props.fieldId,
+	            name: this.props.fieldId,
+	            type: this.props.type,
+	            value: this.props.value,
+	            onChange: this.props.onChange
+	          });
+	        default:
+	          return _react2.default.createElement('input', {
+	            id: this.props.fieldId,
+	            name: this.props.fieldId,
+	            type: this.props.type,
+	            value: this.props.value,
+	            onChange: this.props.onChange
+	          });
+	      }
+	    }
+	  }, {
 	    key: 'renderValidationError',
 	    value: function renderValidationError() {
 	      if (!_lodash2.default.isEmpty(this.props.error)) {
@@ -19971,13 +19993,7 @@
 	        ),
 	        this.renderValidationError(),
 	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('input', {
-	          id: this.props.fieldId,
-	          name: this.props.fieldId,
-	          type: this.props.type,
-	          value: this.props.value,
-	          onChange: this.props.onChange
-	        })
+	        this.renderInput()
 	      );
 	    }
 	  }]);

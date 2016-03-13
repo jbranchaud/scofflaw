@@ -25,6 +25,31 @@ class FormField extends Component {
     onChange: () => {},
   }
 
+  renderInput() {
+    switch (this.props.type) {
+      case 'textarea':
+        return (
+          <textarea
+            id={this.props.fieldId}
+            name={this.props.fieldId}
+            type={this.props.type}
+            value={this.props.value}
+            onChange={this.props.onChange}
+          />
+        )
+      default:
+        return (
+          <input
+            id={this.props.fieldId}
+            name={this.props.fieldId}
+            type={this.props.type}
+            value={this.props.value}
+            onChange={this.props.onChange}
+          />
+        );
+    }
+  }
+
   renderValidationError() {
     if (!_.isEmpty(this.props.error)) {
       return <span> {this.props.error}</span>
@@ -39,13 +64,7 @@ class FormField extends Component {
         </label>
         { this.renderValidationError() }
         <br />
-        <input
-          id={this.props.fieldId}
-          name={this.props.fieldId}
-          type={this.props.type}
-          value={this.props.value}
-          onChange={this.props.onChange}
-        />
+        { this.renderInput() }
       </div>
     );
   }
