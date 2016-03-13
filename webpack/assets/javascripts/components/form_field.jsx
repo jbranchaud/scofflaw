@@ -27,7 +27,7 @@ class FormField extends Component {
 
   renderValidationError() {
     if (!_.isEmpty(this.props.error)) {
-      return <span>{this.props.error}</span>
+      return <span> {this.props.error}</span>
     }
   }
 

@@ -19953,6 +19953,7 @@
 	        return _react2.default.createElement(
 	          'span',
 	          null,
+	          ' ',
 	          this.props.error
 	        );
 	      }
