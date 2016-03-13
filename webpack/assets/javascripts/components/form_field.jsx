@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-
 import _ from 'lodash';
 
 class FormField extends Component {
@@ -13,7 +12,7 @@ class FormField extends Component {
     type: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired,
     error: PropTypes.string,
-    onChange: PropTypes.func.isRequired
+    onChange: PropTypes.func.isRequired,
   }
 
   static defaultProps = {
