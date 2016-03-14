@@ -7,9 +7,18 @@ import '../../../../../node_modules/react-select/dist/react-select.css';
 class AddIngredient extends Component {
   constructor(props) {
     super(props);
+
+    let ingredientTypes = _.keys(props.ingredientOptions),
+      currentIngredientType = _.head(ingredientTypes),
+      ingredientNames = props.ingredientOptions[currentIngredientType],
+      currentIngredientName = _.head(ingredientNames);
+
     this.state = {
-      currentIngredientType: _.head(this.ingredientTypes())
-    }
+      ingredientTypes,
+      ingredientNames,
+      currentIngredientType,
+      currentIngredientName
+    };
   }
 
   static propTypes = {
@@ -22,32 +31,61 @@ class AddIngredient extends Component {
     ingredientOptions: {},
   }
 
-  ingredientTypes() {
-    return _.keys(this.props.ingredientOptions);
-  }
+  // ingredientTypes() {
+  //   return _.keys(this.props.ingredientOptions);
+  // }
 
-  ingredientNames() {
-    return props.ingredientOptions[this.state.currentIngrdientType]
-  }
+  // ingredientNames() {
+  //   return this.props.ingredientOptions[this.state.currentIngredientType]
+  // }
 
   ingredientTypeSelectOptions() {
-    return this.ingredientTypes().map((ingredientType) => {
+    return this.state.ingredientTypes.map((ingredientType) => {
       return { value: ingredientType, label: ingredientType };
     });
   }
 
+  ingredientNameSelectOptions() {
+    return this.state.ingredientNames.map((ingredientName) => {
+      return { value: ingredientName, label: ingredientName };
+    });
+  }
+
   handleIngredientTypeChange(selection) {
-    this.setState({ currentIngredientType: selection.value });
+    this.setState((previousState) => {
+      return {
+        currentIngredientType: selection.value,
+        ingredientNames: this.props.ingredientOptions[selection.value],
+        currentIngredientName: _.head(this.props.ingredientOptions[selection.value]),
+      };
+    });
+  }
+
+  handleIngredientNameChange(selection) {
+    this.setState({ currentIngredientName: selection.value });
   }
 
   render() {
     return (
       <div id='ingredients'>
+        <label htmlFor="ingredient_type">
+          Type
+        </label>
         <Select
           name='ingredient_type'
           value={this.state.currentIngredientType}
           options={this.ingredientTypeSelectOptions()}
           onChange={this.handleIngredientTypeChange.bind(this)}
+        />
+
+        <label htmlFor="ingredient_name">
+          Ingredient
+        </label>
+        <Select
+          name='ingredient_name'
+          value={this.state.currentIngredientName}
+          options={this.ingredientNameSelectOptions()}
+          onChange={this.handleIngredientNameChange.bind(this)}
         />
       </div>
     );

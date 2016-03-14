@@ -35168,33 +35168,61 @@
 
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AddIngredient).call(this, props));
 
+	    var ingredientTypes = _lodash2.default.keys(props.ingredientOptions),
+	        currentIngredientType = _lodash2.default.head(ingredientTypes),
+	        ingredientNames = props.ingredientOptions[currentIngredientType],
+	        currentIngredientName = _lodash2.default.head(ingredientNames);
+
 	    _this.state = {
-	      currentIngredientType: _lodash2.default.head(_this.ingredientTypes())
+	      ingredientTypes: ingredientTypes,
+	      ingredientNames: ingredientNames,
+	      currentIngredientType: currentIngredientType,
+	      currentIngredientName: currentIngredientName
 	    };
 	    return _this;
 	  }
 
 	  _createClass(AddIngredient, [{
-	    key: 'ingredientTypes',
-	    value: function ingredientTypes() {
-	      return _lodash2.default.keys(this.props.ingredientOptions);
-	    }
-	  }, {
-	    key: 'ingredientNames',
-	    value: function ingredientNames() {
-	      return props.ingredientOptions[this.state.currentIngrdientType];
-	    }
-	  }, {
 	    key: 'ingredientTypeSelectOptions',
+
+
+	    // ingredientTypes() {
+	    //   return _.keys(this.props.ingredientOptions);
+	    // }
+
+	    // ingredientNames() {
+	    //   return this.props.ingredientOptions[this.state.currentIngredientType]
+	    // }
+
 	    value: function ingredientTypeSelectOptions() {
-	      return this.ingredientTypes().map(function (ingredientType) {
+	      return this.state.ingredientTypes.map(function (ingredientType) {
 	        return { value: ingredientType, label: ingredientType };
+	      });
+	    }
+	  }, {
+	    key: 'ingredientNameSelectOptions',
+	    value: function ingredientNameSelectOptions() {
+	      return this.state.ingredientNames.map(function (ingredientName) {
+	        return { value: ingredientName, label: ingredientName };
 	      });
 	    }
 	  }, {
 	    key: 'handleIngredientTypeChange',
 	    value: function handleIngredientTypeChange(selection) {
-	      this.setState({ currentIngredientType: selection.value });
+	      var _this2 = this;
+
+	      this.setState(function (previousState) {
+	        return {
+	          currentIngredientType: selection.value,
+	          ingredientNames: _this2.props.ingredientOptions[selection.value],
+	          currentIngredientName: _lodash2.default.head(_this2.props.ingredientOptions[selection.value])
+	        };
+	      });
+	    }
+	  }, {
+	    key: 'handleIngredientNameChange',
+	    value: function handleIngredientNameChange(selection) {
+	      this.setState({ currentIngredientName: selection.value });
 	    }
 	  }, {
 	    key: 'render',
@@ -35202,11 +35230,27 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { id: 'ingredients' },
+	        _react2.default.createElement(
+	          'label',
+	          { htmlFor: 'ingredient_type' },
+	          'Type'
+	        ),
 	        _react2.default.createElement(_reactSelect2.default, {
 	          name: 'ingredient_type',
 	          value: this.state.currentIngredientType,
 	          options: this.ingredientTypeSelectOptions(),
 	          onChange: this.handleIngredientTypeChange.bind(this)
+	        }),
+	        _react2.default.createElement(
+	          'label',
+	          { htmlFor: 'ingredient_name' },
+	          'Ingredient'
+	        ),
+	        _react2.default.createElement(_reactSelect2.default, {
+	          name: 'ingredient_name',
+	          value: this.state.currentIngredientName,
+	          options: this.ingredientNameSelectOptions(),
+	          onChange: this.handleIngredientNameChange.bind(this)
 	        })
 	      );
 	    }
