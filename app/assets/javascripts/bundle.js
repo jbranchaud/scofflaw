@@ -19834,6 +19834,7 @@
 	        liquor: ['bourbon', 'gin', 'vodka'],
 	        fruit: ['orange', 'lemon', 'lime']
 	      },
+	      amountTypes: ['ounce', 'slice', 'to taste'],
 	      errors: {}
 	    };
 	    return _this;
@@ -19899,7 +19900,8 @@
 	            onChange: this.handleChangeInput.bind(this, 'description')
 	          }),
 	          _react2.default.createElement(_add_ingredient2.default, {
-	            ingredientOptions: this.state.ingredientOptions
+	            ingredientOptions: this.state.ingredientOptions,
+	            amountTypes: this.state.amountTypes
 	          }),
 	          _react2.default.createElement('input', { type: 'submit', name: 'commit', value: 'Create Recipe' })
 	        )
@@ -35150,6 +35152,10 @@
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
+	var _form_field = __webpack_require__(161);
+
+	var _form_field2 = _interopRequireDefault(_form_field);
+
 	__webpack_require__(176);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -35171,29 +35177,25 @@
 	    var ingredientTypes = _lodash2.default.keys(props.ingredientOptions),
 	        currentIngredientType = _lodash2.default.head(ingredientTypes),
 	        ingredientNames = props.ingredientOptions[currentIngredientType],
-	        currentIngredientName = _lodash2.default.head(ingredientNames);
+	        currentIngredientName = _lodash2.default.head(ingredientNames),
+	        ingredientAmount = '',
+	        amountTypes = props.amountTypes,
+	        currentAmountType = _lodash2.default.head(amountTypes);
 
 	    _this.state = {
 	      ingredientTypes: ingredientTypes,
 	      ingredientNames: ingredientNames,
 	      currentIngredientType: currentIngredientType,
-	      currentIngredientName: currentIngredientName
+	      currentIngredientName: currentIngredientName,
+	      ingredientAmount: ingredientAmount,
+	      amountTypes: amountTypes,
+	      currentAmountType: currentAmountType
 	    };
 	    return _this;
 	  }
 
 	  _createClass(AddIngredient, [{
 	    key: 'ingredientTypeSelectOptions',
-
-
-	    // ingredientTypes() {
-	    //   return _.keys(this.props.ingredientOptions);
-	    // }
-
-	    // ingredientNames() {
-	    //   return this.props.ingredientOptions[this.state.currentIngredientType]
-	    // }
-
 	    value: function ingredientTypeSelectOptions() {
 	      return this.state.ingredientTypes.map(function (ingredientType) {
 	        return { value: ingredientType, label: ingredientType };
@@ -35204,6 +35206,13 @@
 	    value: function ingredientNameSelectOptions() {
 	      return this.state.ingredientNames.map(function (ingredientName) {
 	        return { value: ingredientName, label: ingredientName };
+	      });
+	    }
+	  }, {
+	    key: 'amountTypeSelectOptions',
+	    value: function amountTypeSelectOptions() {
+	      return this.state.amountTypes.map(function (amountType) {
+	        return { value: amountType, label: amountType };
 	      });
 	    }
 	  }, {
@@ -35225,11 +35234,26 @@
 	      this.setState({ currentIngredientName: selection.value });
 	    }
 	  }, {
+	    key: 'handleIngredientAmountChange',
+	    value: function handleIngredientAmountChange(e) {
+	      this.setState({ ingredientAmount: e.target.value });
+	    }
+	  }, {
+	    key: 'handleAmountTypeChange',
+	    value: function handleAmountTypeChange(selection) {
+	      this.setState({ currentAmountType: selection.value });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
 	        { id: 'ingredients' },
+	        _react2.default.createElement(
+	          'h3',
+	          null,
+	          'Add an ingredient'
+	        ),
 	        _react2.default.createElement(
 	          'label',
 	          { htmlFor: 'ingredient_type' },
@@ -35237,6 +35261,7 @@
 	        ),
 	        _react2.default.createElement(_reactSelect2.default, {
 	          name: 'ingredient_type',
+	          id: 'ingredient_type',
 	          value: this.state.currentIngredientType,
 	          options: this.ingredientTypeSelectOptions(),
 	          onChange: this.handleIngredientTypeChange.bind(this)
@@ -35251,6 +35276,24 @@
 	          value: this.state.currentIngredientName,
 	          options: this.ingredientNameSelectOptions(),
 	          onChange: this.handleIngredientNameChange.bind(this)
+	        }),
+	        _react2.default.createElement(_form_field2.default, {
+	          label: 'Amount',
+	          fieldId: 'ingredient_amount',
+	          type: 'text',
+	          value: this.state.ingredientAmount,
+	          onChange: this.handleIngredientAmountChange.bind(this)
+	        }),
+	        _react2.default.createElement(
+	          'label',
+	          { htmlFor: 'amount_type' },
+	          'Amount Type'
+	        ),
+	        _react2.default.createElement(_reactSelect2.default, {
+	          name: 'amount_type',
+	          value: this.state.currentAmountType,
+	          options: this.amountTypeSelectOptions(),
+	          onChange: this.handleAmountTypeChange.bind(this)
 	        })
 	      );
 	    }
@@ -35262,10 +35305,12 @@
 	AddIngredient.propTypes = {
 	  ingredientOptions: _react.PropTypes.shape({
 	    ingredientType: _react.PropTypes.arrayOf(_react.PropTypes.string)
-	  })
+	  }),
+	  amountTypes: _react.PropTypes.arrayOf(_react.PropTypes.string)
 	};
 	AddIngredient.defaultProps = {
-	  ingredientOptions: {}
+	  ingredientOptions: {},
+	  amountTypes: []
 	};
 	exports.default = AddIngredient;
 

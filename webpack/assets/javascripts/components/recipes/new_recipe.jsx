@@ -21,6 +21,11 @@ class NewRecipe extends React.Component {
           'lime',
         ],
       },
+      amountTypes: [
+        'ounce',
+        'slice',
+        'to taste',
+      ],
       errors: {}
     };
   }
@@ -88,6 +93,7 @@ class NewRecipe extends React.Component {
 
           <AddIngredient
             ingredientOptions={this.state.ingredientOptions}
+            amountTypes={this.state.amountTypes}
           />
 
           <input type='submit' name='commit' value='Create Recipe' />
