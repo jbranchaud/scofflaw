@@ -1,7 +1,10 @@
 import React, { PropTypes } from 'react';
+import TagsInput from 'react-tagsinput';
 
 import FormField from '../form_field'
 import AddIngredient from './add_ingredient'
+
+import '../../../../../node_modules/react-tagsinput/react-tagsinput.css';
 
 class NewRecipe extends React.Component {
   constructor() {
@@ -9,6 +12,22 @@ class NewRecipe extends React.Component {
     this.state = {
       name: '',
       description: '',
+      ingredients: [
+        {
+          id: 1,
+          type: 'liquor',
+          name: 'bourbon',
+          amount: '3',
+          amountType: 'ounce'
+        },
+        {
+          id: 2,
+          type: 'fruit',
+          name: 'orange',
+          amount: '2',
+          amountType: 'slice'
+        },
+      ],
       ingredientOptions: {
         liquor: [
           'bourbon',
@@ -26,6 +45,7 @@ class NewRecipe extends React.Component {
         'slice',
         'to taste',
       ],
+      tags: [],
       errors: {}
     };
   }
@@ -42,6 +62,23 @@ class NewRecipe extends React.Component {
 
   handleChangeInput(name, e) {
     this.setState({ [name]: e.target.value })
+  }
+
+  handleTagsChange(tags) {
+    this.setState({tags});
+  }
+
+  handleAddIngredientClick(newIngredient, e) {
+    e.preventDefault();
+
+    this.setState((previousState) => {
+      return {
+        ingredients: [
+          ...previousState.ingredients,
+          newIngredient
+        ]
+      }
+    });
   }
 
   handleSubmit(e) {
@@ -91,10 +128,28 @@ class NewRecipe extends React.Component {
             onChange={this.handleChangeInput.bind(this, 'description')}
           />
 
+          <h3>Ingredients</h3>
+          <ul>
+            {this.state.ingredients.map((ingredient) => {
+              return (
+                <li key={ingredient.id}>
+                  <span>{ingredient.amount} {ingredient.amountType} {ingredient.name}</span>
+                </li>
+              );
+            })}
+          </ul>
+
           <AddIngredient
             ingredientOptions={this.state.ingredientOptions}
             amountTypes={this.state.amountTypes}
+            ingredientCount={this.state.ingredients.length}
+            handleAddIngredientClick={this.handleAddIngredientClick.bind(this)}
           />
+
+          <label htmlFor="recipe_tags">
+            Tags
+          </label>
+          <TagsInput value={this.state.tags} onChange={::this.handleTagsChange} />
 
           <input type='submit' name='commit' value='Create Recipe' />
         </form>

@@ -3,6 +3,7 @@ import Select from 'react-select';
 import _ from 'lodash';
 
 import FormField from '../form_field'
+
 import '../../../../../node_modules/react-select/dist/react-select.css';
 
 class AddIngredient extends Component {
@@ -33,11 +34,15 @@ class AddIngredient extends Component {
       ingredientType: PropTypes.arrayOf(PropTypes.string),
     }),
     amountTypes: PropTypes.arrayOf(PropTypes.string),
+    ingredientCount: PropTypes.number.isRequired,
+    handleAddIngredientClick: PropTypes.func.isRequired,
   }
 
   static defaultProps = {
     ingredientOptions: {},
     amountTypes: [],
+    ingredientCount: 0,
+    handleAddIngredientClick: () => {},
   }
 
   ingredientTypeSelectOptions() {
@@ -78,6 +83,16 @@ class AddIngredient extends Component {
 
   handleAmountTypeChange(selection) {
     this.setState({ currentAmountType: selection.value });
+  }
+
+  getNewIngredient() {
+    return {
+      id: this.props.ingredientCount + 1,
+      type: this.state.currentIngredientType,
+      name: this.state.currentIngredientName,
+      amount: this.state.ingredientAmount,
+      amountType: this.state.currentIngredientType
+    };
   }
 
   render() {
@@ -122,6 +137,13 @@ class AddIngredient extends Component {
           value={this.state.currentAmountType}
           options={this.amountTypeSelectOptions()}
           onChange={this.handleAmountTypeChange.bind(this)}
+        />
+
+        <input
+          type='submit'
+          name='commit'
+          value='Add Ingredient'
+          onClick={this.props.handleAddIngredientClick.bind(this, this.getNewIngredient())}
         />
       </div>
     );
