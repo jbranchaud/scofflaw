@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
 import TagsInput from 'react-tagsinput';
 
-import FormField from '../form_field'
-import AddIngredient from './add_ingredient'
+import FormField from '../form_field';
+import AddIngredient from './add_ingredient';
 
 import '../../../../../node_modules/react-tagsinput/react-tagsinput.css';
 
