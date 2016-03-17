@@ -11,6 +11,7 @@ module.exports = {
     root: [path.join(__dirname, "assets/javascripts")],
     extensions: ["", ".js", ".jsx",".css"]
   },
+  modulesDirectories: ['node_modules'],
   module: {
     loaders: [
       {

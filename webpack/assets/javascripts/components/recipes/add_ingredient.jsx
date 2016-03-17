@@ -4,7 +4,7 @@ import _ from 'lodash';
 
 import FormField from '../form_field'
 
-import '../../../../../node_modules/react-select/dist/react-select.css';
+import 'react-select/dist/react-select.css';
 
 class AddIngredient extends Component {
   constructor(props) {

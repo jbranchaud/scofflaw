@@ -4,7 +4,7 @@ import TagsInput from 'react-tagsinput';
 import FormField from '../form_field';
 import AddIngredient from './add_ingredient';
 
-import '../../../../../node_modules/react-tagsinput/react-tagsinput.css';
+import 'react-tagsinput/react-tagsinput.css';
 
 class NewRecipe extends React.Component {
   constructor() {

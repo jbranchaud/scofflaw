@@ -62,7 +62,7 @@
 
 	var _new_recipe2 = _interopRequireDefault(_new_recipe);
 
-	__webpack_require__(179);
+	__webpack_require__(177);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -19815,7 +19815,7 @@
 
 	var _add_ingredient2 = _interopRequireDefault(_add_ingredient);
 
-	__webpack_require__(177);
+	__webpack_require__(180);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -37505,8 +37505,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../css-loader/index.js!./react-tagsinput.css", function() {
-				var newContent = require("!!./../css-loader/index.js!./react-tagsinput.css");
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./app.css", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./app.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -37521,10 +37521,10 @@
 
 	exports = module.exports = __webpack_require__(175)();
 	// imports
-
+	exports.i(__webpack_require__(179), "");
 
 	// module
-	exports.push([module.id, ".react-tagsinput {\n  background-color: #fff;\n  border: 1px solid #ccc;\n  overflow: hidden;\n  padding-left: 5px;\n  padding-top: 5px;\n}\n\n.react-tagsinput-tag {\n  background-color: #cde69c;\n  border-radius: 2px;\n  border: 1px solid #a5d24a;\n  color: #638421;\n  display: inline-block;\n  font-family: sans-serif;\n  font-size: 13px;\n  font-weight: 400;\n  margin-bottom: 5px;\n  margin-right: 5px;\n  padding: 5px;\n}\n\n.react-tagsinput-remove {\n  cursor: pointer;\n  font-weight: bold;\n}\n\n.react-tagsinput-tag a::before {\n  content: \" \\D7\";\n}\n\n.react-tagsinput-input {\n  background: transparent;\n  border: 0;\n  color: #777;\n  font-family: sans-serif;\n  font-size: 13px;\n  font-weight: 400;\n  margin-bottom: 6px;\n  margin-top: 1px;\n  outline: none;\n  padding: 5px;\n  width: 80px;\n}\n", ""]);
+	exports.push([module.id, "\n", ""]);
 
 	// exports
 
@@ -37533,10 +37533,24 @@
 /* 179 */
 /***/ function(module, exports, __webpack_require__) {
 
+	exports = module.exports = __webpack_require__(175)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "body {\n  font-family: \"HelveticaNeue-Light\", \"Helvetica Neue Light\", \"Helvetica Neue\", Helvetica, Arial, \"Lucida Grande\", sans-serif;\n  font-weight: 300;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 180 */
+/***/ function(module, exports, __webpack_require__) {
+
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(180);
+	var content = __webpack_require__(181);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(176)(content, {});
@@ -37545,8 +37559,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./app.css", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./app.css");
+			module.hot.accept("!!./../css-loader/index.js!./react-tagsinput.css", function() {
+				var newContent = require("!!./../css-loader/index.js!./react-tagsinput.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -37554,20 +37568,6 @@
 		// When the module is disposed, remove the <style> tags
 		module.hot.dispose(function() { update(); });
 	}
-
-/***/ },
-/* 180 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(175)();
-	// imports
-	exports.i(__webpack_require__(181), "");
-
-	// module
-	exports.push([module.id, "\n", ""]);
-
-	// exports
-
 
 /***/ },
 /* 181 */
@@ -37578,7 +37578,7 @@
 
 
 	// module
-	exports.push([module.id, "body {\n  font-family: \"HelveticaNeue-Light\", \"Helvetica Neue Light\", \"Helvetica Neue\", Helvetica, Arial, \"Lucida Grande\", sans-serif;\n  font-weight: 300;\n}\n", ""]);
+	exports.push([module.id, ".react-tagsinput {\n  background-color: #fff;\n  border: 1px solid #ccc;\n  overflow: hidden;\n  padding-left: 5px;\n  padding-top: 5px;\n}\n\n.react-tagsinput-tag {\n  background-color: #cde69c;\n  border-radius: 2px;\n  border: 1px solid #a5d24a;\n  color: #638421;\n  display: inline-block;\n  font-family: sans-serif;\n  font-size: 13px;\n  font-weight: 400;\n  margin-bottom: 5px;\n  margin-right: 5px;\n  padding: 5px;\n}\n\n.react-tagsinput-remove {\n  cursor: pointer;\n  font-weight: bold;\n}\n\n.react-tagsinput-tag a::before {\n  content: \" \\D7\";\n}\n\n.react-tagsinput-input {\n  background: transparent;\n  border: 0;\n  color: #777;\n  font-family: sans-serif;\n  font-size: 13px;\n  font-weight: 400;\n  margin-bottom: 6px;\n  margin-top: 1px;\n  outline: none;\n  padding: 5px;\n  width: 80px;\n}\n", ""]);
 
 	// exports
 
