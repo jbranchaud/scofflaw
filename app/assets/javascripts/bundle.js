@@ -62,6 +62,8 @@
 
 	var _new_recipe2 = _interopRequireDefault(_new_recipe);
 
+	__webpack_require__(179);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	document.addEventListener('DOMContentLoaded', function () {
@@ -19801,19 +19803,19 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactTagsinput = __webpack_require__(178);
+	var _reactTagsinput = __webpack_require__(161);
 
 	var _reactTagsinput2 = _interopRequireDefault(_reactTagsinput);
 
-	var _form_field = __webpack_require__(161);
+	var _form_field = __webpack_require__(162);
 
 	var _form_field2 = _interopRequireDefault(_form_field);
 
-	var _add_ingredient = __webpack_require__(164);
+	var _add_ingredient = __webpack_require__(165);
 
 	var _add_ingredient2 = _interopRequireDefault(_add_ingredient);
 
-	__webpack_require__(179);
+	__webpack_require__(177);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -19996,6 +19998,293 @@
 /* 161 */
 /***/ function(module, exports, __webpack_require__) {
 
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
+	  if (true) {
+	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, module, __webpack_require__(1)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	  } else if (typeof exports !== 'undefined' && typeof module !== 'undefined') {
+	    factory(exports, module, require('react'));
+	  } else {
+	    var mod = {
+	      exports: {}
+	    };
+	    factory(mod.exports, mod, global.React);
+	    global.ReactTagsInput = mod.exports;
+	  }
+	})(this, function (exports, module, _react) {
+	  'use strict';
+
+	  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	  var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+	  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	  function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+	  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	  var _React = _interopRequireDefault(_react);
+
+	  function defaultRenderTag(props) {
+	    var tag = props.tag;
+	    var key = props.key;
+	    var onRemove = props.onRemove;
+	    var classNameRemove = props.classNameRemove;
+
+	    var other = _objectWithoutProperties(props, ['tag', 'key', 'onRemove', 'classNameRemove']);
+
+	    return _React['default'].createElement(
+	      'span',
+	      _extends({ key: key }, other),
+	      tag,
+	      _React['default'].createElement('a', { className: classNameRemove, onClick: function (e) {
+	          return onRemove(key);
+	        } })
+	    );
+	  }
+
+	  defaultRenderTag.propTypes = {
+	    key: _React['default'].PropTypes.number,
+	    tag: _React['default'].PropTypes.string,
+	    onRemove: _React['default'].PropTypes['function'],
+	    classNameRemove: _React['default'].PropTypes.string
+	  };
+
+	  function defaultRenderInput(props) {
+	    var onChange = props.onChange;
+	    var value = props.value;
+
+	    var other = _objectWithoutProperties(props, ['onChange', 'value']);
+
+	    return _React['default'].createElement('input', _extends({ type: 'text', onChange: onChange, value: value }, other));
+	  }
+
+	  defaultRenderInput.propTypes = {
+	    value: _React['default'].PropTypes.string,
+	    onChange: _React['default'].PropTypes['function']
+	  };
+
+	  function defaultRenderLayout(tagComponents, inputComponent) {
+	    return _React['default'].createElement(
+	      'span',
+	      null,
+	      tagComponents,
+	      inputComponent
+	    );
+	  }
+
+	  var TagsInput = (function (_React$Component) {
+	    _inherits(TagsInput, _React$Component);
+
+	    function TagsInput() {
+	      _classCallCheck(this, TagsInput);
+
+	      _get(Object.getPrototypeOf(TagsInput.prototype), 'constructor', this).call(this);
+	      this.state = { tag: '' };
+	      this.focus = this.focus.bind(this);
+	      this.blur = this.blur.bind(this);
+	    }
+
+	    _createClass(TagsInput, [{
+	      key: '_removeTag',
+	      value: function _removeTag(index) {
+	        var value = this.props.value.concat([]);
+	        if (index > -1 && index < value.length) {
+	          value.splice(index, 1);
+	          this.props.onChange(value);
+	        }
+	      }
+	    }, {
+	      key: '_clearInput',
+	      value: function _clearInput() {
+	        this.setState({ tag: '' });
+	      }
+	    }, {
+	      key: '_maxTags',
+	      value: function _maxTags(tags) {
+	        return this.props.maxTags !== -1 ? tags < this.props.maxTags : true;
+	      }
+	    }, {
+	      key: '_addTag',
+	      value: function _addTag(tag) {
+	        var onlyUnique = this.props.onlyUnique;
+
+	        var isUnique = this.props.value.indexOf(tag) === -1;
+	        var limit = this._maxTags(this.props.value.length);
+	        if (tag !== '' && limit && (isUnique || !onlyUnique)) {
+	          var value = this.props.value.concat([tag]);
+	          this.props.onChange(value);
+	          this._clearInput();
+	        }
+	      }
+	    }, {
+	      key: 'focus',
+	      value: function focus() {
+	        this.refs.input.focus();
+	      }
+	    }, {
+	      key: 'blur',
+	      value: function blur() {
+	        this.refs.input.focus();
+	      }
+	    }, {
+	      key: 'handleKeyDown',
+	      value: function handleKeyDown(e) {
+	        var _props = this.props;
+	        var value = _props.value;
+	        var removeKeys = _props.removeKeys;
+	        var addKeys = _props.addKeys;
+	        var validationRegex = _props.validationRegex;
+	        var tag = this.state.tag;
+
+	        var empty = tag === '';
+	        var add = addKeys.indexOf(e.keyCode) !== -1;
+	        var remove = removeKeys.indexOf(e.keyCode) !== -1;
+
+	        if (add) {
+	          e.preventDefault();
+	          if (validationRegex.test(tag)) {
+	            this._addTag(tag);
+	          }
+	        }
+
+	        if (remove && value.length > 0 && empty) {
+	          e.preventDefault();
+	          this._removeTag(value.length - 1);
+	        }
+	      }
+	    }, {
+	      key: 'handleClick',
+	      value: function handleClick(e) {
+	        if (e.target === this.refs.div) {
+	          this.focus();
+	        }
+	      }
+	    }, {
+	      key: 'handleChange',
+	      value: function handleChange(e) {
+	        var onChange = this.props.inputProps.onChange;
+
+	        var tag = e.target.value;
+
+	        if (onChange) {
+	          onChange(e);
+	        }
+
+	        this.setState({ tag: tag });
+	      }
+	    }, {
+	      key: 'handleOnBlur',
+	      value: function handleOnBlur(e) {
+	        if (this.props.addOnBlur) {
+	          this._addTag(e.target.value);
+	        }
+	      }
+	    }, {
+	      key: 'handleRemove',
+	      value: function handleRemove(tag) {
+	        this._removeTag(tag);
+	      }
+	    }, {
+	      key: 'inputProps',
+	      value: function inputProps() {
+	        var _props$inputProps = this.props.inputProps;
+	        var onChange = _props$inputProps.onChange;
+
+	        var otherInputProps = _objectWithoutProperties(_props$inputProps, ['onChange']);
+
+	        return otherInputProps;
+	      }
+	    }, {
+	      key: 'render',
+	      value: function render() {
+	        var _this = this;
+
+	        var _props2 = this.props;
+	        var value = _props2.value;
+	        var onChange = _props2.onChange;
+	        var inputProps = _props2.inputProps;
+	        var tagProps = _props2.tagProps;
+	        var renderLayout = _props2.renderLayout;
+	        var renderTag = _props2.renderTag;
+	        var renderInput = _props2.renderInput;
+	        var addKeys = _props2.addKeys;
+	        var removeKeys = _props2.removeKeys;
+
+	        var other = _objectWithoutProperties(_props2, ['value', 'onChange', 'inputProps', 'tagProps', 'renderLayout', 'renderTag', 'renderInput', 'addKeys', 'removeKeys']);
+
+	        var tag = this.state.tag;
+
+	        var tagComponents = value.map(function (tag, index) {
+	          return renderTag(_extends({ key: index, tag: tag, onRemove: _this.handleRemove.bind(_this) }, tagProps));
+	        });
+
+	        var inputComponent = renderInput(_extends({
+	          ref: 'input',
+	          value: tag,
+	          onKeyDown: this.handleKeyDown.bind(this),
+	          onChange: this.handleChange.bind(this),
+	          onBlur: this.handleOnBlur.bind(this)
+	        }, this.inputProps()));
+
+	        return _React['default'].createElement(
+	          'div',
+	          _extends({ ref: 'div', onClick: this.handleClick.bind(this) }, other),
+	          renderLayout(tagComponents, inputComponent)
+	        );
+	      }
+	    }], [{
+	      key: 'propTypes',
+	      value: {
+	        addKeys: _React['default'].PropTypes.array,
+	        addOnBlur: _React['default'].PropTypes.bool,
+	        inputProps: _React['default'].PropTypes.object,
+	        onChange: _React['default'].PropTypes.func.isRequired,
+	        removeKeys: _React['default'].PropTypes.array,
+	        renderInput: _React['default'].PropTypes.func,
+	        renderTag: _React['default'].PropTypes.func,
+	        renderLayout: _React['default'].PropTypes.func,
+	        tagProps: _React['default'].PropTypes.object,
+	        onlyUnique: _React['default'].PropTypes.bool,
+	        value: _React['default'].PropTypes.array.isRequired,
+	        maxTags: _React['default'].PropTypes.number,
+	        validationRegex: _React['default'].PropTypes.instanceOf(RegExp)
+	      },
+	      enumerable: true
+	    }, {
+	      key: 'defaultProps',
+	      value: {
+	        className: 'react-tagsinput',
+	        addKeys: [9, 13],
+	        inputProps: { className: 'react-tagsinput-input' },
+	        removeKeys: [8],
+	        renderInput: defaultRenderInput,
+	        renderTag: defaultRenderTag,
+	        renderLayout: defaultRenderLayout,
+	        tagProps: { className: 'react-tagsinput-tag', classNameRemove: 'react-tagsinput-remove' },
+	        onlyUnique: false,
+	        maxTags: -1,
+	        validationRegex: /.*/
+	      },
+	      enumerable: true
+	    }]);
+
+	    return TagsInput;
+	  })(_React['default'].Component);
+
+	  module.exports = TagsInput;
+	});
+
+
+
+/***/ },
+/* 162 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
@@ -20008,7 +20297,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _lodash = __webpack_require__(162);
+	var _lodash = __webpack_require__(163);
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
@@ -20103,7 +20392,7 @@
 	exports.default = FormField;
 
 /***/ },
-/* 162 */
+/* 163 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module, global) {/**
@@ -35180,10 +35469,10 @@
 	  }
 	}.call(this));
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(163)(module), (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(164)(module), (function() { return this; }())))
 
 /***/ },
-/* 163 */
+/* 164 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -35199,7 +35488,7 @@
 
 
 /***/ },
-/* 164 */
+/* 165 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35214,19 +35503,19 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactSelect = __webpack_require__(165);
+	var _reactSelect = __webpack_require__(166);
 
 	var _reactSelect2 = _interopRequireDefault(_reactSelect);
 
-	var _lodash = __webpack_require__(162);
+	var _lodash = __webpack_require__(163);
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
-	var _form_field = __webpack_require__(161);
+	var _form_field = __webpack_require__(162);
 
 	var _form_field2 = _interopRequireDefault(_form_field);
 
-	__webpack_require__(176);
+	__webpack_require__(173);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -35406,7 +35695,7 @@
 	exports.default = AddIngredient;
 
 /***/ },
-/* 165 */
+/* 166 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35427,27 +35716,27 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _reactInputAutosize = __webpack_require__(166);
+	var _reactInputAutosize = __webpack_require__(167);
 
 	var _reactInputAutosize2 = _interopRequireDefault(_reactInputAutosize);
 
-	var _classnames = __webpack_require__(167);
+	var _classnames = __webpack_require__(168);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _utilsStripDiacritics = __webpack_require__(168);
+	var _utilsStripDiacritics = __webpack_require__(169);
 
 	var _utilsStripDiacritics2 = _interopRequireDefault(_utilsStripDiacritics);
 
-	var _Async = __webpack_require__(169);
+	var _Async = __webpack_require__(170);
 
 	var _Async2 = _interopRequireDefault(_Async);
 
-	var _Option = __webpack_require__(170);
+	var _Option = __webpack_require__(171);
 
 	var _Option2 = _interopRequireDefault(_Option);
 
-	var _Value = __webpack_require__(171);
+	var _Value = __webpack_require__(172);
 
 	var _Value2 = _interopRequireDefault(_Value);
 
@@ -36260,7 +36549,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 166 */
+/* 167 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36391,7 +36680,7 @@
 	module.exports = AutosizeInput;
 
 /***/ },
-/* 167 */
+/* 168 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -36445,7 +36734,7 @@
 
 
 /***/ },
-/* 168 */
+/* 169 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -36460,7 +36749,7 @@
 	};
 
 /***/ },
-/* 169 */
+/* 170 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36473,11 +36762,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Select = __webpack_require__(165);
+	var _Select = __webpack_require__(166);
 
 	var _Select2 = _interopRequireDefault(_Select);
 
-	var _utilsStripDiacritics = __webpack_require__(168);
+	var _utilsStripDiacritics = __webpack_require__(169);
 
 	var _utilsStripDiacritics2 = _interopRequireDefault(_utilsStripDiacritics);
 
@@ -36633,7 +36922,7 @@
 	module.exports = Async;
 
 /***/ },
-/* 170 */
+/* 171 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36644,7 +36933,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _classnames = __webpack_require__(167);
+	var _classnames = __webpack_require__(168);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -36742,7 +37031,7 @@
 	module.exports = Option;
 
 /***/ },
-/* 171 */
+/* 172 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36753,7 +37042,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _classnames = __webpack_require__(167);
+	var _classnames = __webpack_require__(168);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -36851,9 +37140,47 @@
 	module.exports = Value;
 
 /***/ },
-/* 172 */,
-/* 173 */,
+/* 173 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(174);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(176)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../css-loader/index.js!./react-select.css", function() {
+				var newContent = require("!!./../../css-loader/index.js!./react-select.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
 /* 174 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(175)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "/**\n * React Select\n * ============\n * Created by Jed Watson and Joss Mackison for KeystoneJS, http://www.keystonejs.com/\n * https://twitter.com/jedwatson https://twitter.com/jossmackison https://twitter.com/keystonejs\n * MIT License: https://github.com/keystonejs/react-select\n*/\n.Select {\n  position: relative;\n}\n.Select,\n.Select div,\n.Select input,\n.Select span {\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box;\n}\n.Select.is-disabled > .Select-control {\n  background-color: #f9f9f9;\n}\n.Select.is-disabled > .Select-control:hover {\n  box-shadow: none;\n}\n.Select.is-disabled .Select-arrow-zone {\n  cursor: default;\n  pointer-events: none;\n}\n.Select-control {\n  background-color: #fff;\n  border-color: #d9d9d9 #ccc #b3b3b3;\n  border-radius: 4px;\n  border: 1px solid #ccc;\n  color: #333;\n  cursor: default;\n  display: table;\n  height: 36px;\n  outline: none;\n  overflow: hidden;\n  position: relative;\n  width: 100%;\n}\n.Select-control:hover {\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\n}\n.is-searchable.is-open > .Select-control {\n  cursor: text;\n}\n.is-open > .Select-control {\n  border-bottom-right-radius: 0;\n  border-bottom-left-radius: 0;\n  background: #fff;\n  border-color: #b3b3b3 #ccc #d9d9d9;\n}\n.is-open > .Select-control > .Select-arrow {\n  border-color: transparent transparent #999;\n  border-width: 0 5px 5px;\n}\n.is-searchable.is-focused:not(.is-open) > .Select-control {\n  cursor: text;\n}\n.is-focused:not(.is-open) > .Select-control {\n  border-color: #007eff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 3px rgba(0, 126, 255, 0.1);\n}\n.Select-placeholder,\n:not(.Select--multi) > .Select-control .Select-value {\n  bottom: 0;\n  color: #aaa;\n  left: 0;\n  line-height: 34px;\n  padding-left: 10px;\n  padding-right: 10px;\n  position: absolute;\n  right: 0;\n  top: 0;\n  max-width: 100%;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.has-value:not(.Select--multi) > .Select-control > .Select-value .Select-value-label,\n.has-value.is-pseudo-focused:not(.Select--multi) > .Select-control > .Select-value .Select-value-label {\n  color: #333;\n}\n.has-value:not(.Select--multi) > .Select-control > .Select-value a.Select-value-label,\n.has-value.is-pseudo-focused:not(.Select--multi) > .Select-control > .Select-value a.Select-value-label {\n  cursor: pointer;\n  text-decoration: none;\n}\n.has-value:not(.Select--multi) > .Select-control > .Select-value a.Select-value-label:hover,\n.has-value.is-pseudo-focused:not(.Select--multi) > .Select-control > .Select-value a.Select-value-label:hover,\n.has-value:not(.Select--multi) > .Select-control > .Select-value a.Select-value-label:focus,\n.has-value.is-pseudo-focused:not(.Select--multi) > .Select-control > .Select-value a.Select-value-label:focus {\n  color: #007eff;\n  outline: none;\n  text-decoration: underline;\n}\n.Select-input {\n  height: 34px;\n  padding-left: 10px;\n  padding-right: 10px;\n  vertical-align: middle;\n}\n.Select-input > input {\n  background: none transparent;\n  border: 0 none;\n  box-shadow: none;\n  cursor: default;\n  display: inline-block;\n  font-family: inherit;\n  font-size: inherit;\n  height: 34px;\n  margin: 0;\n  outline: none;\n  padding: 0;\n  -webkit-appearance: none;\n}\n.is-focused .Select-input > input {\n  cursor: text;\n}\n.has-value.is-pseudo-focused .Select-input {\n  opacity: 0;\n}\n.Select-control:not(.is-searchable) > .Select-input {\n  outline: none;\n}\n.Select-loading-zone {\n  cursor: pointer;\n  display: table-cell;\n  position: relative;\n  text-align: center;\n  vertical-align: middle;\n  width: 16px;\n}\n.Select-loading {\n  -webkit-animation: Select-animation-spin 400ms infinite linear;\n  -o-animation: Select-animation-spin 400ms infinite linear;\n  animation: Select-animation-spin 400ms infinite linear;\n  width: 16px;\n  height: 16px;\n  box-sizing: border-box;\n  border-radius: 50%;\n  border: 2px solid #ccc;\n  border-right-color: #333;\n  display: inline-block;\n  position: relative;\n  vertical-align: middle;\n}\n.Select-clear-zone {\n  -webkit-animation: Select-animation-fadeIn 200ms;\n  -o-animation: Select-animation-fadeIn 200ms;\n  animation: Select-animation-fadeIn 200ms;\n  color: #999;\n  cursor: pointer;\n  display: table-cell;\n  position: relative;\n  text-align: center;\n  vertical-align: middle;\n  width: 17px;\n}\n.Select-clear-zone:hover {\n  color: #D0021B;\n}\n.Select-clear {\n  display: inline-block;\n  font-size: 18px;\n  line-height: 1;\n}\n.Select--multi .Select-clear-zone {\n  width: 17px;\n}\n.Select-arrow-zone {\n  cursor: pointer;\n  display: table-cell;\n  position: relative;\n  text-align: center;\n  vertical-align: middle;\n  width: 25px;\n  padding-right: 5px;\n}\n.Select-arrow {\n  border-color: #999 transparent transparent;\n  border-style: solid;\n  border-width: 5px 5px 2.5px;\n  display: inline-block;\n  height: 0;\n  width: 0;\n}\n.is-open .Select-arrow,\n.Select-arrow-zone:hover > .Select-arrow {\n  border-top-color: #666;\n}\n@-webkit-keyframes Select-animation-fadeIn {\n  from {\n    opacity: 0;\n  }\n  to {\n    opacity: 1;\n  }\n}\n@keyframes Select-animation-fadeIn {\n  from {\n    opacity: 0;\n  }\n  to {\n    opacity: 1;\n  }\n}\n.Select-menu-outer {\n  border-bottom-right-radius: 4px;\n  border-bottom-left-radius: 4px;\n  background-color: #fff;\n  border: 1px solid #ccc;\n  border-top-color: #e6e6e6;\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\n  box-sizing: border-box;\n  margin-top: -1px;\n  max-height: 200px;\n  position: absolute;\n  top: 100%;\n  width: 100%;\n  z-index: 1;\n  -webkit-overflow-scrolling: touch;\n}\n.Select-menu {\n  max-height: 198px;\n  overflow-y: auto;\n}\n.Select-option {\n  box-sizing: border-box;\n  background-color: #fff;\n  color: #666666;\n  cursor: pointer;\n  display: block;\n  padding: 8px 10px;\n}\n.Select-option:last-child {\n  border-bottom-right-radius: 4px;\n  border-bottom-left-radius: 4px;\n}\n.Select-option.is-focused {\n  background-color: rgba(0, 126, 255, 0.08);\n  color: #333;\n}\n.Select-option.is-disabled {\n  color: #cccccc;\n  cursor: default;\n}\n.Select-noresults {\n  box-sizing: border-box;\n  color: #999999;\n  cursor: default;\n  display: block;\n  padding: 8px 10px;\n}\n.Select--multi .Select-input {\n  vertical-align: middle;\n  margin-left: 10px;\n  padding: 0;\n}\n.Select--multi.has-value .Select-input {\n  margin-left: 5px;\n}\n.Select--multi .Select-value {\n  background-color: rgba(0, 126, 255, 0.08);\n  border-radius: 2px;\n  border: 1px solid rgba(0, 126, 255, 0.24);\n  color: #007eff;\n  display: inline-block;\n  font-size: 0.9em;\n  line-height: 1.4;\n  margin-left: 5px;\n  margin-top: 5px;\n  vertical-align: top;\n}\n.Select--multi .Select-value-icon,\n.Select--multi .Select-value-label {\n  display: inline-block;\n  vertical-align: middle;\n}\n.Select--multi .Select-value-label {\n  border-bottom-right-radius: 2px;\n  border-top-right-radius: 2px;\n  cursor: default;\n  padding: 2px 5px;\n}\n.Select--multi a.Select-value-label {\n  color: #007eff;\n  cursor: pointer;\n  text-decoration: none;\n}\n.Select--multi a.Select-value-label:hover {\n  text-decoration: underline;\n}\n.Select--multi .Select-value-icon {\n  cursor: pointer;\n  border-bottom-left-radius: 2px;\n  border-top-left-radius: 2px;\n  border-right: 1px solid rgba(0, 126, 255, 0.24);\n  padding: 1px 5px 3px;\n}\n.Select--multi .Select-value-icon:hover,\n.Select--multi .Select-value-icon:focus {\n  background-color: rgba(0, 113, 230, 0.08);\n  color: #0071e6;\n}\n.Select--multi .Select-value-icon:active {\n  background-color: rgba(0, 126, 255, 0.24);\n}\n.Select--multi.is-disabled .Select-value {\n  background-color: #fcfcfc;\n  border: 1px solid #e3e3e3;\n  color: #333;\n}\n.Select--multi.is-disabled .Select-value-icon {\n  cursor: not-allowed;\n  border-right: 1px solid #e3e3e3;\n}\n.Select--multi.is-disabled .Select-value-icon:hover,\n.Select--multi.is-disabled .Select-value-icon:focus,\n.Select--multi.is-disabled .Select-value-icon:active {\n  background-color: #fcfcfc;\n}\n@keyframes Select-animation-spin {\n  to {\n    transform: rotate(1turn);\n  }\n}\n@-webkit-keyframes Select-animation-spin {\n  to {\n    -webkit-transform: rotate(1turn);\n  }\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 175 */
 /***/ function(module, exports) {
 
 	/*
@@ -36909,7 +37236,7 @@
 
 
 /***/ },
-/* 175 */
+/* 176 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -37163,343 +37490,16 @@
 
 
 /***/ },
-/* 176 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(177);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(175)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../css-loader/index.js!./react-select.css", function() {
-				var newContent = require("!!./../../css-loader/index.js!./react-select.css");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
 /* 177 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(174)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "/**\n * React Select\n * ============\n * Created by Jed Watson and Joss Mackison for KeystoneJS, http://www.keystonejs.com/\n * https://twitter.com/jedwatson https://twitter.com/jossmackison https://twitter.com/keystonejs\n * MIT License: https://github.com/keystonejs/react-select\n*/\n.Select {\n  position: relative;\n}\n.Select,\n.Select div,\n.Select input,\n.Select span {\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box;\n}\n.Select.is-disabled > .Select-control {\n  background-color: #f9f9f9;\n}\n.Select.is-disabled > .Select-control:hover {\n  box-shadow: none;\n}\n.Select.is-disabled .Select-arrow-zone {\n  cursor: default;\n  pointer-events: none;\n}\n.Select-control {\n  background-color: #fff;\n  border-color: #d9d9d9 #ccc #b3b3b3;\n  border-radius: 4px;\n  border: 1px solid #ccc;\n  color: #333;\n  cursor: default;\n  display: table;\n  height: 36px;\n  outline: none;\n  overflow: hidden;\n  position: relative;\n  width: 100%;\n}\n.Select-control:hover {\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\n}\n.is-searchable.is-open > .Select-control {\n  cursor: text;\n}\n.is-open > .Select-control {\n  border-bottom-right-radius: 0;\n  border-bottom-left-radius: 0;\n  background: #fff;\n  border-color: #b3b3b3 #ccc #d9d9d9;\n}\n.is-open > .Select-control > .Select-arrow {\n  border-color: transparent transparent #999;\n  border-width: 0 5px 5px;\n}\n.is-searchable.is-focused:not(.is-open) > .Select-control {\n  cursor: text;\n}\n.is-focused:not(.is-open) > .Select-control {\n  border-color: #007eff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 3px rgba(0, 126, 255, 0.1);\n}\n.Select-placeholder,\n:not(.Select--multi) > .Select-control .Select-value {\n  bottom: 0;\n  color: #aaa;\n  left: 0;\n  line-height: 34px;\n  padding-left: 10px;\n  padding-right: 10px;\n  position: absolute;\n  right: 0;\n  top: 0;\n  max-width: 100%;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.has-value:not(.Select--multi) > .Select-control > .Select-value .Select-value-label,\n.has-value.is-pseudo-focused:not(.Select--multi) > .Select-control > .Select-value .Select-value-label {\n  color: #333;\n}\n.has-value:not(.Select--multi) > .Select-control > .Select-value a.Select-value-label,\n.has-value.is-pseudo-focused:not(.Select--multi) > .Select-control > .Select-value a.Select-value-label {\n  cursor: pointer;\n  text-decoration: none;\n}\n.has-value:not(.Select--multi) > .Select-control > .Select-value a.Select-value-label:hover,\n.has-value.is-pseudo-focused:not(.Select--multi) > .Select-control > .Select-value a.Select-value-label:hover,\n.has-value:not(.Select--multi) > .Select-control > .Select-value a.Select-value-label:focus,\n.has-value.is-pseudo-focused:not(.Select--multi) > .Select-control > .Select-value a.Select-value-label:focus {\n  color: #007eff;\n  outline: none;\n  text-decoration: underline;\n}\n.Select-input {\n  height: 34px;\n  padding-left: 10px;\n  padding-right: 10px;\n  vertical-align: middle;\n}\n.Select-input > input {\n  background: none transparent;\n  border: 0 none;\n  box-shadow: none;\n  cursor: default;\n  display: inline-block;\n  font-family: inherit;\n  font-size: inherit;\n  height: 34px;\n  margin: 0;\n  outline: none;\n  padding: 0;\n  -webkit-appearance: none;\n}\n.is-focused .Select-input > input {\n  cursor: text;\n}\n.has-value.is-pseudo-focused .Select-input {\n  opacity: 0;\n}\n.Select-control:not(.is-searchable) > .Select-input {\n  outline: none;\n}\n.Select-loading-zone {\n  cursor: pointer;\n  display: table-cell;\n  position: relative;\n  text-align: center;\n  vertical-align: middle;\n  width: 16px;\n}\n.Select-loading {\n  -webkit-animation: Select-animation-spin 400ms infinite linear;\n  -o-animation: Select-animation-spin 400ms infinite linear;\n  animation: Select-animation-spin 400ms infinite linear;\n  width: 16px;\n  height: 16px;\n  box-sizing: border-box;\n  border-radius: 50%;\n  border: 2px solid #ccc;\n  border-right-color: #333;\n  display: inline-block;\n  position: relative;\n  vertical-align: middle;\n}\n.Select-clear-zone {\n  -webkit-animation: Select-animation-fadeIn 200ms;\n  -o-animation: Select-animation-fadeIn 200ms;\n  animation: Select-animation-fadeIn 200ms;\n  color: #999;\n  cursor: pointer;\n  display: table-cell;\n  position: relative;\n  text-align: center;\n  vertical-align: middle;\n  width: 17px;\n}\n.Select-clear-zone:hover {\n  color: #D0021B;\n}\n.Select-clear {\n  display: inline-block;\n  font-size: 18px;\n  line-height: 1;\n}\n.Select--multi .Select-clear-zone {\n  width: 17px;\n}\n.Select-arrow-zone {\n  cursor: pointer;\n  display: table-cell;\n  position: relative;\n  text-align: center;\n  vertical-align: middle;\n  width: 25px;\n  padding-right: 5px;\n}\n.Select-arrow {\n  border-color: #999 transparent transparent;\n  border-style: solid;\n  border-width: 5px 5px 2.5px;\n  display: inline-block;\n  height: 0;\n  width: 0;\n}\n.is-open .Select-arrow,\n.Select-arrow-zone:hover > .Select-arrow {\n  border-top-color: #666;\n}\n@-webkit-keyframes Select-animation-fadeIn {\n  from {\n    opacity: 0;\n  }\n  to {\n    opacity: 1;\n  }\n}\n@keyframes Select-animation-fadeIn {\n  from {\n    opacity: 0;\n  }\n  to {\n    opacity: 1;\n  }\n}\n.Select-menu-outer {\n  border-bottom-right-radius: 4px;\n  border-bottom-left-radius: 4px;\n  background-color: #fff;\n  border: 1px solid #ccc;\n  border-top-color: #e6e6e6;\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\n  box-sizing: border-box;\n  margin-top: -1px;\n  max-height: 200px;\n  position: absolute;\n  top: 100%;\n  width: 100%;\n  z-index: 1;\n  -webkit-overflow-scrolling: touch;\n}\n.Select-menu {\n  max-height: 198px;\n  overflow-y: auto;\n}\n.Select-option {\n  box-sizing: border-box;\n  background-color: #fff;\n  color: #666666;\n  cursor: pointer;\n  display: block;\n  padding: 8px 10px;\n}\n.Select-option:last-child {\n  border-bottom-right-radius: 4px;\n  border-bottom-left-radius: 4px;\n}\n.Select-option.is-focused {\n  background-color: rgba(0, 126, 255, 0.08);\n  color: #333;\n}\n.Select-option.is-disabled {\n  color: #cccccc;\n  cursor: default;\n}\n.Select-noresults {\n  box-sizing: border-box;\n  color: #999999;\n  cursor: default;\n  display: block;\n  padding: 8px 10px;\n}\n.Select--multi .Select-input {\n  vertical-align: middle;\n  margin-left: 10px;\n  padding: 0;\n}\n.Select--multi.has-value .Select-input {\n  margin-left: 5px;\n}\n.Select--multi .Select-value {\n  background-color: rgba(0, 126, 255, 0.08);\n  border-radius: 2px;\n  border: 1px solid rgba(0, 126, 255, 0.24);\n  color: #007eff;\n  display: inline-block;\n  font-size: 0.9em;\n  line-height: 1.4;\n  margin-left: 5px;\n  margin-top: 5px;\n  vertical-align: top;\n}\n.Select--multi .Select-value-icon,\n.Select--multi .Select-value-label {\n  display: inline-block;\n  vertical-align: middle;\n}\n.Select--multi .Select-value-label {\n  border-bottom-right-radius: 2px;\n  border-top-right-radius: 2px;\n  cursor: default;\n  padding: 2px 5px;\n}\n.Select--multi a.Select-value-label {\n  color: #007eff;\n  cursor: pointer;\n  text-decoration: none;\n}\n.Select--multi a.Select-value-label:hover {\n  text-decoration: underline;\n}\n.Select--multi .Select-value-icon {\n  cursor: pointer;\n  border-bottom-left-radius: 2px;\n  border-top-left-radius: 2px;\n  border-right: 1px solid rgba(0, 126, 255, 0.24);\n  padding: 1px 5px 3px;\n}\n.Select--multi .Select-value-icon:hover,\n.Select--multi .Select-value-icon:focus {\n  background-color: rgba(0, 113, 230, 0.08);\n  color: #0071e6;\n}\n.Select--multi .Select-value-icon:active {\n  background-color: rgba(0, 126, 255, 0.24);\n}\n.Select--multi.is-disabled .Select-value {\n  background-color: #fcfcfc;\n  border: 1px solid #e3e3e3;\n  color: #333;\n}\n.Select--multi.is-disabled .Select-value-icon {\n  cursor: not-allowed;\n  border-right: 1px solid #e3e3e3;\n}\n.Select--multi.is-disabled .Select-value-icon:hover,\n.Select--multi.is-disabled .Select-value-icon:focus,\n.Select--multi.is-disabled .Select-value-icon:active {\n  background-color: #fcfcfc;\n}\n@keyframes Select-animation-spin {\n  to {\n    transform: rotate(1turn);\n  }\n}\n@-webkit-keyframes Select-animation-spin {\n  to {\n    -webkit-transform: rotate(1turn);\n  }\n}\n", ""]);
-
-	// exports
-
-
-/***/ },
-/* 178 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
-	  if (true) {
-	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, module, __webpack_require__(1)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	  } else if (typeof exports !== 'undefined' && typeof module !== 'undefined') {
-	    factory(exports, module, require('react'));
-	  } else {
-	    var mod = {
-	      exports: {}
-	    };
-	    factory(mod.exports, mod, global.React);
-	    global.ReactTagsInput = mod.exports;
-	  }
-	})(this, function (exports, module, _react) {
-	  'use strict';
-
-	  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	  var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-	  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	  function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
-	  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-	  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	  var _React = _interopRequireDefault(_react);
-
-	  function defaultRenderTag(props) {
-	    var tag = props.tag;
-	    var key = props.key;
-	    var onRemove = props.onRemove;
-	    var classNameRemove = props.classNameRemove;
-
-	    var other = _objectWithoutProperties(props, ['tag', 'key', 'onRemove', 'classNameRemove']);
-
-	    return _React['default'].createElement(
-	      'span',
-	      _extends({ key: key }, other),
-	      tag,
-	      _React['default'].createElement('a', { className: classNameRemove, onClick: function (e) {
-	          return onRemove(key);
-	        } })
-	    );
-	  }
-
-	  defaultRenderTag.propTypes = {
-	    key: _React['default'].PropTypes.number,
-	    tag: _React['default'].PropTypes.string,
-	    onRemove: _React['default'].PropTypes['function'],
-	    classNameRemove: _React['default'].PropTypes.string
-	  };
-
-	  function defaultRenderInput(props) {
-	    var onChange = props.onChange;
-	    var value = props.value;
-
-	    var other = _objectWithoutProperties(props, ['onChange', 'value']);
-
-	    return _React['default'].createElement('input', _extends({ type: 'text', onChange: onChange, value: value }, other));
-	  }
-
-	  defaultRenderInput.propTypes = {
-	    value: _React['default'].PropTypes.string,
-	    onChange: _React['default'].PropTypes['function']
-	  };
-
-	  function defaultRenderLayout(tagComponents, inputComponent) {
-	    return _React['default'].createElement(
-	      'span',
-	      null,
-	      tagComponents,
-	      inputComponent
-	    );
-	  }
-
-	  var TagsInput = (function (_React$Component) {
-	    _inherits(TagsInput, _React$Component);
-
-	    function TagsInput() {
-	      _classCallCheck(this, TagsInput);
-
-	      _get(Object.getPrototypeOf(TagsInput.prototype), 'constructor', this).call(this);
-	      this.state = { tag: '' };
-	      this.focus = this.focus.bind(this);
-	      this.blur = this.blur.bind(this);
-	    }
-
-	    _createClass(TagsInput, [{
-	      key: '_removeTag',
-	      value: function _removeTag(index) {
-	        var value = this.props.value.concat([]);
-	        if (index > -1 && index < value.length) {
-	          value.splice(index, 1);
-	          this.props.onChange(value);
-	        }
-	      }
-	    }, {
-	      key: '_clearInput',
-	      value: function _clearInput() {
-	        this.setState({ tag: '' });
-	      }
-	    }, {
-	      key: '_maxTags',
-	      value: function _maxTags(tags) {
-	        return this.props.maxTags !== -1 ? tags < this.props.maxTags : true;
-	      }
-	    }, {
-	      key: '_addTag',
-	      value: function _addTag(tag) {
-	        var onlyUnique = this.props.onlyUnique;
-
-	        var isUnique = this.props.value.indexOf(tag) === -1;
-	        var limit = this._maxTags(this.props.value.length);
-	        if (tag !== '' && limit && (isUnique || !onlyUnique)) {
-	          var value = this.props.value.concat([tag]);
-	          this.props.onChange(value);
-	          this._clearInput();
-	        }
-	      }
-	    }, {
-	      key: 'focus',
-	      value: function focus() {
-	        this.refs.input.focus();
-	      }
-	    }, {
-	      key: 'blur',
-	      value: function blur() {
-	        this.refs.input.focus();
-	      }
-	    }, {
-	      key: 'handleKeyDown',
-	      value: function handleKeyDown(e) {
-	        var _props = this.props;
-	        var value = _props.value;
-	        var removeKeys = _props.removeKeys;
-	        var addKeys = _props.addKeys;
-	        var validationRegex = _props.validationRegex;
-	        var tag = this.state.tag;
-
-	        var empty = tag === '';
-	        var add = addKeys.indexOf(e.keyCode) !== -1;
-	        var remove = removeKeys.indexOf(e.keyCode) !== -1;
-
-	        if (add) {
-	          e.preventDefault();
-	          if (validationRegex.test(tag)) {
-	            this._addTag(tag);
-	          }
-	        }
-
-	        if (remove && value.length > 0 && empty) {
-	          e.preventDefault();
-	          this._removeTag(value.length - 1);
-	        }
-	      }
-	    }, {
-	      key: 'handleClick',
-	      value: function handleClick(e) {
-	        if (e.target === this.refs.div) {
-	          this.focus();
-	        }
-	      }
-	    }, {
-	      key: 'handleChange',
-	      value: function handleChange(e) {
-	        var onChange = this.props.inputProps.onChange;
-
-	        var tag = e.target.value;
-
-	        if (onChange) {
-	          onChange(e);
-	        }
-
-	        this.setState({ tag: tag });
-	      }
-	    }, {
-	      key: 'handleOnBlur',
-	      value: function handleOnBlur(e) {
-	        if (this.props.addOnBlur) {
-	          this._addTag(e.target.value);
-	        }
-	      }
-	    }, {
-	      key: 'handleRemove',
-	      value: function handleRemove(tag) {
-	        this._removeTag(tag);
-	      }
-	    }, {
-	      key: 'inputProps',
-	      value: function inputProps() {
-	        var _props$inputProps = this.props.inputProps;
-	        var onChange = _props$inputProps.onChange;
-
-	        var otherInputProps = _objectWithoutProperties(_props$inputProps, ['onChange']);
-
-	        return otherInputProps;
-	      }
-	    }, {
-	      key: 'render',
-	      value: function render() {
-	        var _this = this;
-
-	        var _props2 = this.props;
-	        var value = _props2.value;
-	        var onChange = _props2.onChange;
-	        var inputProps = _props2.inputProps;
-	        var tagProps = _props2.tagProps;
-	        var renderLayout = _props2.renderLayout;
-	        var renderTag = _props2.renderTag;
-	        var renderInput = _props2.renderInput;
-	        var addKeys = _props2.addKeys;
-	        var removeKeys = _props2.removeKeys;
-
-	        var other = _objectWithoutProperties(_props2, ['value', 'onChange', 'inputProps', 'tagProps', 'renderLayout', 'renderTag', 'renderInput', 'addKeys', 'removeKeys']);
-
-	        var tag = this.state.tag;
-
-	        var tagComponents = value.map(function (tag, index) {
-	          return renderTag(_extends({ key: index, tag: tag, onRemove: _this.handleRemove.bind(_this) }, tagProps));
-	        });
-
-	        var inputComponent = renderInput(_extends({
-	          ref: 'input',
-	          value: tag,
-	          onKeyDown: this.handleKeyDown.bind(this),
-	          onChange: this.handleChange.bind(this),
-	          onBlur: this.handleOnBlur.bind(this)
-	        }, this.inputProps()));
-
-	        return _React['default'].createElement(
-	          'div',
-	          _extends({ ref: 'div', onClick: this.handleClick.bind(this) }, other),
-	          renderLayout(tagComponents, inputComponent)
-	        );
-	      }
-	    }], [{
-	      key: 'propTypes',
-	      value: {
-	        addKeys: _React['default'].PropTypes.array,
-	        addOnBlur: _React['default'].PropTypes.bool,
-	        inputProps: _React['default'].PropTypes.object,
-	        onChange: _React['default'].PropTypes.func.isRequired,
-	        removeKeys: _React['default'].PropTypes.array,
-	        renderInput: _React['default'].PropTypes.func,
-	        renderTag: _React['default'].PropTypes.func,
-	        renderLayout: _React['default'].PropTypes.func,
-	        tagProps: _React['default'].PropTypes.object,
-	        onlyUnique: _React['default'].PropTypes.bool,
-	        value: _React['default'].PropTypes.array.isRequired,
-	        maxTags: _React['default'].PropTypes.number,
-	        validationRegex: _React['default'].PropTypes.instanceOf(RegExp)
-	      },
-	      enumerable: true
-	    }, {
-	      key: 'defaultProps',
-	      value: {
-	        className: 'react-tagsinput',
-	        addKeys: [9, 13],
-	        inputProps: { className: 'react-tagsinput-input' },
-	        removeKeys: [8],
-	        renderInput: defaultRenderInput,
-	        renderTag: defaultRenderTag,
-	        renderLayout: defaultRenderLayout,
-	        tagProps: { className: 'react-tagsinput-tag', classNameRemove: 'react-tagsinput-remove' },
-	        onlyUnique: false,
-	        maxTags: -1,
-	        validationRegex: /.*/
-	      },
-	      enumerable: true
-	    }]);
-
-	    return TagsInput;
-	  })(_React['default'].Component);
-
-	  module.exports = TagsInput;
-	});
-
-
-
-/***/ },
-/* 179 */
-/***/ function(module, exports, __webpack_require__) {
-
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(180);
+	var content = __webpack_require__(178);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(175)(content, {});
+	var update = __webpack_require__(176)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -37516,15 +37516,69 @@
 	}
 
 /***/ },
-/* 180 */
+/* 178 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(174)();
+	exports = module.exports = __webpack_require__(175)();
 	// imports
 
 
 	// module
 	exports.push([module.id, ".react-tagsinput {\n  background-color: #fff;\n  border: 1px solid #ccc;\n  overflow: hidden;\n  padding-left: 5px;\n  padding-top: 5px;\n}\n\n.react-tagsinput-tag {\n  background-color: #cde69c;\n  border-radius: 2px;\n  border: 1px solid #a5d24a;\n  color: #638421;\n  display: inline-block;\n  font-family: sans-serif;\n  font-size: 13px;\n  font-weight: 400;\n  margin-bottom: 5px;\n  margin-right: 5px;\n  padding: 5px;\n}\n\n.react-tagsinput-remove {\n  cursor: pointer;\n  font-weight: bold;\n}\n\n.react-tagsinput-tag a::before {\n  content: \" \\D7\";\n}\n\n.react-tagsinput-input {\n  background: transparent;\n  border: 0;\n  color: #777;\n  font-family: sans-serif;\n  font-size: 13px;\n  font-weight: 400;\n  margin-bottom: 6px;\n  margin-top: 1px;\n  outline: none;\n  padding: 5px;\n  width: 80px;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 179 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(180);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(176)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./app.css", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./app.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 180 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(175)();
+	// imports
+	exports.i(__webpack_require__(181), "");
+
+	// module
+	exports.push([module.id, "\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 181 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(175)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "body {\n  font-family: \"HelveticaNeue-Light\", \"Helvetica Neue Light\", \"Helvetica Neue\", Helvetica, Arial, \"Lucida Grande\", sans-serif;\n  font-weight: 300;\n}\n", ""]);
 
 	// exports
 
