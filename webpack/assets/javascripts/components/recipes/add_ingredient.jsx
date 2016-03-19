@@ -27,6 +27,13 @@ class AddIngredient extends Component {
       amountTypes,
       currentAmountType,
     };
+
+    this.handleIngredientTypeChange = this.handleIngredientTypeChange.bind(this);
+    this.handleIngredientNameChange = this.handleIngredientNameChange.bind(this);
+    this.handleIngredientAmountChange = this.handleIngredientAmountChange.bind(this);
+    this.handleAmountTypeChange = this.handleAmountTypeChange.bind(this);
+    this.handleAddIngredientClick =
+      this.props.handleAddIngredientClick.bind(this, this.getNewIngredient());
   }
 
   getNewIngredient() {
@@ -90,7 +97,7 @@ class AddIngredient extends Component {
           id="ingredient_type"
           value={this.state.currentIngredientType}
           options={this.ingredientTypeSelectOptions()}
-          onChange={this.handleIngredientTypeChange.bind(this)}
+          onChange={this.handleIngredientTypeChange}
         />
 
         <label htmlFor="ingredient_name">
@@ -100,7 +107,7 @@ class AddIngredient extends Component {
           name="ingredient_name"
           value={this.state.currentIngredientName}
           options={this.ingredientNameSelectOptions()}
-          onChange={this.handleIngredientNameChange.bind(this)}
+          onChange={this.handleIngredientNameChange}
         />
 
         <FormField
@@ -108,7 +115,7 @@ class AddIngredient extends Component {
           fieldId="ingredient_amount"
           type="text"
           value={this.state.ingredientAmount}
-          onChange={this.handleIngredientAmountChange.bind(this)}
+          onChange={this.handleIngredientAmountChange}
         />
 
         <label htmlFor="amount_type">
@@ -118,14 +125,14 @@ class AddIngredient extends Component {
           name="amount_type"
           value={this.state.currentAmountType}
           options={this.amountTypeSelectOptions()}
-          onChange={this.handleAmountTypeChange.bind(this)}
+          onChange={this.handleAmountTypeChange}
         />
 
         <input
           type="submit"
           name="commit"
           value="Add Ingredient"
-          onClick={this.props.handleAddIngredientClick.bind(this, this.getNewIngredient())}
+          onClick={this.handleAddIngredientClick}
         />
       </div>
     );

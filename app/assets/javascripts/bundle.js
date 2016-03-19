@@ -35553,6 +35553,12 @@
 	      amountTypes: amountTypes,
 	      currentAmountType: currentAmountType
 	    };
+
+	    _this.handleIngredientTypeChange = _this.handleIngredientTypeChange.bind(_this);
+	    _this.handleIngredientNameChange = _this.handleIngredientNameChange.bind(_this);
+	    _this.handleIngredientAmountChange = _this.handleIngredientAmountChange.bind(_this);
+	    _this.handleAmountTypeChange = _this.handleAmountTypeChange.bind(_this);
+	    _this.handleAddIngredientClick = _this.props.handleAddIngredientClick.bind(_this, _this.getNewIngredient());
 	    return _this;
 	  }
 
@@ -35637,7 +35643,7 @@
 	          id: 'ingredient_type',
 	          value: this.state.currentIngredientType,
 	          options: this.ingredientTypeSelectOptions(),
-	          onChange: this.handleIngredientTypeChange.bind(this)
+	          onChange: this.handleIngredientTypeChange
 	        }),
 	        _react2.default.createElement(
 	          'label',
@@ -35648,14 +35654,14 @@
 	          name: 'ingredient_name',
 	          value: this.state.currentIngredientName,
 	          options: this.ingredientNameSelectOptions(),
-	          onChange: this.handleIngredientNameChange.bind(this)
+	          onChange: this.handleIngredientNameChange
 	        }),
 	        _react2.default.createElement(_form_field2.default, {
 	          label: 'Amount',
 	          fieldId: 'ingredient_amount',
 	          type: 'text',
 	          value: this.state.ingredientAmount,
-	          onChange: this.handleIngredientAmountChange.bind(this)
+	          onChange: this.handleIngredientAmountChange
 	        }),
 	        _react2.default.createElement(
 	          'label',
@@ -35666,13 +35672,13 @@
 	          name: 'amount_type',
 	          value: this.state.currentAmountType,
 	          options: this.amountTypeSelectOptions(),
-	          onChange: this.handleAmountTypeChange.bind(this)
+	          onChange: this.handleAmountTypeChange
 	        }),
 	        _react2.default.createElement('input', {
 	          type: 'submit',
 	          name: 'commit',
 	          value: 'Add Ingredient',
-	          onClick: this.props.handleAddIngredientClick.bind(this, this.getNewIngredient())
+	          onClick: this.handleAddIngredientClick
 	        })
 	      );
 	    }
