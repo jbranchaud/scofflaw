@@ -20312,10 +20312,10 @@
 	var FormField = function (_Component) {
 	  _inherits(FormField, _Component);
 
-	  function FormField(props) {
+	  function FormField() {
 	    _classCallCheck(this, FormField);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(FormField).call(this, props));
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(FormField).apply(this, arguments));
 	  }
 
 	  _createClass(FormField, [{
@@ -20351,6 +20351,7 @@
 	          this.props.error
 	        );
 	      }
+	      return _react2.default.createElement('span', null);
 	    }
 	  }, {
 	    key: 'render',
@@ -20381,6 +20382,7 @@
 	  error: _react.PropTypes.string,
 	  onChange: _react.PropTypes.func.isRequired
 	};
+
 	FormField.defaultProps = {
 	  label: '',
 	  fieldId: '',
@@ -20389,6 +20391,7 @@
 	  error: '',
 	  onChange: function onChange() {}
 	};
+
 	exports.default = FormField;
 
 /***/ },
@@ -35533,13 +35536,13 @@
 
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AddIngredient).call(this, props));
 
-	    var ingredientTypes = _lodash2.default.keys(props.ingredientOptions),
-	        currentIngredientType = _lodash2.default.head(ingredientTypes),
-	        ingredientNames = props.ingredientOptions[currentIngredientType],
-	        currentIngredientName = _lodash2.default.head(ingredientNames),
-	        ingredientAmount = '',
-	        amountTypes = props.amountTypes,
-	        currentAmountType = _lodash2.default.head(amountTypes);
+	    var ingredientTypes = _lodash2.default.keys(props.ingredientOptions);
+	    var currentIngredientType = _lodash2.default.head(ingredientTypes);
+	    var ingredientNames = props.ingredientOptions[currentIngredientType];
+	    var currentIngredientName = _lodash2.default.head(ingredientNames);
+	    var ingredientAmount = '';
+	    var amountTypes = props.amountTypes;
+	    var currentAmountType = _lodash2.default.head(amountTypes);
 
 	    _this.state = {
 	      ingredientTypes: ingredientTypes,
@@ -35554,6 +35557,17 @@
 	  }
 
 	  _createClass(AddIngredient, [{
+	    key: 'getNewIngredient',
+	    value: function getNewIngredient() {
+	      return {
+	        id: this.props.ingredientCount + 1,
+	        type: this.state.currentIngredientType,
+	        name: this.state.currentIngredientName,
+	        amount: this.state.ingredientAmount,
+	        amountType: this.state.currentIngredientType
+	      };
+	    }
+	  }, {
 	    key: 'ingredientTypeSelectOptions',
 	    value: function ingredientTypeSelectOptions() {
 	      return this.state.ingredientTypes.map(function (ingredientType) {
@@ -35575,11 +35589,16 @@
 	      });
 	    }
 	  }, {
+	    key: 'handleAmountTypeChange',
+	    value: function handleAmountTypeChange(selection) {
+	      this.setState({ currentAmountType: selection.value });
+	    }
+	  }, {
 	    key: 'handleIngredientTypeChange',
 	    value: function handleIngredientTypeChange(selection) {
 	      var _this2 = this;
 
-	      this.setState(function (previousState) {
+	      this.setState(function () {
 	        return {
 	          currentIngredientType: selection.value,
 	          ingredientNames: _this2.props.ingredientOptions[selection.value],
@@ -35596,22 +35615,6 @@
 	    key: 'handleIngredientAmountChange',
 	    value: function handleIngredientAmountChange(e) {
 	      this.setState({ ingredientAmount: e.target.value });
-	    }
-	  }, {
-	    key: 'handleAmountTypeChange',
-	    value: function handleAmountTypeChange(selection) {
-	      this.setState({ currentAmountType: selection.value });
-	    }
-	  }, {
-	    key: 'getNewIngredient',
-	    value: function getNewIngredient() {
-	      return {
-	        id: this.props.ingredientCount + 1,
-	        type: this.state.currentIngredientType,
-	        name: this.state.currentIngredientName,
-	        amount: this.state.ingredientAmount,
-	        amountType: this.state.currentIngredientType
-	      };
 	    }
 	  }, {
 	    key: 'render',
@@ -35686,12 +35689,14 @@
 	  ingredientCount: _react.PropTypes.number.isRequired,
 	  handleAddIngredientClick: _react.PropTypes.func.isRequired
 	};
+
 	AddIngredient.defaultProps = {
 	  ingredientOptions: {},
 	  amountTypes: [],
 	  ingredientCount: 0,
 	  handleAddIngredientClick: function handleAddIngredientClick() {}
 	};
+
 	exports.default = AddIngredient;
 
 /***/ },

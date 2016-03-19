@@ -2,28 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import _ from 'lodash';
 
 class FormField extends Component {
-  constructor(props) {
-    super(props)
-  }
-
-  static propTypes = {
-    label: PropTypes.string.isRequired,
-    fieldId: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
-    error: PropTypes.string,
-    onChange: PropTypes.func.isRequired,
-  }
-
-  static defaultProps = {
-    label: '',
-    fieldId: '',
-    type: 'text',
-    value: '',
-    error: '',
-    onChange: () => {},
-  }
-
   renderInput() {
     switch (this.props.type) {
       case 'textarea':
@@ -35,7 +13,7 @@ class FormField extends Component {
             value={this.props.value}
             onChange={this.props.onChange}
           />
-        )
+        );
       default:
         return (
           <input
@@ -51,8 +29,11 @@ class FormField extends Component {
 
   renderValidationError() {
     if (!_.isEmpty(this.props.error)) {
-      return <span> {this.props.error}</span>
+      return (
+        <span> {this.props.error}</span>
+      );
     }
+    return (<span></span>);
   }
 
   render() {
@@ -68,5 +49,23 @@ class FormField extends Component {
     );
   }
 }
+
+FormField.propTypes = {
+  label: PropTypes.string.isRequired,
+  fieldId: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  error: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
+};
+
+FormField.defaultProps = {
+  label: '',
+  fieldId: '',
+  type: 'text',
+  value: '',
+  error: '',
+  onChange: () => {},
+};
 
 export default FormField;
