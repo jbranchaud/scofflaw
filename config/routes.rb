@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'recipes#index'
 
   resources :recipes, only: [:new, :create, :index]
-  resources :item_types, only: [:new, :create, :index] do
+  resources :ingredient_types, only: [:new, :create, :index] do
     collection do
       post :react_create
     end

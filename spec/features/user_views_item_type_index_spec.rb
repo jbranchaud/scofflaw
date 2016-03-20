@@ -1,25 +1,25 @@
 require 'rails_helper'
 
-feature 'User views item type index' do
-  context 'when there are item types' do
+feature 'User views ingredient type index' do
+  context 'when there are ingredient types' do
     before do
-      ItemType.create!(name: 'garnish')
-      ItemType.create!(name: 'liquor')
+      IngredientType.create!(name: 'garnish')
+      IngredientType.create!(name: 'liquor')
     end
 
-    scenario 'sees all item types' do
-      visit item_types_path
+    scenario 'sees all ingredient types' do
+      visit ingredient_types_path
 
       expect(page).to have_content 'garnish'
       expect(page).to have_content 'liquor'
     end
   end
 
-  context 'when there are no item types' do
-    scenario 'sees a message for no item types' do
-      visit item_types_path
+  context 'when there are no ingredient types' do
+    scenario 'sees a message for no ingredient types' do
+      visit ingredient_types_path
 
-      expect(page).to have_content 'No item types have been created yet...'
+      expect(page).to have_content 'No ingredient types have been created yet...'
     end
   end
 end

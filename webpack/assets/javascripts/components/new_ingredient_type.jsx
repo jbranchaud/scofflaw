@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-class NewItemType extends React.Component {
+class NewIngredientType extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -25,12 +25,12 @@ class NewItemType extends React.Component {
     e.preventDefault();
     return $.ajax({
       method: 'POST',
-      url: '/item_types/react_create',
+      url: '/ingredient_types/react_create',
       dataType: 'json',
-      data: { item_type: { name: this.state.name } }
+      data: { ingredient_type: { name: this.state.name } }
     })
       .done((xhr, status, err) => {
-        location.assign('/item_types');
+        location.assign('/ingredient_types');
       })
       .fail((xhr, status, err) => {
         this.setState({ errors: xhr.responseJSON.errors });
@@ -50,9 +50,9 @@ class NewItemType extends React.Component {
 
         { this.displayFlashMessage() }
 
-        <form className='new_item_type' id='react_new_item_type' onSubmit={this.handleSubmit.bind(this)}>
-          <label htmlFor='item_type_name'>Name</label>
-          <input type='text' name='item_type[name]' id='item_type_name' value={this.state.name} onChange={this.handleChangeName.bind(this)} />
+        <form className='new_ingredient_type' id='react_new_ingredient_type' onSubmit={this.handleSubmit.bind(this)}>
+          <label htmlFor='ingredient_type_name'>Name</label>
+          <input type='text' name='ingredient_type[name]' id='ingredient_type_name' value={this.state.name} onChange={this.handleChangeName.bind(this)} />
           <input type='submit' name='commit' value='Submit' />
         </form>
       </div>
@@ -60,4 +60,4 @@ class NewItemType extends React.Component {
   }
 }
 
-export default NewItemType;
+export default NewIngredientType;
