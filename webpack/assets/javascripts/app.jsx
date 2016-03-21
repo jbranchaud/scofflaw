@@ -1,5 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+
+import recipeApp from './reducers';
 
 import NewIngredientType from './components/new_ingredient_type';
 import NewRecipe from './components/recipes/new_recipe';
@@ -15,8 +19,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (document.getElementById('new_recipe')) {
+    let store = createStore(recipeApp);
+
     ReactDOM.render(
-      <NewRecipe />,
+      <Provider store={store}>
+        <NewRecipe />
+      </Provider>,
       document.getElementById('new_recipe')
     );
   }

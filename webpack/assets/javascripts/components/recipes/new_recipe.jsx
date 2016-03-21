@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import TagsInput from 'react-tagsinput';
 
+import IngredientListContainer from '../../containers/ingredient_list_container';
 import FormField from '../form_field';
 import AddIngredient from './add_ingredient';
 
@@ -128,16 +129,7 @@ class NewRecipe extends React.Component {
             onChange={this.handleChangeInput.bind(this, 'description')}
           />
 
-          <h3>Ingredients</h3>
-          <ul>
-            {this.state.ingredients.map((ingredient) => {
-              return (
-                <li key={ingredient.id}>
-                  <span>{ingredient.amount} {ingredient.amountType} {ingredient.name}</span>
-                </li>
-              );
-            })}
-          </ul>
+          <IngredientListContainer />
 
           <AddIngredient
             ingredientOptions={this.state.ingredientOptions}

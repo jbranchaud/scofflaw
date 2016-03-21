@@ -1,6 +1,9 @@
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 import Select from 'react-select';
 import _ from 'lodash';
+
+import { addIngredient } from '../../actions';
 
 import FormField from '../form_field';
 
@@ -32,14 +35,12 @@ class AddIngredient extends Component {
     this.handleIngredientNameChange = this.handleIngredientNameChange.bind(this);
     this.handleIngredientAmountChange = this.handleIngredientAmountChange.bind(this);
     this.handleAmountTypeChange = this.handleAmountTypeChange.bind(this);
-    this.handleAddIngredientClick =
-      this.props.handleAddIngredientClick.bind(this, this.getNewIngredient());
+    this.handleClickAddIngredient = (e) => { e.preventDefault(); this.props.dispatch(addIngredient(this.getNewIngredient())) };
   }
 
   getNewIngredient() {
     return {
-      id: this.props.ingredientCount + 1,
-      type: this.state.currentIngredientType,
+      ingredientType: this.state.currentIngredientType,
       name: this.state.currentIngredientName,
       amount: this.state.ingredientAmount,
       amountType: this.state.currentIngredientType,
@@ -132,7 +133,7 @@ class AddIngredient extends Component {
           type="submit"
           name="commit"
           value="Add Ingredient"
-          onClick={this.handleAddIngredientClick}
+          onClick={this.handleClickAddIngredient}
         />
       </div>
     );
@@ -155,4 +156,4 @@ AddIngredient.defaultProps = {
   handleAddIngredientClick: () => {},
 };
 
-export default AddIngredient;
+export default connect()(AddIngredient);
