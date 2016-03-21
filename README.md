@@ -10,3 +10,7 @@
 - `bundle install`
 - `rake db:create`
 - `rake db:migrate`
+
+## License
+
+&copy; 2016 Josh Branchaud
