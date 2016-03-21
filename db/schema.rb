@@ -11,23 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160311203326) do
+ActiveRecord::Schema.define(version: 20160320123538) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "item_types", force: :cascade do |t|
+  create_table "ingredient_types", force: :cascade do |t|
     t.string   "name",                         null: false
     t.datetime "created_at", default: "now()", null: false
     t.datetime "updated_at", default: "now()", null: false
   end
 
-  create_table "items", force: :cascade do |t|
-    t.string   "name",                           null: false
-    t.text     "description",                    null: false
-    t.integer  "item_type_id",                   null: false
-    t.datetime "created_at",   default: "now()", null: false
-    t.datetime "updated_at",   default: "now()", null: false
+  create_table "ingredients", force: :cascade do |t|
+    t.string   "name",                                 null: false
+    t.text     "description",                          null: false
+    t.integer  "ingredient_type_id",                   null: false
+    t.datetime "created_at",         default: "now()", null: false
+    t.datetime "updated_at",         default: "now()", null: false
   end
 
   create_table "recipes", force: :cascade do |t|
@@ -49,5 +49,5 @@ ActiveRecord::Schema.define(version: 20160311203326) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "items", "item_types", name: "items_item_type_id_fkey"
+  add_foreign_key "ingredients", "ingredient_types", name: "ingredients_ingredient_type_id_fkey"
 end

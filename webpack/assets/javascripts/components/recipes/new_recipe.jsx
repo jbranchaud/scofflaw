@@ -106,8 +106,8 @@ class NewRecipe extends React.Component {
         <h1>New Recipe</h1>
 
         <form
-          className='new_item_type'
-          id='react_new_item_type'
+          className='new_ingredient_type'
+          id='react_new_ingredient_type'
           onSubmit={this.handleSubmit.bind(this)}
         >
           <FormField

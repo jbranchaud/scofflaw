@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import NewItemType from './components/new_item_type';
+import NewIngredientType from './components/new_ingredient_type';
 import NewRecipe from './components/recipes/new_recipe';
 
 import '../stylesheets/app.css';
@@ -9,7 +9,7 @@ import '../stylesheets/app.css';
 document.addEventListener('DOMContentLoaded', () => {
   if (document.getElementById('webpack-react-form')) {
     ReactDOM.render(
-      <NewItemType />,
+      <NewIngredientType />,
       document.getElementById('webpack-react-form')
     );
   }
