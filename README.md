@@ -2,14 +2,6 @@
 
 > a tool for recording and finding cocktail recipes
 
-## Models
-
-- Ingredient
-- Ingredient Amount
-- Ingredient Type
-- Recipe
-- User
-
 ## Development
 
 ### Quick Setup
