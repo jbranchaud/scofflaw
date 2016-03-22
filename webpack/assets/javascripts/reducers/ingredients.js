@@ -1,5 +1,4 @@
 const ingredient = (state, action) => {
-  console.log('receiving ' + action.type);
   switch (action.type) {
     case 'ADD_INGREDIENT':
       return {
@@ -8,7 +7,7 @@ const ingredient = (state, action) => {
         name: action.name,
         amountType: action.amountType,
         amount: action.amount,
-      }
+      };
     default:
       return state;
   }
@@ -19,7 +18,7 @@ const ingredients = (state = [], action) => {
     case 'ADD_INGREDIENT':
       return [
         ...state,
-        ingredient(undefined, action)
+        ingredient(undefined, action),
       ];
     default:
       return state;
