@@ -135,7 +135,6 @@ class NewRecipe extends React.Component {
             ingredientOptions={this.state.ingredientOptions}
             amountTypes={this.state.amountTypes}
             ingredientCount={this.state.ingredients.length}
-            handleAddIngredientClick={this.handleAddIngredientClick.bind(this)}
           />
 
           <label htmlFor="recipe_tags">
