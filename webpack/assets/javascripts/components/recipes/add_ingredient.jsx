@@ -35,7 +35,10 @@ class AddIngredient extends Component {
     this.handleIngredientNameChange = this.handleIngredientNameChange.bind(this);
     this.handleIngredientAmountChange = this.handleIngredientAmountChange.bind(this);
     this.handleAmountTypeChange = this.handleAmountTypeChange.bind(this);
-    this.handleClickAddIngredient = (e) => { e.preventDefault(); this.props.dispatch(addIngredient(this.getNewIngredient())) };
+    this.handleClickAddIngredient = (e) => {
+      e.preventDefault();
+      this.props.dispatch(addIngredient(this.getNewIngredient()));
+    };
   }
 
   getNewIngredient() {
