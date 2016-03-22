@@ -92,11 +92,9 @@ class NewRecipe extends React.Component {
       data: { recipe: { name: this.state.name, description: this.state.description } }
     })
       .done((xhr, status, err) => {
-        console.log('CREATED NEW RECIPE SUCCESSFULLY');
         location.assign('/recipes');
       })
       .fail((xhr, status, err) => {
-        console.log('FAILED TO CREATE NEW RECIPE');
         this.setState({ errors: xhr.responseJSON.errors });
       });
   }
