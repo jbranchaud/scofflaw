@@ -144,6 +144,7 @@ class AddIngredient extends Component {
 }
 
 AddIngredient.propTypes = {
+  dispatch: PropTypes.func.isRequired,
   ingredientOptions: PropTypes.shape({
     ingredientType: PropTypes.arrayOf(PropTypes.string),
   }),
