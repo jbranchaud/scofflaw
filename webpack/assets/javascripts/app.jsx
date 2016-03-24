@@ -19,7 +19,26 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (document.getElementById('new_recipe')) {
-    let store = createStore(recipeApp);
+    const initialState = {
+      ingredients: [],
+      ingredientOptions: {
+        ingredientOptions: {
+          liquor: [
+            'bourbon',
+            'gin',
+            'vodka',
+          ],
+          fruit: [
+            'orange',
+            'lemon',
+            'lime',
+          ],
+        },
+        currentIngredientType: "liquor",
+        currentIngredientName: "bourbon",
+      },
+    };
+    let store = createStore(recipeApp, initialState);
 
     ReactDOM.render(
       <Provider store={store}>

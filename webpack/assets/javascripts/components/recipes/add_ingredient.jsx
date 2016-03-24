@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import Select from 'react-select';
 import _ from 'lodash';
 
-import { addIngredient } from '../../actions';
+import { addIngredient, changeIngredientType } from '../../actions';
 
+import IngredientOptionsContainer from '../../containers/ingredient_options_container';
 import FormField from '../form_field';
 
 import 'react-select/dist/react-select.css';
@@ -31,7 +32,6 @@ class AddIngredient extends Component {
       currentAmountType,
     };
 
-    this.handleIngredientTypeChange = this.handleIngredientTypeChange.bind(this);
     this.handleIngredientNameChange = this.handleIngredientNameChange.bind(this);
     this.handleIngredientAmountChange = this.handleIngredientAmountChange.bind(this);
     this.handleAmountTypeChange = this.handleAmountTypeChange.bind(this);
@@ -72,14 +72,6 @@ class AddIngredient extends Component {
     this.setState({ currentAmountType: selection.value });
   }
 
-  handleIngredientTypeChange(selection) {
-    this.setState(() => ({
-      currentIngredientType: selection.value,
-      ingredientNames: this.props.ingredientOptions[selection.value],
-      currentIngredientName: _.head(this.props.ingredientOptions[selection.value]),
-    }));
-  }
-
   handleIngredientNameChange(selection) {
     this.setState({ currentIngredientName: selection.value });
   }
@@ -93,26 +85,7 @@ class AddIngredient extends Component {
       <div id="ingredients">
         <h3>Add an ingredient</h3>
 
-        <label htmlFor="ingredient_type">
-          Type
-        </label>
-        <Select
-          name="ingredient_type"
-          id="ingredient_type"
-          value={this.state.currentIngredientType}
-          options={this.ingredientTypeSelectOptions()}
-          onChange={this.handleIngredientTypeChange}
-        />
-
-        <label htmlFor="ingredient_name">
-          Ingredient
-        </label>
-        <Select
-          name="ingredient_name"
-          value={this.state.currentIngredientName}
-          options={this.ingredientNameSelectOptions()}
-          onChange={this.handleIngredientNameChange}
-        />
+        <IngredientOptionsContainer />
 
         <FormField
           label="Amount"
@@ -145,6 +118,8 @@ class AddIngredient extends Component {
 
 AddIngredient.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  ingredientTypeName: PropTypes.string,
+  ingredientNameOptions: PropTypes.arrayOf(PropTypes.string),
   ingredientOptions: PropTypes.shape({
     ingredientType: PropTypes.arrayOf(PropTypes.string),
   }),

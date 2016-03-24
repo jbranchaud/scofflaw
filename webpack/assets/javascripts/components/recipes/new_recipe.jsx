@@ -29,18 +29,6 @@ class NewRecipe extends React.Component {
           amountType: 'slice'
         },
       ],
-      ingredientOptions: {
-        liquor: [
-          'bourbon',
-          'gin',
-          'vodka',
-        ],
-        fruit: [
-          'orange',
-          'lemon',
-          'lime',
-        ],
-      },
       amountTypes: [
         'ounce',
         'slice',
