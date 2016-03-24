@@ -13,7 +13,7 @@ return (
       id="ingredient_type"
       value={currentIngredientType}
       options={ingredientTypes}
-      onChange={handleIngredientTypeChange.bind(this, ingredientTypes, ingredientOptions)}
+      onChange={handleIngredientTypeChange}
     />
 
     <label htmlFor="ingredient_name">

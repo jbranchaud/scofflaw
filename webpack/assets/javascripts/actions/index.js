@@ -11,11 +11,9 @@ export const addIngredient = ({ ingredientType, name, amountType, amount }) => {
   };
 };
 
-export const changeIngredientType = ({ newIngredientType, ingredientTypes, ingredientOptions }) => (
+export const changeIngredientType = ({ newIngredientType }) => (
   {
     type: "CHANGE_INGREDIENT_TYPE",
     newIngredientType,
-    ingredientTypes,
-    ingredientOptions,
   }
 );

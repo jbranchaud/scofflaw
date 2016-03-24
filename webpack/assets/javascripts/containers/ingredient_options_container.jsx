@@ -27,11 +27,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => (
   {
-    handleIngredientTypeChange: (ingredientTypes, ingredientOptions, selection) => {
+    handleIngredientTypeChange: (selection) => {
       dispatch(changeIngredientType({
         newIngredientType: selection.value,
-        ingredientTypes: ingredientTypes,
-        ingredientOptions: ingredientOptions,
       }))
     }
   }
