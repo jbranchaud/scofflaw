@@ -5,9 +5,9 @@ import IngredientOptions from '../components/recipes/ingredient_options';
 import { changeIngredientType, changeIngredientName } from '../actions';
 
 const mapStateToProps = (state) => {
-  const options = state.ingredientOptions.ingredientOptions;
+  const options = state.ingredients.addIngredient.options;
   const ingredientTypes = _.keys(options);
-  const ingredientNames = options[state.ingredientOptions.currentIngredientType];
+  const ingredientNames = options[state.ingredients.addIngredient.currentIngredientType];
 
   const ingredientTypeOptions = ingredientTypes.map((name) => (
     { value: name, label: name }
@@ -18,9 +18,9 @@ const mapStateToProps = (state) => {
 
   return {
     ingredientOptions: options,
-    currentIngredientType: state.ingredientOptions.currentIngredientType,
+    currentIngredientType: state.ingredients.addIngredient.currentIngredientType,
     ingredientTypes: ingredientTypeOptions,
-    currentIngredientName: state.ingredientOptions.currentIngredientName,
+    currentIngredientName: state.ingredients.addIngredient.currentIngredientName,
     ingredientNames: ingredientNameOptions,
   };
 };

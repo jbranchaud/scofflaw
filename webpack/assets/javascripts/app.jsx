@@ -20,22 +20,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (document.getElementById('new_recipe')) {
     const initialState = {
-      ingredients: [],
-      ingredientOptions: {
-        ingredientOptions: {
-          liquor: [
-            'bourbon',
-            'gin',
-            'vodka',
-          ],
-          fruit: [
-            'orange',
-            'lemon',
-            'lime',
-          ],
+      ingredients: {
+        ingredientList: [],
+        addIngredient: {
+          options: {
+            liquor: [
+              'bourbon',
+              'gin',
+              'vodka',
+            ],
+            fruit: [
+              'orange',
+              'lemon',
+              'lime',
+            ],
+          },
+          currentIngredientType: "liquor",
+          currentIngredientName: "bourbon",
         },
-        currentIngredientType: "liquor",
-        currentIngredientName: "bourbon",
       },
     };
     let store = createStore(recipeApp, initialState);

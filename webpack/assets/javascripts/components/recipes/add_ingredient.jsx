@@ -43,10 +43,8 @@ class AddIngredient extends Component {
 
   getNewIngredient() {
     return {
-      ingredientType: this.state.currentIngredientType,
-      name: this.state.currentIngredientName,
       amount: this.state.ingredientAmount,
-      amountType: this.state.currentIngredientType,
+      amountType: this.state.currentAmountType,
     };
   }
 

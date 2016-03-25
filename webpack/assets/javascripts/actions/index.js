@@ -1,11 +1,9 @@
 let nextRecipeId = 0;
 
-export const addIngredient = ({ ingredientType, name, amountType, amount }) => {
+export const addIngredient = ({ amountType, amount }) => {
   return {
     type: 'ADD_INGREDIENT',
     id: nextRecipeId++,
-    ingredientType,
-    name,
     amountType,
     amount,
   };

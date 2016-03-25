@@ -2,9 +2,11 @@ import { connect } from 'react-redux';
 
 import IngredientList from '../components/recipes/ingredient_list';
 
-const mapStateToProps = (state) => (
-  { ingredients: state.ingredients }
-);
+const mapStateToProps = (state) => {
+  return {
+    ingredients: state.ingredients.ingredientList,
+  };
+};
 
 const mapDispatchToProps = () => ({});
 
