@@ -19,13 +19,15 @@ const mapStateToProps = (state) => {
     { value: name, label: name }
   ));
 
+  const { currentIngredientType, currentIngredientName, currentAmountType } = state.ingredients.addIngredient;
+
   return {
     ingredientOptions: options,
-    currentIngredientType: state.ingredients.addIngredient.currentIngredientType,
+    currentIngredientType,
+    currentIngredientName,
+    currentAmountType,
     ingredientTypes: ingredientTypeOptions,
-    currentIngredientName: state.ingredients.addIngredient.currentIngredientName,
     ingredientNames: ingredientNameOptions,
-    currentAmountType: state.ingredients.addIngredient.currentAmountType,
     amountTypes: amountTypeOptions,
   };
 };
