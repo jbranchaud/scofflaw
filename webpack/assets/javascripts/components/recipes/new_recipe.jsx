@@ -13,22 +13,6 @@ class NewRecipe extends React.Component {
     this.state = {
       name: '',
       description: '',
-      ingredients: [
-        {
-          id: 1,
-          type: 'liquor',
-          name: 'bourbon',
-          amount: '3',
-          amountType: 'ounce'
-        },
-        {
-          id: 2,
-          type: 'fruit',
-          name: 'orange',
-          amount: '2',
-          amountType: 'slice'
-        },
-      ],
       amountTypes: [
         'ounce',
         'slice',
@@ -120,7 +104,6 @@ class NewRecipe extends React.Component {
           <AddIngredient
             ingredientOptions={this.state.ingredientOptions}
             amountTypes={this.state.amountTypes}
-            ingredientCount={this.state.ingredients.length}
           />
 
           <label htmlFor="recipe_tags">

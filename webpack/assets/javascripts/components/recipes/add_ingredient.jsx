@@ -122,13 +122,11 @@ AddIngredient.propTypes = {
     ingredientType: PropTypes.arrayOf(PropTypes.string),
   }),
   amountTypes: PropTypes.arrayOf(PropTypes.string),
-  ingredientCount: PropTypes.number.isRequired,
 };
 
 AddIngredient.defaultProps = {
   ingredientOptions: {},
   amountTypes: [],
-  ingredientCount: 0,
 };
 
 export default connect()(AddIngredient);
