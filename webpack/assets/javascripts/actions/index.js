@@ -22,3 +22,10 @@ export const changeIngredientName = ({ newIngredientName }) => (
     newIngredientName,
   }
 );
+
+export const changeAmountType = ({ newAmountType }) => {
+  return {
+    type: "CHANGE_AMOUNT_TYPE",
+    newAmountType,
+  }
+};

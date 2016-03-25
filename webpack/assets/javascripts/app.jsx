@@ -35,8 +35,14 @@ document.addEventListener('DOMContentLoaded', () => {
               'lime',
             ],
           },
+          amountTypes: [
+            'ounce',
+            'slice',
+            'to taste',
+          ],
           currentIngredientType: "liquor",
           currentIngredientName: "bourbon",
+          currentAmountType: "ounce",
         },
       },
     };

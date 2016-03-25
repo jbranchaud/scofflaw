@@ -7,8 +7,11 @@ const IngredientOptions =
      ingredientTypes,
      currentIngredientName,
      ingredientNames,
+     currentAmountType,
+     amountTypes,
      handleIngredientTypeChange,
-     handleIngredientNameChange
+     handleIngredientNameChange,
+     handleAmountTypeChange,
   }) => {
 return (
   <div>
@@ -32,6 +35,16 @@ return (
       options={ingredientNames}
       onChange={handleIngredientNameChange}
     />
+
+    <label htmlFor="amount_type">
+      Amount Type
+    </label>
+    <Select
+      name="amount_type"
+      value={currentAmountType}
+      options={amountTypes}
+      onChange={handleAmountTypeChange}
+    />
   </div>
 );
   }
@@ -44,6 +57,7 @@ IngredientOptions.propTypes = {
   ingredientNames: PropTypes.arrayOf(PropTypes.object),
   handleIngredientTypeChange: PropTypes.func.isRequired,
   handleIngredientNameChange: PropTypes.func.isRequired,
+  handleAmountTypeChange: PropTypes.func.isRequired,
 };
 
 export default IngredientOptions;

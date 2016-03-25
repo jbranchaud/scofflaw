@@ -44,7 +44,6 @@ class AddIngredient extends Component {
   getNewIngredient() {
     return {
       amount: this.state.ingredientAmount,
-      amountType: this.state.currentAmountType,
     };
   }
 
@@ -57,12 +56,6 @@ class AddIngredient extends Component {
   ingredientNameSelectOptions() {
     return this.state.ingredientNames.map((ingredientName) => (
       { value: ingredientName, label: ingredientName }
-    ));
-  }
-
-  amountTypeSelectOptions() {
-    return this.state.amountTypes.map((amountType) => (
-      { value: amountType, label: amountType }
     ));
   }
 
@@ -91,16 +84,6 @@ class AddIngredient extends Component {
           type="text"
           value={this.state.ingredientAmount}
           onChange={this.handleIngredientAmountChange}
-        />
-
-        <label htmlFor="amount_type">
-          Amount Type
-        </label>
-        <Select
-          name="amount_type"
-          value={this.state.currentAmountType}
-          options={this.amountTypeSelectOptions()}
-          onChange={this.handleAmountTypeChange}
         />
 
         <input

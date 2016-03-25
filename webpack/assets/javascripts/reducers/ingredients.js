@@ -7,7 +7,7 @@ const ingredient = (state, action) => {
         id: action.id,
         ingredientType: state.currentIngredientType,
         name: state.currentIngredientName,
-        amountType: action.amountType,
+        amountType: state.currentAmountType,
         amount: action.amount,
       };
     default:
@@ -31,6 +31,11 @@ const ingredients = (state = {}, action) => {
         addIngredient: ingredientOptions(state.addIngredient, action),
       };
     case "CHANGE_INGREDIENT_NAME":
+      return {
+        ...state,
+        addIngredient: ingredientOptions(state.addIngredient, action),
+      };
+    case "CHANGE_AMOUNT_TYPE":
       return {
         ...state,
         addIngredient: ingredientOptions(state.addIngredient, action),
