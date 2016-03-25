@@ -18,8 +18,13 @@ const ingredientOptions = (state = {}, action) => {
       return {
         ingredientOptions: state.ingredientOptions,
         currentIngredientType: action.newIngredientType,
-        ingredientTypes: state.ingredientTypes,
         ...ingredientName(state, action),
+      };
+    case "CHANGE_INGREDIENT_NAME":
+      return {
+        ingredientOptions: state.ingredientOptions,
+        currentIngredientType: state.currentIngredientType,
+        currentIngredientName: action.newIngredientName
       };
     default:
       return state;

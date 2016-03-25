@@ -2,7 +2,14 @@ import React, { PropTypes } from 'react';
 import Select from 'react-select';
 
 const IngredientOptions =
-  ({ ingredientOptions, currentIngredientType, ingredientTypes, currentIngredientName, ingredientNames, handleIngredientTypeChange }) => {
+  ({ ingredientOptions,
+     currentIngredientType,
+     ingredientTypes,
+     currentIngredientName,
+     ingredientNames,
+     handleIngredientTypeChange,
+     handleIngredientNameChange
+  }) => {
 return (
   <div>
     <label htmlFor="ingredient_type">
@@ -23,7 +30,7 @@ return (
       name="ingredient_name"
       value={currentIngredientName}
       options={ingredientNames}
-      onChange={() => {}}
+      onChange={handleIngredientNameChange}
     />
   </div>
 );
@@ -36,6 +43,7 @@ IngredientOptions.propTypes = {
   currentIngredientName: PropTypes.string,
   ingredientNames: PropTypes.arrayOf(PropTypes.object),
   handleIngredientTypeChange: PropTypes.func.isRequired,
+  handleIngredientNameChange: PropTypes.func.isRequired,
 };
 
 export default IngredientOptions;

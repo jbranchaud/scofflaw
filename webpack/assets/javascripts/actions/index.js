@@ -17,3 +17,10 @@ export const changeIngredientType = ({ newIngredientType }) => (
     newIngredientType,
   }
 );
+
+export const changeIngredientName = ({ newIngredientName }) => (
+  {
+    type: "CHANGE_INGREDIENT_NAME",
+    newIngredientName,
+  }
+);

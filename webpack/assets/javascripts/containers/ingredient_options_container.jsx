@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import IngredientOptions from '../components/recipes/ingredient_options';
 
-import { changeIngredientType } from '../actions';
+import { changeIngredientType, changeIngredientName } from '../actions';
 
 const mapStateToProps = (state) => {
   const options = state.ingredientOptions.ingredientOptions;
@@ -31,7 +31,12 @@ const mapDispatchToProps = (dispatch) => (
       dispatch(changeIngredientType({
         newIngredientType: selection.value,
       }))
-    }
+    },
+    handleIngredientNameChange: (selection) => {
+      dispatch(changeIngredientName({
+        newIngredientName: selection.value,
+      }))
+    },
   }
 );
 
