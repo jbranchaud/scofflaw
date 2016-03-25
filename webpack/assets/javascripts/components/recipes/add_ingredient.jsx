@@ -35,8 +35,7 @@ class AddIngredient extends Component {
     this.handleIngredientNameChange = this.handleIngredientNameChange.bind(this);
     this.handleIngredientAmountChange = this.handleIngredientAmountChange.bind(this);
     this.handleAmountTypeChange = this.handleAmountTypeChange.bind(this);
-    this.handleClickAddIngredient = (e) => {
-      e.preventDefault();
+    this.handleClickAddIngredient = () => {
       this.props.dispatch(addIngredient(this.getNewIngredient()));
     };
   }
@@ -87,8 +86,7 @@ class AddIngredient extends Component {
         />
 
         <input
-          type="submit"
-          name="commit"
+          type="button"
           value="Add Ingredient"
           onClick={this.handleClickAddIngredient}
         />
