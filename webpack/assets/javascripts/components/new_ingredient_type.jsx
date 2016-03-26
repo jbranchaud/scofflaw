@@ -1,20 +1,23 @@
 import React, { PropTypes } from 'react';
 
 class NewIngredientType extends React.Component {
+  static propTypes = {
+    name: PropTypes.string,
+  }
+
+  static defaultProps = {
+    name: '',
+  }
+
   constructor() {
     super();
     this.state = {
       name: '',
-      errors: {}
+      errors: {},
     };
-  }
 
-  static propTypes = {
-    name: PropTypes.string
-  }
-
-  static defaultProps = {
-    name: ''
+    this.handleChangeName = this.handleChangeName.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChangeName(e) {
@@ -27,33 +30,56 @@ class NewIngredientType extends React.Component {
       method: 'POST',
       url: '/ingredient_types/react_create',
       dataType: 'json',
-      data: { ingredient_type: { name: this.state.name } }
+      data: { ingredient_type: { name: this.state.name } },
     })
-      .done((xhr, status, err) => {
+      .done(() => {
         location.assign('/ingredient_types');
       })
-      .fail((xhr, status, err) => {
+      .fail((xhr) => {
         this.setState({ errors: xhr.responseJSON.errors });
       });
   }
 
   displayFlashMessage() {
-    if(this.state.errors.name) {
-      return (<div className='alert'>{this.state.errors.name}</div>);
+    if (this.state.errors.name) {
+      return (
+        <div className="alert">{this.state.errors.name}</div>
+      );
     }
+    return (
+      <span></span>
+    );
   }
 
-  render () {
+  render() {
     return (
-      <div id='react-form'>
+      <div id="react-form">
         <h3>Webpack React Form</h3>
 
         { this.displayFlashMessage() }
 
-        <form className='new_ingredient_type' id='react_new_ingredient_type' onSubmit={this.handleSubmit.bind(this)}>
-          <label htmlFor='ingredient_type_name'>Name</label>
-          <input type='text' name='ingredient_type[name]' id='ingredient_type_name' value={this.state.name} onChange={this.handleChangeName.bind(this)} />
-          <input type='submit' name='commit' value='Submit' />
+        <form
+          className="new_ingredient_type"
+          id="react_new_ingredient_type"
+          onSubmit={this.handleSubmit}
+        >
+          <label htmlFor="ingredient_type_name">
+            Name
+          </label>
+
+          <input
+            type="text"
+            name="ingredient_type[name]"
+            id="ingredient_type_name"
+            value={this.state.name}
+            onChange={this.handleNameChange}
+          />
+
+          <input
+            type="submit"
+            name="commit"
+            value="Submit"
+          />
         </form>
       </div>
     );

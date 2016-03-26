@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import _ from 'lodash';
+import { isEmpty } from 'lodash/isEmpty';
 
 class FormField extends Component {
   renderInput() {
@@ -28,7 +28,7 @@ class FormField extends Component {
   }
 
   renderValidationError() {
-    if (!_.isEmpty(this.props.error)) {
+    if (!isEmpty(this.props.error)) {
       return (
         <span> {this.props.error}</span>
       );

@@ -2,6 +2,8 @@
 
 > a tool for recording and finding cocktail recipes
 
+Using Rails, React.js, Redux, and PostgreSQL
+
 ## Development
 
 ### Quick Setup
