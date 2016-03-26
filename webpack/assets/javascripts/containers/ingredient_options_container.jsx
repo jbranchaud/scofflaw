@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
 
+import _ from 'lodash';
+
 import IngredientOptions from '../components/recipes/ingredient_options';
 
 import {
