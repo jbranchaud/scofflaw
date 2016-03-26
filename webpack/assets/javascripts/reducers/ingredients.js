@@ -15,7 +15,6 @@ const ingredient = (state, action) => {
   }
 };
 
-// TODO: can these case statements be consolidated?
 const ingredients = (state = {}, action) => {
   switch (action.type) {
     case 'ADD_INGREDIENT':
@@ -27,20 +26,8 @@ const ingredients = (state = {}, action) => {
         ],
       };
     case "CHANGE_INGREDIENT_TYPE":
-      return {
-        ...state,
-        addIngredient: ingredientOptions(state.addIngredient, action),
-      };
     case "CHANGE_INGREDIENT_NAME":
-      return {
-        ...state,
-        addIngredient: ingredientOptions(state.addIngredient, action),
-      };
     case "CHANGE_AMOUNT_TYPE":
-      return {
-        ...state,
-        addIngredient: ingredientOptions(state.addIngredient, action),
-      };
     case "CHANGE_INGREDIENT_AMOUNT":
       return {
         ...state,
