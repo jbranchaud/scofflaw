@@ -31,6 +31,11 @@ const ingredientOptions = (state = {}, action) => {
         ...state,
         currentAmountType: action.newAmountType,
       };
+    case "CHANGE_INGREDIENT_AMOUNT":
+      return {
+        ...state,
+        currentIngredientAmount: action.newIngredientAmount,
+      };
     default:
       return state;
   }

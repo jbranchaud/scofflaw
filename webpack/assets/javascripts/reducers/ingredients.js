@@ -8,13 +8,14 @@ const ingredient = (state, action) => {
         ingredientType: state.currentIngredientType,
         name: state.currentIngredientName,
         amountType: state.currentAmountType,
-        amount: action.amount,
+        amount: state.currentIngredientAmount,
       };
     default:
       return state;
   }
 };
 
+// TODO: can these case statements be consolidated?
 const ingredients = (state = {}, action) => {
   switch (action.type) {
     case 'ADD_INGREDIENT':
@@ -36,6 +37,11 @@ const ingredients = (state = {}, action) => {
         addIngredient: ingredientOptions(state.addIngredient, action),
       };
     case "CHANGE_AMOUNT_TYPE":
+      return {
+        ...state,
+        addIngredient: ingredientOptions(state.addIngredient, action),
+      };
+    case "CHANGE_INGREDIENT_AMOUNT":
       return {
         ...state,
         addIngredient: ingredientOptions(state.addIngredient, action),

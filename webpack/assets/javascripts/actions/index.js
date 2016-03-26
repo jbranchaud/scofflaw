@@ -1,11 +1,9 @@
 let nextRecipeId = 0;
 
-export const addIngredient = ({ amountType, amount }) => {
+export const addIngredient = () => {
   return {
     type: 'ADD_INGREDIENT',
     id: nextRecipeId++,
-    amountType,
-    amount,
   };
 };
 
@@ -27,5 +25,12 @@ export const changeAmountType = ({ newAmountType }) => {
   return {
     type: "CHANGE_AMOUNT_TYPE",
     newAmountType,
+  }
+};
+
+export const changeIngredientAmount = ({ newIngredientAmount }) => {
+  return {
+    type: "CHANGE_INGREDIENT_AMOUNT",
+    newIngredientAmount,
   }
 };

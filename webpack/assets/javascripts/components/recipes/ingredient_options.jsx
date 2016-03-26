@@ -1,6 +1,10 @@
 import React, { PropTypes } from 'react';
 import Select from 'react-select';
 
+import FormField from '../form_field';
+
+import 'react-select/dist/react-select.css';
+
 const IngredientOptions =
   ({ currentIngredientType,
      ingredientTypes,
@@ -8,9 +12,11 @@ const IngredientOptions =
      ingredientNames,
      currentAmountType,
      amountTypes,
+     currentIngredientAmount,
      handleIngredientTypeChange,
      handleIngredientNameChange,
      handleAmountTypeChange,
+     handleIngredientAmountChange,
   }) => {
     return (
       <div>
@@ -35,6 +41,14 @@ const IngredientOptions =
           onChange={handleIngredientNameChange}
         />
 
+        <FormField
+          label="Amount"
+          fieldId="ingredient_amount"
+          type="text"
+          value={currentIngredientAmount}
+          onChange={handleIngredientAmountChange}
+        />
+
         <label htmlFor="amount_type">
           Amount Type
         </label>
@@ -52,6 +66,7 @@ IngredientOptions.propTypes = {
   currentIngredientType: PropTypes.string,
   currentIngredientName: PropTypes.string,
   currentAmountType: PropTypes.string,
+  currentIngredientAmount: PropTypes.string,
 
   ingredientTypes: PropTypes.arrayOf(PropTypes.object),
   ingredientNames: PropTypes.arrayOf(PropTypes.object),
@@ -60,6 +75,7 @@ IngredientOptions.propTypes = {
   handleIngredientTypeChange: PropTypes.func.isRequired,
   handleIngredientNameChange: PropTypes.func.isRequired,
   handleAmountTypeChange: PropTypes.func.isRequired,
+  handleIngredientAmountChange: PropTypes.func.isRequired,
 };
 
 export default IngredientOptions;

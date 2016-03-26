@@ -2,7 +2,12 @@ import { connect } from 'react-redux';
 
 import IngredientOptions from '../components/recipes/ingredient_options';
 
-import { changeIngredientType, changeIngredientName, changeAmountType } from '../actions';
+import {
+  changeIngredientType,
+  changeIngredientName,
+  changeAmountType,
+  changeIngredientAmount,
+} from '../actions';
 
 const mapStateToProps = (state) => {
   const options = state.ingredients.addIngredient.options;
@@ -19,12 +24,18 @@ const mapStateToProps = (state) => {
     { value: name, label: name }
   ));
 
-  const { currentIngredientType, currentIngredientName, currentAmountType } = state.ingredients.addIngredient;
+  const {
+    currentIngredientType,
+    currentIngredientName,
+    currentAmountType,
+    currentIngredientAmount,
+  } = state.ingredients.addIngredient;
 
   return {
     currentIngredientType,
     currentIngredientName,
     currentAmountType,
+    currentIngredientAmount,
     ingredientTypes: ingredientTypeOptions,
     ingredientNames: ingredientNameOptions,
     amountTypes: amountTypeOptions,
@@ -46,6 +57,11 @@ const mapDispatchToProps = (dispatch) => (
     handleAmountTypeChange: (selection) => {
       dispatch(changeAmountType({
         newAmountType: selection.value,
+      }))
+    },
+    handleIngredientAmountChange: (e) => {
+      dispatch(changeIngredientAmount({
+        newIngredientAmount: e.target.value,
       }))
     },
   }
