@@ -2,8 +2,7 @@ import React, { PropTypes } from 'react';
 import Select from 'react-select';
 
 const IngredientOptions =
-  ({ ingredientOptions,
-     currentIngredientType,
+  ({ currentIngredientType,
      ingredientTypes,
      currentIngredientName,
      ingredientNames,
@@ -50,11 +49,14 @@ return (
   }
 
 IngredientOptions.propTypes = {
-  ingredientOptions: PropTypes.object,
   currentIngredientType: PropTypes.string,
-  ingredientTypes: PropTypes.arrayOf(PropTypes.object),
   currentIngredientName: PropTypes.string,
+  currentAmountType: PropTypes.string,
+
+  ingredientTypes: PropTypes.arrayOf(PropTypes.object),
   ingredientNames: PropTypes.arrayOf(PropTypes.object),
+  amountTypes: PropTypes.arrayOf(PropTypes.object),
+
   handleIngredientTypeChange: PropTypes.func.isRequired,
   handleIngredientNameChange: PropTypes.func.isRequired,
   handleAmountTypeChange: PropTypes.func.isRequired,
