@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
 
-import recipeApp from './reducers';
+import configureStore from './store/configure_store';
 
 import NewIngredientType from './components/new_ingredient_type';
 import NewRecipe from './components/recipes/new_recipe';
@@ -46,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
       },
     };
-    let store = createStore(recipeApp, initialState);
+    let store = configureStore(initialState);
 
     ReactDOM.render(
       <Provider store={store}>
