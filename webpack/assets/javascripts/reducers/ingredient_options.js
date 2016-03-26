@@ -3,6 +3,7 @@ import _ from 'lodash';
 const ingredientName = (state, action) => {
   switch (action.type) {
     case "CHANGE_INGREDIENT_TYPE":
+      if (action.newIngredientType === state.currentIngredientType) return {};
       const newIngredientName = _.head(_.get(state.options, action.newIngredientType));
       return {
         currentIngredientName: newIngredientName,
