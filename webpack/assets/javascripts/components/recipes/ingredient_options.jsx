@@ -12,41 +12,41 @@ const IngredientOptions =
      handleIngredientNameChange,
      handleAmountTypeChange,
   }) => {
-return (
-  <div>
-    <label htmlFor="ingredient_type">
-      Type
-    </label>
-    <Select
-      name="ingredient_type"
-      id="ingredient_type"
-      value={currentIngredientType}
-      options={ingredientTypes}
-      onChange={handleIngredientTypeChange}
-    />
+    return (
+      <div>
+        <label htmlFor="ingredient_type">
+          Type
+        </label>
+        <Select
+          name="ingredient_type"
+          id="ingredient_type"
+          value={currentIngredientType}
+          options={ingredientTypes}
+          onChange={handleIngredientTypeChange}
+        />
 
-    <label htmlFor="ingredient_name">
-      Ingredient
-    </label>
-    <Select
-      name="ingredient_name"
-      value={currentIngredientName}
-      options={ingredientNames}
-      onChange={handleIngredientNameChange}
-    />
+        <label htmlFor="ingredient_name">
+          Ingredient
+        </label>
+        <Select
+          name="ingredient_name"
+          value={currentIngredientName}
+          options={ingredientNames}
+          onChange={handleIngredientNameChange}
+        />
 
-    <label htmlFor="amount_type">
-      Amount Type
-    </label>
-    <Select
-      name="amount_type"
-      value={currentAmountType}
-      options={amountTypes}
-      onChange={handleAmountTypeChange}
-    />
-  </div>
-);
-  }
+        <label htmlFor="amount_type">
+          Amount Type
+        </label>
+        <Select
+          name="amount_type"
+          value={currentAmountType}
+          options={amountTypes}
+          onChange={handleAmountTypeChange}
+        />
+      </div>
+    );
+  };
 
 IngredientOptions.propTypes = {
   currentIngredientType: PropTypes.string,
