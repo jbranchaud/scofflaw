@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import _ from 'lodash';
+import { keys } from 'lodash/keys';
 
 import IngredientOptions from '../components/recipes/ingredient_options';
 
@@ -13,7 +13,7 @@ import {
 
 const mapStateToProps = (state) => {
   const options = state.ingredients.addIngredient.options;
-  const ingredientTypes = _.keys(options);
+  const ingredientTypes = keys(options);
   const ingredientNames = options[state.ingredients.addIngredient.currentIngredientType];
 
   const valuesToOptions = (values) => {
