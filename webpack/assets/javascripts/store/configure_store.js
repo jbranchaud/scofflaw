@@ -4,7 +4,7 @@ import rootReducer from '../reducers';
 
 export default (initialState) => {
   const finalCreateStore = compose(
-    window.devToolsExtension ? window.devToolsExtension() : f => f
+    window.devToolsExtension ? window.devToolsExtension() : f => { return f; }
   )(createStore);
 
   const store = finalCreateStore(rootReducer, initialState);

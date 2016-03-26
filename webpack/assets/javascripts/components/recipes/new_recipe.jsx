@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import TagsInput from 'react-tagsinput';
 
 import IngredientListContainer from '../../containers/ingredient_list_container';
@@ -7,33 +7,37 @@ import AddIngredient from './add_ingredient';
 
 import 'react-tagsinput/react-tagsinput.css';
 
-class NewRecipe extends React.Component {
+class NewRecipe extends Component {
+  static propTypes = {
+    name: PropTypes.string,
+    description: PropTypes.string,
+  }
+
+  static defaultProps = {
+    name: '',
+    description: '',
+  }
+
   constructor() {
     super();
     this.state = {
       name: '',
       description: '',
       tags: [],
-      errors: {}
+      errors: {},
     };
-  }
 
-  static propTypes = {
-    name: PropTypes.string,
-    description: PropTypes.string
-  }
-
-  static defaultProps = {
-    name: '',
-    description: ''
+    this.handleNameInputChange = this.handleChangeInput.bind(this, 'name');
+    this.handleDescriptionInputChange = this.handleChangeInput.bind(this, 'description');
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChangeInput(name, e) {
-    this.setState({ [name]: e.target.value })
+    this.setState({ [name]: e.target.value });
   }
 
   handleTagsChange(tags) {
-    this.setState({tags});
+    this.setState({ tags });
   }
 
   handleAddIngredientClick(newIngredient, e) {
@@ -43,9 +47,9 @@ class NewRecipe extends React.Component {
       return {
         ingredients: [
           ...previousState.ingredients,
-          newIngredient
-        ]
-      }
+          newIngredient,
+        ],
+      };
     });
   }
 
@@ -56,12 +60,12 @@ class NewRecipe extends React.Component {
       method: 'POST',
       url: '/recipes',
       dataType: 'json',
-      data: { recipe: { name: this.state.name, description: this.state.description } }
+      data: { recipe: { name: this.state.name, description: this.state.description } },
     })
-      .done((xhr, status, err) => {
+      .done(() => {
         location.assign('/recipes');
       })
-      .fail((xhr, status, err) => {
+      .fail((xhr) => {
         this.setState({ errors: xhr.responseJSON.errors });
       });
   }
@@ -72,26 +76,26 @@ class NewRecipe extends React.Component {
         <h1>New Recipe</h1>
 
         <form
-          className='new_ingredient_type'
-          id='react_new_ingredient_type'
-          onSubmit={this.handleSubmit.bind(this)}
+          className="new_ingredient_type"
+          id="react_new_ingredient_type"
+          onSubmit={this.handleSubmit}
         >
           <FormField
-            label='Name'
-            fieldId='recipe_name'
-            type='text'
+            label="Name"
+            fieldId="recipe_name"
+            type="text"
             value={this.state.name}
-            error={this.state.errors['name']}
-            onChange={this.handleChangeInput.bind(this, 'name')}
+            error={this.state.errors.name}
+            onChange={this.handleNameInputChange}
           />
 
           <FormField
-            label='Description'
-            fieldId='recipe_description'
-            type='textarea'
+            label="Description"
+            fieldId="recipe_description"
+            type="textarea"
             value={this.state.description}
-            error={this.state.errors['description']}
-            onChange={this.handleChangeInput.bind(this, 'description')}
+            error={this.state.errors.description}
+            onChange={this.handleDescriptionInputChange}
           />
 
           <IngredientListContainer />
@@ -105,7 +109,7 @@ class NewRecipe extends React.Component {
           </label>
           <TagsInput value={this.state.tags} onChange={::this.handleTagsChange} />
 
-          <input type='submit' name='commit' value='Create Recipe' />
+          <input type="submit" name="commit" value="Create Recipe" />
         </form>
       </div>
     );

@@ -39,14 +39,14 @@ document.addEventListener('DOMContentLoaded', () => {
             'slice',
             'to taste',
           ],
-          currentIngredientType: "liquor",
-          currentIngredientName: "bourbon",
-          currentAmountType: "ounce",
+          currentIngredientType: 'liquor',
+          currentIngredientName: 'bourbon',
+          currentAmountType: 'ounce',
           currentIngredientAmount: '',
         },
       },
     };
-    let store = configureStore(initialState);
+    const store = configureStore(initialState);
 
     ReactDOM.render(
       <Provider store={store}>

@@ -16,15 +16,15 @@ const mapStateToProps = (state) => {
   const ingredientTypes = _.keys(options);
   const ingredientNames = options[state.ingredients.addIngredient.currentIngredientType];
 
-  const ingredientTypeOptions = ingredientTypes.map((name) => (
-    { value: name, label: name }
-  ));
-  const ingredientNameOptions = ingredientNames.map((name) => (
-    { value: name, label: name }
-  ));
-  const amountTypeOptions = state.ingredients.addIngredient.amountTypes.map((name) => (
-    { value: name, label: name }
-  ));
+  const valuesToOptions = (values) => {
+    return values.map((value) => {
+      return { value, label: value };
+    });
+  };
+
+  const ingredientTypeOptions = valuesToOptions(ingredientTypes);
+  const ingredientNameOptions = valuesToOptions(ingredientNames);
+  const amountTypeOptions = valuesToOptions(state.ingredients.addIngredient.amountTypes);
 
   const {
     currentIngredientType,
@@ -44,30 +44,30 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => (
-  {
+const mapDispatchToProps = (dispatch) => {
+  return {
     handleIngredientTypeChange: (selection) => {
       dispatch(changeIngredientType({
         newIngredientType: selection.value,
-      }))
+      }));
     },
     handleIngredientNameChange: (selection) => {
       dispatch(changeIngredientName({
         newIngredientName: selection.value,
-      }))
+      }));
     },
     handleAmountTypeChange: (selection) => {
       dispatch(changeAmountType({
         newAmountType: selection.value,
-      }))
+      }));
     },
     handleIngredientAmountChange: (e) => {
       dispatch(changeIngredientAmount({
         newIngredientAmount: e.target.value,
-      }))
+      }));
     },
-  }
-);
+  };
+};
 
 const IngredientOptionsContainer = connect(
   mapStateToProps,

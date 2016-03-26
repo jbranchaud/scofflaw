@@ -7,30 +7,30 @@ export const addIngredient = () => {
   };
 };
 
-export const changeIngredientType = ({ newIngredientType }) => (
-  {
-    type: "CHANGE_INGREDIENT_TYPE",
+export const changeIngredientType = ({ newIngredientType }) => {
+  return {
+    type: 'CHANGE_INGREDIENT_TYPE',
     newIngredientType,
-  }
-);
+  };
+};
 
-export const changeIngredientName = ({ newIngredientName }) => (
-  {
-    type: "CHANGE_INGREDIENT_NAME",
+export const changeIngredientName = ({ newIngredientName }) => {
+  return {
+    type: 'CHANGE_INGREDIENT_NAME',
     newIngredientName,
-  }
-);
+  };
+};
 
 export const changeAmountType = ({ newAmountType }) => {
   return {
-    type: "CHANGE_AMOUNT_TYPE",
+    type: 'CHANGE_AMOUNT_TYPE',
     newAmountType,
-  }
+  };
 };
 
 export const changeIngredientAmount = ({ newIngredientAmount }) => {
   return {
-    type: "CHANGE_INGREDIENT_AMOUNT",
+    type: 'CHANGE_INGREDIENT_AMOUNT',
     newIngredientAmount,
-  }
+  };
 };

@@ -8,7 +8,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = () => ({});
+const mapDispatchToProps = () => { return {}; };
 
 const IngredientListContainer = connect(
   mapStateToProps,

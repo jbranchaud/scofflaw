@@ -1,17 +1,23 @@
 import React, { PropTypes } from 'react';
 
-const IngredientList = ({ ingredients }) => (
-  <div id="ingredient_list">
-    <h3>Ingredients</h3>
-    <ul>
-      {ingredients.map((ingredient) => (
-        <li key={ingredient.id}>
-          <span>{ingredient.amount} {ingredient.amountType} {ingredient.name}</span>
-        </li>
-      ))}
-    </ul>
-  </div>
-);
+const IngredientList = ({ ingredients }) => {
+  return (
+    <div id="ingredient_list">
+      <h3>Ingredients</h3>
+      <ul>
+        {
+          ingredients.map((ingredient) => {
+            return (
+              <li key={ingredient.id}>
+              <span>{ingredient.amount} {ingredient.amountType} {ingredient.name}</span>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </div>
+  );
+};
 
 IngredientList.propTypes = {
   ingredients: PropTypes.arrayOf(PropTypes.shape({

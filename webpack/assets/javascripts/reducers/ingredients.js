@@ -25,10 +25,10 @@ const ingredients = (state = {}, action) => {
           ingredient(state.addIngredient, action),
         ],
       };
-    case "CHANGE_INGREDIENT_TYPE":
-    case "CHANGE_INGREDIENT_NAME":
-    case "CHANGE_AMOUNT_TYPE":
-    case "CHANGE_INGREDIENT_AMOUNT":
+    case 'CHANGE_INGREDIENT_TYPE':
+    case 'CHANGE_INGREDIENT_NAME':
+    case 'CHANGE_AMOUNT_TYPE':
+    case 'CHANGE_INGREDIENT_AMOUNT':
       return {
         ...state,
         addIngredient: ingredientOptions(state.addIngredient, action),
