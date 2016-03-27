@@ -1,0 +1,14 @@
+{
+  "spec/features/*_spec.rb": {
+    "type": "feature",
+    "template": ["require \"integration_helper\"","","feature \"{blank}\" do", "end"]
+  },
+  "spec/support/pages/*.rb": {
+    "type": "page",
+    "template": [ "module Pages", "  class {camelcase}", "    include Capybara::DSL", "", "  end", "end"]
+  },
+  "webpack/assets/javascripts/components/*.jsx": {
+    "type": "component",
+    "template": [ "import React from 'react';" ]
+  }
+}
