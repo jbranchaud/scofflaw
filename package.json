@@ -10,6 +10,7 @@
   "author": "Josh Branchaud <jbranchaud@gmail.com> (http://joshbranchaud.com)",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.9.1",
     "lodash": "^4.6.1",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",

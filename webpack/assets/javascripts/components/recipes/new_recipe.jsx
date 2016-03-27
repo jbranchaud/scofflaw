@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import TagsInput from 'react-tagsinput';
+import axios from 'axios';
 
 import IngredientListContainer from '../../containers/ingredient_list_container';
 import FormField from '../form_field';
@@ -56,18 +57,19 @@ class NewRecipe extends Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    return $.ajax({
-      method: 'POST',
-      url: '/recipes',
-      dataType: 'json',
-      data: { recipe: { name: this.state.name, description: this.state.description } },
+    axios.post('/recipes', {
+      recipe: {
+        name: this.state.name,
+        description: this.state.description,
+      },
     })
-      .done(() => {
-        location.assign('/recipes');
-      })
-      .fail((xhr) => {
-        this.setState({ errors: xhr.responseJSON.errors });
-      });
+    .then(() => {
+      location.assign('/recipes');
+    })
+    .catch((response) => {
+      debugger;
+      //this.setState({ errors: xhr.responseJSON.errors });
+    });
   }
 
   render() {
