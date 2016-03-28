@@ -1,54 +1,52 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import _isEmpty from 'lodash/isEmpty';
 
-class FormField extends Component {
-  renderInput() {
-    switch (this.props.type) {
+const FormField = (props) => {
+  const renderInput = () => {
+    switch (props.type) {
       case 'textarea':
         return (
           <textarea
-            id={this.props.fieldId}
-            name={this.props.fieldId}
-            type={this.props.type}
-            value={this.props.value}
-            onChange={this.props.onChange}
+            id={props.fieldId}
+            name={props.fieldId}
+            type={props.type}
+            value={props.value}
+            onChange={props.onChange}
           />
         );
       default:
         return (
           <input
-            id={this.props.fieldId}
-            name={this.props.fieldId}
-            type={this.props.type}
-            value={this.props.value}
-            onChange={this.props.onChange}
+            id={props.fieldId}
+            name={props.fieldId}
+            type={props.type}
+            value={props.value}
+            onChange={props.onChange}
           />
         );
     }
-  }
+  };
 
-  renderValidationError() {
-    if (_isEmpty(this.props.error)) {
+  const renderValidationError = () => {
+    if (_isEmpty(props.error)) {
       return (<span></span>);
     }
     return (
-      <span> {this.props.error}</span>
+      <span> {props.error}</span>
     );
-  }
+  };
 
-  render() {
-    return (
-      <div>
-        <label htmlFor={this.props.fieldId}>
-          {this.props.label}
-        </label>
-        { this.renderValidationError() }
-        <br />
-        { this.renderInput() }
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <label htmlFor={props.fieldId}>
+        {props.label}
+      </label>
+      { renderValidationError() }
+      <br />
+      { renderInput() }
+    </div>
+  );
+};
 
 FormField.propTypes = {
   label: PropTypes.string.isRequired,
