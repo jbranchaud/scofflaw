@@ -1,7 +1,7 @@
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import $ from 'jquery';
 
-class NewIngredientType extends React.Component {
+class NewIngredientType extends Component {
   static propTypes = {
     name: PropTypes.string,
   }
