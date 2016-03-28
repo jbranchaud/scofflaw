@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import $ from 'jquery';
 
 class NewIngredientType extends React.Component {
   static propTypes = {
