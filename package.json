@@ -34,6 +34,7 @@
     "jsx-loader": "^0.13.2",
     "redux-devtools": "^3.1.1",
     "style-loader": "^0.13.0",
-    "webpack": "^1.12.14"
+    "webpack": "^1.12.14",
+    "webpack-dev-server": "^1.14.1"
   }
 }
