@@ -1,33 +1,29 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import { addIngredient } from '../../actions';
 
 import IngredientOptionsContainer from '../../containers/ingredient_options_container';
 
-class AddIngredient extends Component {
-  constructor(props) {
-    super(props);
+const AddIngredient = ({ dispatch }) => {
+  const handleClickAddIngredient = () => {
+    dispatch(addIngredient());
+  };
 
-    this.handleClickAddIngredient = () => { this.props.dispatch(addIngredient()); };
-  }
+  return (
+    <div id="ingredients">
+      <h3>Add an ingredient</h3>
 
-  render() {
-    return (
-      <div id="ingredients">
-        <h3>Add an ingredient</h3>
+      <IngredientOptionsContainer />
 
-        <IngredientOptionsContainer />
-
-        <input
-          type="button"
-          value="Add Ingredient"
-          onClick={this.handleClickAddIngredient}
-        />
-      </div>
-    );
-  }
-}
+      <input
+        type="button"
+        value="Add Ingredient"
+        onClick={handleClickAddIngredient}
+      />
+    </div>
+  );
+};
 
 AddIngredient.propTypes = {
   dispatch: PropTypes.func.isRequired,
