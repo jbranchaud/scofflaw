@@ -10,8 +10,11 @@ Using Rails, React.js, Redux, and PostgreSQL
 
 - Clone the repository
 - `bundle install`
+- `npm install -g webpack webpack-dev-server`
+- `npm install`
 - `rake db:create`
 - `rake db:migrate`
+- `webpack --config webpack/webpack.config.js`
 
 ## License
 
