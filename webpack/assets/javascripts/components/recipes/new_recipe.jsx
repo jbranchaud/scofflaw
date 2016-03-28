@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import TagsInput from 'react-tagsinput';
+import $ from 'jquery';
 
 import IngredientListContainer from '../../containers/ingredient_list_container';
 import FormField from '../form_field';
