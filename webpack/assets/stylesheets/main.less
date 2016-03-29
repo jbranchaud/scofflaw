@@ -7,6 +7,11 @@ body {
   font-weight: @font-weight;
 }
 
+div.main {
+  // TODO: make responsive
+  max-width: 800px;
+}
+
 fieldset, input, select, textarea {
   font-family: inherit;
   font-size: @font-size;
@@ -28,11 +33,17 @@ form {
 input[type=date], input[type=datetime-local], input[type=datetime],
 input[type=email], input[type=month], input[type=number],
 input[type=password], input[type=search], input[type=tel], input[type=text],
-input[type=time], input[type=url], input[type=week] {
-  width: 100%;
+input[type=time], input[type=url], input[type=week], div.Select, div.react-tagsinput {
+  width: 75%;
   height: 2.25rem;
-  padding: .5rem;
   vertical-align: middle;
+  -webkit-appearance: none;
+}
+
+textarea {
+  width: 100%;
+  height: 5rem;
+  padding: .5rem;
   -webkit-appearance: none;
 }
 

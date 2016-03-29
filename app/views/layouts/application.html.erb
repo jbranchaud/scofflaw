@@ -8,22 +8,28 @@
 </head>
 <body>
 
-<% if user_signed_in? %>
-  Hi, <%= current_user.email %>
-<% else %>
-  <%= link_to 'New Recipe', new_recipe_path %> |
-  <%= link_to 'Log In', new_user_session_path %> |
-  <%= link_to 'Sign Up', new_user_registration_path %>
-<% end %>
+<div class='main'>
 
-<% if notice %>
-  <p class="notice"><%= notice %></p>
-<% end %>
-<% if alert %>
-  <p class="alert"><%= alert %></p>
-<% end %>
+  <% if user_signed_in? %>
+    Hi, <%= current_user.email %>
+  <% else %>
+    <%= link_to 'New Recipe', new_recipe_path %> |
+    <%= link_to 'Log In', new_user_session_path %> |
+    <%= link_to 'Sign Up', new_user_registration_path %>
+  <% end %>
 
-<%= yield %>
+  <% if notice %>
+    <p class="notice"><%= notice %></p>
+  <% end %>
+  <% if alert %>
+    <p class="alert"><%= alert %></p>
+  <% end %>
+
+  <div class='content'>
+    <%= yield %>
+  </div>
+
+</div>
 
 </body>
 </html>
