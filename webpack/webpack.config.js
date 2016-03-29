@@ -10,7 +10,7 @@ module.exports = {
   devtool: "source-map",
   resolve: {
     root: [path.join(__dirname, "assets/javascripts")],
-    extensions: ["", ".js", ".jsx",".css"]
+    extensions: ["", ".js", ".jsx"]
   },
   modulesDirectories: ['node_modules'],
   module: {
@@ -25,11 +25,11 @@ module.exports = {
       {
         "test": /\.(js|jsx)$/,
         "exclude": /node_modules/,
-        "loader": "babel-loader"
+        "loader": "babel-loader",
       },
       {
-        "test": /\.css$/,
-        "loader": 'style!css',
+        "test": /\.(less|css)$/,
+        "loader": 'style!css!less',
       },
     ]
   }

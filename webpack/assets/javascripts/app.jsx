@@ -7,7 +7,7 @@ import configureStore from './store/configure_store';
 import NewIngredientType from './components/new_ingredient_type';
 import NewRecipe from './components/recipes/new_recipe';
 
-import '../stylesheets/app.css';
+import '../stylesheets/app.less';
 
 document.addEventListener('DOMContentLoaded', () => {
   if (document.getElementById('webpack-react-form')) {
