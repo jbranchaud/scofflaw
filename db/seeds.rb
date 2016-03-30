@@ -42,6 +42,17 @@ if Rails.env.development?
     ingredient = Ingredient.create!(name: name, ingredient_type: ingredient_types[0])
     puts "- Creating #{ingredient.name} for #{ingredient_types[0].name}"
   end
+
+  ["Gin", "Bourbon", "Vodka", "Scotch", "St. Germain", "Triple Sec"].each do |name|
+    ingredient = Ingredient.create!(name: name, ingredient_type: ingredient_types[1])
+    puts "- Creating #{ingredient.name} for #{ingredient_types[1].name}"
+  end
+
+  ingredient1 = Ingredient.create!(name: "Orange Bitters", description: "a cocktail flavoring made from the peels of Seville oranges, cardamom, caraway seed, coriander and burnt sugar in an alcohol base", ingredient_type: ingredient_types[2])
+  puts "- Creating #{ingredient1.name} for #{ingredient_types[2].name}"
+  ingredient2 = Ingredient.create!(name: "Angostura Bitters", description: "a concentrated bitters made of water, 44.7% ethanol, gentian, herbs and spices", ingredient_type: ingredient_types[2])
+  puts "- Creating #{ingredient2.name} for #{ingredient_types[2].name}"
+
   puts ''
 
 
