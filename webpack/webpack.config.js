@@ -28,8 +28,8 @@ module.exports = {
         "loader": "babel-loader",
       },
       {
-        "test": /\.(less|css)$/,
-        "loader": 'style!css!less',
+        "test": /\.(scss|css)$/,
+        "loader": 'style!css!sass',
       },
     ]
   }
