@@ -9,6 +9,14 @@
 # Development Seeds
 if Rails.env.development?
 
+  ## Users
+  User.all.destroy_all
+
+  FactoryGirl.create :user, email: 'lizlemon@nbc.com'
+  FactoryGirl.create :user, email: 'kennethpacell@nbc.com'
+  FactoryGirl.create :user, email: 'tracyjordan@nbc.com'
+
+
   ## Recipes
   Recipe.all.destroy_all
 
