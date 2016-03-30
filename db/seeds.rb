@@ -22,6 +22,19 @@ if Rails.env.development?
   puts ''
 
 
+  ## Ingredient Types
+  IngredientType.all.destroy_all
+
+  puts 'Creating Ingredient Types:'
+  ingredient_type1 = IngredientType.create!(name: 'Fruit')
+  puts "- Creating #{ingredient_type1.name}"
+  ingredient_type2 = IngredientType.create!(name: 'Liquor')
+  puts "- Creating #{ingredient_type2.name}"
+  ingredient_type3 = IngredientType.create!(name: 'Bitters')
+  puts "- Creating #{ingredient_type3.name}"
+  puts ''
+
+
   ## Recipes
   Recipe.all.destroy_all
 
@@ -45,4 +58,5 @@ if Rails.env.development?
     name: 'Moscow Mule',
     description: 'a mule made with a high-quality vodka, a spicy ginger beer, and lime juice, garnished with a slice or wedge of lime'
   puts "- Creating #{recipe4.name}"
+  puts ''
 end
