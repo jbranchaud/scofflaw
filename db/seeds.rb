@@ -26,12 +26,11 @@ if Rails.env.development?
   IngredientType.all.destroy_all
 
   puts 'Creating Ingredient Types:'
-  ingredient_type1 = IngredientType.create!(name: 'Fruit')
-  puts "- Creating #{ingredient_type1.name}"
-  ingredient_type2 = IngredientType.create!(name: 'Liquor')
-  puts "- Creating #{ingredient_type2.name}"
-  ingredient_type3 = IngredientType.create!(name: 'Bitters')
-  puts "- Creating #{ingredient_type3.name}"
+  ingredient_types = %w[Fruit Liquor Bitters].map do |name|
+    ingredient_type = IngredientType.create!(name: name)
+    puts "- Creating #{ingredient_type.name}"
+    ingredient_type
+  end
   puts ''
 
 
@@ -40,8 +39,8 @@ if Rails.env.development?
 
   puts 'Creating Ingredients:'
   %w[Lemon Lime Orange].each do |name|
-    ingredient = Ingredient.create!(name: name, ingredient_type: ingredient_type1)
-    puts "- Creating #{ingredient.name} for #{ingredient_type1.name}"
+    ingredient = Ingredient.create!(name: name, ingredient_type: ingredient_types[0])
+    puts "- Creating #{ingredient.name} for #{ingredient_types[0].name}"
   end
   puts ''
 
