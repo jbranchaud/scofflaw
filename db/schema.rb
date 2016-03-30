@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160320123538) do
+ActiveRecord::Schema.define(version: 20160330133953) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20160320123538) do
 
   create_table "ingredients", force: :cascade do |t|
     t.string   "name",                                 null: false
-    t.text     "description",                          null: false
+    t.text     "description",        default: "",      null: false
     t.integer  "ingredient_type_id",                   null: false
     t.datetime "created_at",         default: "now()", null: false
     t.datetime "updated_at",         default: "now()", null: false
@@ -49,5 +49,5 @@ ActiveRecord::Schema.define(version: 20160320123538) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "ingredients", "ingredient_types", name: "ingredients_ingredient_type_id_fkey"
+  add_foreign_key "ingredients", "ingredient_types", name: "ingredients_ingredient_type_id_fkey", on_delete: :cascade
 end
