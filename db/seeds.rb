@@ -35,6 +35,20 @@ if Rails.env.development?
   puts ''
 
 
+  ## Ingredients
+  Ingredient.all.destroy_all
+
+  puts 'Creating Ingredients:'
+  ingredient1 = Ingredient.create!(name: 'Lemon', description: 'So zesty', ingredient_type: ingredient_type1)
+  puts "- Creating #{ingredient1.name} for #{ingredient_type1.name}"
+  ingredient2 = Ingredient.create!(name: 'Lime', description: 'Just a wedge', ingredient_type: ingredient_type1)
+  puts "- Creating #{ingredient2.name} for #{ingredient_type1.name}"
+  ingredient3 = Ingredient.create!(name: 'Orange', description: 'The peak of citrus', ingredient_type: ingredient_type1)
+  puts "- Creating #{ingredient3.name} for #{ingredient_type1.name}"
+
+  puts ''
+
+
   ## Recipes
   Recipe.all.destroy_all
 
