@@ -4,7 +4,7 @@
   "description": "> a tool for recording and finding cocktail recipes",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --compilers js:babel-core/register webpack/assets/javascripts/test/*.spec.js",
     "lint": "eslint ./webpack --ext .js --ext .jsx"
   },
   "author": "Josh Branchaud <jbranchaud@gmail.com> (http://joshbranchaud.com)",
