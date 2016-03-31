@@ -21,12 +21,12 @@ describe("FormField", () => {
     expect(wrapper.find('input[type="text"]').length).toEqual(1);
   });
 
-  it('contains a textarea when type is textarea',() => {
+  it('contains a textarea when type is textarea', () => {
     const wrapper = shallow(<FormField type="textarea" />);
     expect(wrapper.find('textarea').length).toEqual(1);
   });
 
-  it('renders an error when present',() => {
+  it('renders an error when present', () => {
     const wrapper = shallow(<FormField error="cannot be blank" />);
     expect(wrapper.find('span').text()).toEqual(' cannot be blank');
   });
