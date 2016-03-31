@@ -6,6 +6,20 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+# Generic Seeds
+
+## AmountTypes
+AmountType.all.destroy_all
+
+puts 'Creating Amount Types:'
+amount_types = ['none', 'ounce', 'to taste', 'dash', 'wedge', 'slice', 'twist'].map do |name|
+  amount_type = AmountType.create!(name: name)
+  puts "- Creating #{amount_type.name}"
+  amount_type
+end
+puts ''
+
+
 # Development Seeds
 if Rails.env.development?
 
