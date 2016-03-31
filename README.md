@@ -34,6 +34,20 @@ $ cd webpack
 $ webpack --watch
 ```
 
+## Testing
+
+Run the integration and other Rails tests with:
+
+```bash
+$ rake
+```
+
+Run the JavaScript tests (via Mocha) with:
+
+```bash
+$ npm run test
+```
+
 ## License
 
 &copy; 2016 Josh Branchaud
