@@ -32,5 +32,10 @@ module.exports = {
         "loader": 'style!css!sass',
       },
     ]
-  }
+  },
+  externals: {
+    'cheerio': 'window',
+    'react/lib/ExecutionEnvironment': true,
+    'react/lib/ReactContext': true,
+  },
 }
