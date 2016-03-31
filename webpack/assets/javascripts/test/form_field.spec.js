@@ -1,6 +1,6 @@
 import React from 'react';
 import expect from 'expect';
-import { shallow, mount, render } from 'enzyme';
+import { shallow } from 'enzyme';
 import FormField from '../components/form_field';
 
 describe("FormField", function() {
