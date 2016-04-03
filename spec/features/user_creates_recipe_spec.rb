@@ -28,7 +28,7 @@ describe 'User creates a recipe', :js do
       new_recipe_page.fill_in_ingredient_amount(3)
       # use default amount type
       new_recipe_page.click_add_ingredient
-      expect(new_recipe_page).to have_ingredient('3 ounce bourbon')
+      expect(new_recipe_page).to have_ingredient('3 ounces bourbon')
 
       new_recipe_page.click_create_recipe
 
