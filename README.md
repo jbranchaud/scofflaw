@@ -34,6 +34,15 @@ $ cd webpack
 $ webpack --watch
 ```
 
+### ctags
+
+Make navigating through the code base more pleasant with tags. To generate
+tags for this project, run the following command from the root directory:
+
+```bash
+$ ctags -R --languages=ruby --exclude=.git --exclude=log .
+```
+
 ## Testing
 
 Run the integration and other Rails tests with:
