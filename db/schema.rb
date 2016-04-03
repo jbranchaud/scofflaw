@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160330133953) do
+ActiveRecord::Schema.define(version: 20160402211734) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "amount_types", force: :cascade do |t|
+    t.string "name", null: false
+  end
+
+  create_table "ingredient_amounts", force: :cascade do |t|
+    t.integer  "ingredient_id",                                            null: false
+    t.decimal  "amount",         precision: 6, scale: 2,                   null: false
+    t.integer  "amount_type_id",                                           null: false
+    t.integer  "recipe_id",                                                null: false
+    t.datetime "created_at",                             default: "now()", null: false
+    t.datetime "updated_at",                             default: "now()", null: false
+  end
 
   create_table "ingredient_types", force: :cascade do |t|
     t.string   "name",                         null: false
@@ -49,5 +62,8 @@ ActiveRecord::Schema.define(version: 20160330133953) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "ingredient_amounts", "amount_types", name: "ingredient_amounts_amount_type_id_fkey"
+  add_foreign_key "ingredient_amounts", "ingredients", name: "ingredient_amounts_ingredient_id_fkey"
+  add_foreign_key "ingredient_amounts", "recipes", name: "ingredient_amounts_recipe_id_fkey"
   add_foreign_key "ingredients", "ingredient_types", name: "ingredients_ingredient_type_id_fkey", on_delete: :cascade
 end

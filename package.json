@@ -1,7 +1,11 @@
 {
   "name": "scofflaw",
   "version": "0.0.1",
-  "description": "> a tool for recording and finding cocktail recipes",
+  "description": "a tool for recording and finding cocktail recipes",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/jbranchaud/scofflaw"
+  },
   "main": "index.js",
   "scripts": {
     "test": "mocha --compilers js:babel-core/register webpack/assets/javascripts/test/*.spec.js",
