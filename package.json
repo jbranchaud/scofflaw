@@ -2,9 +2,9 @@
   "name": "scofflaw",
   "version": "0.0.1",
   "description": "a tool for recording and finding cocktail recipes",
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/jbranchaud/scofflaw"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jbranchaud/scofflaw"
   },
   "main": "index.js",
   "scripts": {
