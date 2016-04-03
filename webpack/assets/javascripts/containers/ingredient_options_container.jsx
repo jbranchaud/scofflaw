@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import _keys from 'lodash/keys';
 
-import IngredientOptions from '../components/recipes/ingredient_options';
+import IngredientOptions from 'components/recipes/ingredient_options';
 
 import {
   changeIngredientType,

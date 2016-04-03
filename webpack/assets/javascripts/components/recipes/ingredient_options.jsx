@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import Select from 'react-select';
 
-import FormField from '../form_field';
+import FormField from 'components/form_field';
 
 import 'react-select/dist/react-select.css';
 

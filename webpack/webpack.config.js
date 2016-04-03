@@ -10,7 +10,10 @@ module.exports = {
   devtool: "source-map",
   resolve: {
     root: [path.join(__dirname, "assets/javascripts")],
-    extensions: ["", ".js", ".jsx"]
+    alias: {
+      styles: "../stylesheets",
+    },
+    extensions: ["", ".js", ".jsx"],
   },
   modulesDirectories: ['node_modules'],
   module: {

@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import { addIngredient } from '../../actions';
+import { addIngredient } from 'actions';
 
-import IngredientOptionsContainer from '../../containers/ingredient_options_container';
+import IngredientOptionsContainer from 'containers/ingredient_options_container';
 
 const AddIngredient = ({ dispatch }) => {
   const handleClickAddIngredient = () => {
