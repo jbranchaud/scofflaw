@@ -11,15 +11,21 @@ module Pages
       fill_in 'Description', with: description
     end
 
-    def add_ingredient(ingredient_type:,
-      name:,
-      amount:,
-      amount_type:)
+    def fill_in_ingredient_amount(amount)
       within '#ingredients' do
-        select ingredient_type, from: 'ingredient_type'
-        select name, from: 'name'
         fill_in 'Amount', with: amount
-        select amount_type, from: 'amount_type'
+      end
+    end
+
+    def click_add_ingredient
+      within '#ingredients' do
+        click_on 'Add Ingredient'
+      end
+    end
+
+    def has_ingredient?(name)
+      within '#ingredient_list' do
+        has_selector?('li', text: name)
       end
     end
 
