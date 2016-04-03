@@ -18,10 +18,9 @@ describe 'Ingredients' do
     end
 
     context 'when the description is missing' do
-      it 'raises a RecordInvalid error' do
-        expect {
-          Ingredient.create!(name: 'Lime Wedge', ingredient_type_id: garnish.id)
-        }.to raise_error(ActiveRecord::RecordInvalid, "Validation failed: Description can't be blank")
+      it 'the description defaults to a blank string' do
+        lime_wedge = Ingredient.create!(name: 'Lime Wedge', ingredient_type_id: garnish.id)
+        expect(lime_wedge.description).to eq ''
       end
     end
 
