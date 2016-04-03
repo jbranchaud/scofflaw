@@ -1,7 +1,7 @@
 {
   "spec/features/*_spec.rb": {
     "type": "feature",
-    "template": ["require \"integration_helper\"","","feature \"{blank}\" do", "end"]
+    "template": ["require \"rails_helper\"","","feature \"{blank}\" do", "end"]
   },
   "spec/support/pages/*.rb": {
     "type": "page",
