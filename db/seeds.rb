@@ -9,11 +9,9 @@
 # Generic Seeds
 
 ## AmountTypes
-AmountType.all.destroy_all
-
 puts 'Creating Amount Types:'
 amount_types = ['none', 'ounce', 'to taste', 'dash', 'wedge', 'slice', 'twist'].map do |name|
-  amount_type = AmountType.create!(name: name)
+  amount_type = AmountType.find_or_create_by!(name: name)
   puts "- Creating #{amount_type.name}"
   amount_type
 end
@@ -23,9 +21,13 @@ puts ''
 # Development Seeds
 if Rails.env.development?
 
-  ## Users
+  IngredientAmount.all.destroy_all
+  Recipe.all.destroy_all
+  Ingredient.all.destroy_all
+  IngredientType.all.destroy_all
   User.all.destroy_all
 
+  ## Users
   puts 'Creating Users:'
   user1 = FactoryGirl.create :user, email: 'lizlemon@nbc.com'
   puts "- Creating #{user1.email}"
@@ -37,8 +39,6 @@ if Rails.env.development?
 
 
   ## Ingredient Types
-  IngredientType.all.destroy_all
-
   puts 'Creating Ingredient Types:'
   ingredient_types = %w[Fruit Liquor Bitters].map do |name|
     ingredient_type = IngredientType.create!(name: name)
@@ -49,17 +49,17 @@ if Rails.env.development?
 
 
   ## Ingredients
-  Ingredient.all.destroy_all
-
   puts 'Creating Ingredients:'
-  %w[Lemon Lime Orange].each do |name|
+  fruits = %w[Lemon Lime Orange].map do |name|
     ingredient = Ingredient.create!(name: name, ingredient_type: ingredient_types[0])
     puts "- Creating #{ingredient.name} for #{ingredient_types[0].name}"
+    ingredient
   end
 
-  ["Gin", "Bourbon", "Vodka", "Scotch", "St. Germain", "Triple Sec"].each do |name|
+  liquors = ["Gin", "Bourbon", "Vodka", "Scotch", "St. Germain", "Triple Sec"].map do |name|
     ingredient = Ingredient.create!(name: name, ingredient_type: ingredient_types[1])
     puts "- Creating #{ingredient.name} for #{ingredient_types[1].name}"
+    ingredient
   end
 
   ingredient1 = Ingredient.create!(name: "Orange Bitters", description: "a cocktail flavoring made from the peels of Seville oranges, cardamom, caraway seed, coriander and burnt sugar in an alcohol base", ingredient_type: ingredient_types[2])
@@ -71,8 +71,6 @@ if Rails.env.development?
 
 
   ## Recipes
-  Recipe.all.destroy_all
-
   puts 'Creating Recipes:'
   recipe1 = FactoryGirl.create :recipe,
     name: 'Old Fashioned',
@@ -94,4 +92,30 @@ if Rails.env.development?
     description: 'a mule made with a high-quality vodka, a spicy ginger beer, and lime juice, garnished with a slice or wedge of lime'
   puts "- Creating #{recipe4.name}"
   puts ''
+
+
+  ## Ingredient Amounts
+  puts 'Creating IngredientAmounts'
+  # Old Fashioned
+  old_fashioned_ingredient1 =
+    FactoryGirl.create :ingredient_amount,
+      recipe: recipe1,
+      ingredient: liquors[1],
+      amount: 3,
+      amount_type: amount_types[1]
+  puts "- Creating #{old_fashioned_ingredient1}"
+  old_fashioned_ingredient2 =
+    FactoryGirl.create :ingredient_amount,
+      recipe: recipe1,
+      ingredient: fruits[2],
+      amount: 2,
+      amount_type: amount_types[5]
+  puts "- Creating #{old_fashioned_ingredient2}"
+  old_fashioned_ingredient3 =
+    FactoryGirl.create :ingredient_amount,
+      recipe: recipe1,
+      ingredient: ingredient1,
+      amount: 2,
+      amount_type: amount_types[3]
+  puts "- Creating #{old_fashioned_ingredient3}"
 end
