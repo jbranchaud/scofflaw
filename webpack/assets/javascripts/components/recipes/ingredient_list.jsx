@@ -17,11 +17,7 @@ const IngredientList = ({ ingredients }) => {
     <div id="ingredient_list">
       <h3>Ingredients</h3>
       <ul>
-        {
-          ingredientDisplayNames.map((displayName) => {
-            return displayName;
-          })
-        }
+        { ingredientDisplayNames }
       </ul>
     </div>
   );
