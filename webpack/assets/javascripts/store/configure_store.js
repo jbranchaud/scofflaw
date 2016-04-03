@@ -1,6 +1,6 @@
 import { createStore, compose } from 'redux';
 
-import rootReducer from '../reducers';
+import rootReducer from 'reducers';
 
 export default (initialState) => {
   const finalCreateStore = compose(
