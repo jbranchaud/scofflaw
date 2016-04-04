@@ -21,6 +21,13 @@ class RecipesController < ApplicationController
   end
   helper_method :recipes
 
+  def recipe
+    if params[:id]
+      Recipe.find(params[:id])
+    end
+  end
+  helper_method :recipe
+
   def errors_to_json(errors)
     errors.each_with_object({}) do |error, hsh|
       hsh[error.first] = error.last
