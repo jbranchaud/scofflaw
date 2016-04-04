@@ -3,7 +3,7 @@
     "type": "feature",
     "template": ["require \"rails_helper\"","","feature \"{blank}\" do", "end"]
   },
-  "spec/support/pages/*.rb": {
+  "spec/pages/*.rb": {
     "type": "page",
     "template": [ "module Pages", "  class {camelcase}", "    include Capybara::DSL", "", "  end", "end"]
   },
