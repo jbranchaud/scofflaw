@@ -1,10 +1,12 @@
 import React, { PropTypes } from 'react';
-import _ from 'lodash';
 import _map from 'lodash/map';
-import inflection from 'lodash-inflection';
+
+import _ from 'lodash/wrapperLodash';
+import _mixin from 'lodash/mixin';
+import inflector from 'lodash-inflection';
 
 const IngredientList = ({ ingredients }) => {
-  _.mixin(inflection);
+  _mixin(_, inflector);
 
   const ingredientDisplayNames = _map(ingredients, ({ id, amount, amountType, name }) => {
     return (
