@@ -24,7 +24,7 @@ const mapStateToProps = (state) => {
   } = _get(state, 'ingredients.addIngredient', {});
 
   const ingredientTypes = _keys(options);
-  const ingredientNames = _get(options, 'currentIngredientType');
+  const ingredientNames = _get(options, currentIngredientType);
   const amountTypes = _get(state, 'ingredients.addIngredient.amountTypes');
 
   const valuesToOptions = (values) => {
