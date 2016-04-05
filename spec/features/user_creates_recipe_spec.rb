@@ -33,6 +33,7 @@ describe 'User creates a recipe', :js do
       new_recipe_page.click_create_recipe
 
       expect(recipes_page).to be_on_page
+      expect(recipes_page).to have_recipe('Old Fashioned')
     end
   end
 
