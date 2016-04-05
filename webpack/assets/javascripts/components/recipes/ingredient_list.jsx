@@ -1,11 +1,12 @@
 import React, { PropTypes } from 'react';
 import _ from 'lodash';
+import _map from 'lodash/map';
 import inflection from 'lodash-inflection';
 
 const IngredientList = ({ ingredients }) => {
   _.mixin(inflection);
 
-  const ingredientDisplayNames = ingredients.map(({ id, amount, amountType, name }) => {
+  const ingredientDisplayNames = _map(ingredients, ({ id, amount, amountType, name }) => {
     return (
       <li key={id}>
         <span>{amount} {_.pluralize(amountType, amount)} {name}</span>
