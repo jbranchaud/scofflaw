@@ -4,6 +4,8 @@ describe 'Visitor views recipes' do
   let(:navigation) { Pages::Navigation.new }
   let(:recipes_page) { Pages::Recipes.new }
 
+  # TODO: remove need to put visit '/' everywhere before interacting with the
+  # nav bar
   context 'when there are recipes' do
     scenario 'the names of the recipes are displayed' do
       FactoryGirl.create(:recipe, name: 'Sazerac')
