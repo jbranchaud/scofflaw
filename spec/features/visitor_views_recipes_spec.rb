@@ -21,7 +21,7 @@ describe 'Visitor views recipes' do
       visit recipes_path
 
       expect(recipes_page).to be_on_page
-      expect(page).to have_content 'There are no recipes yet'
+      expect(recipes_page).to have_no_recipes
     end
   end
 end

@@ -6,6 +6,10 @@ module Pages
       has_selector?('h1', text: 'Recipes')
     end
 
+    def has_no_recipes?
+      has_selector?('div', text: 'There are no recipes yet')
+    end
+
     def has_recipe?(name)
       within 'ul' do
         has_selector?('li', text: name)
