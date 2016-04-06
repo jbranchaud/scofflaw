@@ -11,8 +11,8 @@ describe 'Visitor views recipes' do
       visit recipes_path
 
       expect(recipes_page).to be_on_page
-      expect(page).to have_content 'Sazerac'
-      expect(page).to have_content 'Old Fashioned'
+      expect(recipes_page).to have_recipe('Sazerac')
+      expect(recipes_page).to have_recipe('Old Fashioned')
     end
   end
 
