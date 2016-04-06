@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe 'Visitor views recipes' do
+  let(:navigation) { Pages::Navigation.new }
   let(:recipes_page) { Pages::Recipes.new }
 
   context 'when there are recipes' do
@@ -8,7 +9,8 @@ describe 'Visitor views recipes' do
       FactoryGirl.create(:recipe, name: 'Sazerac')
       FactoryGirl.create(:recipe, name: 'Old Fashioned')
 
-      visit recipes_path
+      visit '/'
+      navigation.click_recipes
 
       expect(recipes_page).to be_on_page
       expect(recipes_page).to have_recipe('Sazerac')
@@ -18,7 +20,8 @@ describe 'Visitor views recipes' do
 
   context 'when there are no recipes' do
     scenario 'a No Recipes message is displayed' do
-      visit recipes_path
+      visit '/'
+      navigation.click_recipes
 
       expect(recipes_page).to be_on_page
       expect(recipes_page).to have_no_recipes
