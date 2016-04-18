@@ -20,14 +20,7 @@ Using Rails, React.js, Redux, and PostgreSQL
 
 The JavaScript is bundled into the asset pipeline using Webpack. During
 development, you will likely want Webpack to continually bundle assets as
-they change. This can be done with `webpack-dev-server`:
-
-```
-$ cd webpack
-$ webpack-dev-server
-```
-
-Alternatively, we can use the `--watch` flag with `webpack`:
+they change.
 
 ```
 $ cd webpack
