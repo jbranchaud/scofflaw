@@ -5,8 +5,6 @@ import IngredientListContainer from 'containers/ingredient_list_container';
 import FormField from 'components/form_field';
 import AddIngredient from './add_ingredient';
 
-import 'react-tagsinput/react-tagsinput.css';
-
 class NewRecipe extends Component {
   static propTypes = {
     name: PropTypes.string,
