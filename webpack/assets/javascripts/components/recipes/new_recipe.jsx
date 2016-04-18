@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import TagsInput from 'react-tagsinput';
 import $ from 'jquery';
 
 import IngredientListContainer from 'containers/ingredient_list_container';
@@ -24,7 +23,6 @@ class NewRecipe extends Component {
     this.state = {
       name: '',
       description: '',
-      tags: [],
       errors: {},
     };
 
@@ -35,10 +33,6 @@ class NewRecipe extends Component {
 
   handleChangeInput(name, e) {
     this.setState({ [name]: e.target.value });
-  }
-
-  handleTagsChange(tags) {
-    this.setState({ tags });
   }
 
   handleAddIngredientClick(newIngredient, e) {
@@ -104,11 +98,6 @@ class NewRecipe extends Component {
           <AddIngredient
             ingredientOptions={this.state.ingredientOptions}
           />
-
-          <label htmlFor="recipe_tags">
-            Tags
-          </label>
-          <TagsInput value={this.state.tags} onChange={::this.handleTagsChange} />
 
           <input type="submit" name="commit" value="Create Recipe" />
         </form>
