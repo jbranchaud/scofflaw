@@ -6,21 +6,9 @@ import FormField from 'components/form_field';
 import AddIngredient from './add_ingredient';
 
 class NewRecipe extends Component {
-  static propTypes = {
-    name: PropTypes.string,
-    description: PropTypes.string,
-  }
-
-  static defaultProps = {
-    name: '',
-    description: '',
-  }
-
   constructor() {
     super();
     this.state = {
-      name: '',
-      description: '',
       errors: {},
     };
 
@@ -77,18 +65,18 @@ class NewRecipe extends Component {
             label="Name"
             fieldId="recipe_name"
             type="text"
-            value={this.state.name}
+            value={this.props.recipe.name}
             error={this.state.errors.name}
-            onChange={this.handleNameInputChange}
+            onChange={this.props.handleRecipeNameChange}
           />
 
           <FormField
             label="Description"
             fieldId="recipe_description"
             type="textarea"
-            value={this.state.description}
+            value={this.props.recipe.description}
             error={this.state.errors.description}
-            onChange={this.handleDescriptionInputChange}
+            onChange={this.props.handleRecipeDescriptionChange}
           />
 
           <IngredientListContainer />
@@ -103,5 +91,11 @@ class NewRecipe extends Component {
     );
   }
 }
+
+NewRecipe.propTypes = {
+  recipe: PropTypes.object.isRequired,
+  handleRecipeNameChange: PropTypes.func.isRequired,
+  handleRecipeDescriptionChange: PropTypes.func.isRequired,
+};
 
 export default NewRecipe;

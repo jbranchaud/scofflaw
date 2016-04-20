@@ -6,6 +6,7 @@ import configureStore from 'store/configure_store';
 
 import NewIngredientType from 'components/new_ingredient_type';
 import NewRecipe from 'components/recipes/new_recipe';
+import NewRecipeContainer from 'containers/new_recipe_container';
 
 import 'styles/app.scss';
 
@@ -17,32 +18,48 @@ document.addEventListener('DOMContentLoaded', () => {
     );
   }
 
+  if (document.getElementById('edit_recipe')) {
+    const initialState = {};
+    const store = configureStore(initialState);
+
+    ReactDOM.render(
+      <Provider store={store}>
+        <NewRecipe />
+      </Provider>,
+      document.getElementById('edit_recipe')
+    );
+  }
+
   if (document.getElementById('new_recipe')) {
     const initialState = {
-      ingredients: {
-        ingredientList: [],
-        addIngredient: {
-          options: {
-            liquor: [
-              'bourbon',
-              'gin',
-              'vodka',
+      recipe: {
+        name: '',
+        description: '',
+        ingredients: {
+          ingredientList: [],
+          addIngredient: {
+            options: {
+              liquor: [
+                'bourbon',
+                'gin',
+                'vodka',
+              ],
+              fruit: [
+                'orange',
+                'lemon',
+                'lime',
+              ],
+            },
+            amountTypes: [
+              'ounce',
+              'slice',
+              'to taste',
             ],
-            fruit: [
-              'orange',
-              'lemon',
-              'lime',
-            ],
+            currentIngredientType: 'liquor',
+            currentIngredientName: 'bourbon',
+            currentAmountType: 'ounce',
+            currentIngredientAmount: '',
           },
-          amountTypes: [
-            'ounce',
-            'slice',
-            'to taste',
-          ],
-          currentIngredientType: 'liquor',
-          currentIngredientName: 'bourbon',
-          currentAmountType: 'ounce',
-          currentIngredientAmount: '',
         },
       },
     };
@@ -50,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     ReactDOM.render(
       <Provider store={store}>
-        <NewRecipe />
+        <NewRecipeContainer />
       </Provider>,
       document.getElementById('new_recipe')
     );

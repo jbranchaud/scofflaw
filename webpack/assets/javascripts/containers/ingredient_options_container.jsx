@@ -14,18 +14,18 @@ import {
 } from '../actions';
 
 const mapStateToProps = (state) => {
-  const options = _get(state, 'ingredients.addIngredient.options');
+  const options = _get(state, 'recipe.ingredients.addIngredient.options');
 
   const {
     currentIngredientType,
     currentIngredientName,
     currentAmountType,
     currentIngredientAmount,
-  } = _get(state, 'ingredients.addIngredient', {});
+  } = _get(state, 'recipe.ingredients.addIngredient', {});
 
   const ingredientTypes = _keys(options);
   const ingredientNames = _get(options, currentIngredientType);
-  const amountTypes = _get(state, 'ingredients.addIngredient.amountTypes');
+  const amountTypes = _get(state, 'recipe.ingredients.addIngredient.amountTypes');
 
   const valuesToOptions = (values) => {
     return _map(values, (value) => {
