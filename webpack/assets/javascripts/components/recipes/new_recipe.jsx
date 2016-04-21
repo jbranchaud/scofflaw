@@ -88,9 +88,7 @@ class NewRecipe extends Component {
 
           <IngredientListContainer />
 
-          <AddIngredient
-            ingredientOptions={this.state.ingredientOptions}
-          />
+          <AddIngredient />
 
           <input type="submit" name="commit" value="Create Recipe" />
         </form>
