@@ -37,11 +37,18 @@ class NewRecipe extends Component {
   handleSubmit(e) {
     e.preventDefault();
 
+    const recipeData = {
+      recipe: {
+        name: this.props.recipe.name,
+        description: this.props.recipe.description,
+      },
+    };
+
     return $.ajax({
       method: 'POST',
       url: '/recipes',
       dataType: 'json',
-      data: { recipe: { name: this.props.recipe.name, description: this.props.recipe.description } },
+      data: recipeData,
     })
       .done(() => {
         location.assign('/recipes');
