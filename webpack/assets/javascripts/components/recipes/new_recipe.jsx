@@ -41,7 +41,7 @@ class NewRecipe extends Component {
       method: 'POST',
       url: '/recipes',
       dataType: 'json',
-      data: { recipe: { name: this.state.name, description: this.state.description } },
+      data: { recipe: { name: this.props.recipe.name, description: this.props.recipe.description } },
     })
       .done(() => {
         location.assign('/recipes');
