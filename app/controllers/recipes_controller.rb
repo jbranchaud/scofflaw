@@ -1,6 +1,10 @@
 class RecipesController < ApplicationController
+  # skip_before_filter :verify_authenticity_token, :only => :create
 
   def create
+    puts params
+    puts recipe_params
+    require 'pry'; binding.pry;
     new_recipe = Recipe.new(recipe_params)
     if new_recipe.save
       render json: {}, status: 200

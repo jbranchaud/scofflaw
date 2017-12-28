@@ -41,6 +41,7 @@ class NewRecipe extends Component {
       recipe: {
         name: this.props.recipe.name,
         description: this.props.recipe.description,
+        ingredients: this.props.recipe.ingredients.ingredientList,
       },
     };
 

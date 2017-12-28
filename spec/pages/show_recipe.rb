@@ -13,5 +13,9 @@ module Pages
     def has_ingredient?(ingredient_display)
       has_selector?('li', text: ingredient_display)
     end
+
+    def click_on_edit
+      click_on 'Edit'
+    end
   end
 end
