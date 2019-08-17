@@ -1,30 +1,14 @@
 import React, { Component, PropTypes } from 'react';
-import TagsInput from 'react-tagsinput';
 import $ from 'jquery';
 
 import IngredientListContainer from 'containers/ingredient_list_container';
 import FormField from 'components/form_field';
 import AddIngredient from './add_ingredient';
 
-import 'react-tagsinput/react-tagsinput.css';
-
 class NewRecipe extends Component {
-  static propTypes = {
-    name: PropTypes.string,
-    description: PropTypes.string,
-  }
-
-  static defaultProps = {
-    name: '',
-    description: '',
-  }
-
   constructor() {
     super();
     this.state = {
-      name: '',
-      description: '',
-      tags: [],
       errors: {},
     };
 
@@ -35,10 +19,6 @@ class NewRecipe extends Component {
 
   handleChangeInput(name, e) {
     this.setState({ [name]: e.target.value });
-  }
-
-  handleTagsChange(tags) {
-    this.setState({ tags });
   }
 
   handleAddIngredientClick(newIngredient, e) {
@@ -57,11 +37,19 @@ class NewRecipe extends Component {
   handleSubmit(e) {
     e.preventDefault();
 
+    const recipeData = {
+      recipe: {
+        name: this.props.recipe.name,
+        description: this.props.recipe.description,
+        ingredients: this.props.recipe.ingredients.ingredientList,
+      },
+    };
+
     return $.ajax({
       method: 'POST',
       url: '/recipes',
       dataType: 'json',
-      data: { recipe: { name: this.state.name, description: this.state.description } },
+      data: recipeData,
     })
       .done(() => {
         location.assign('/recipes');
@@ -85,30 +73,23 @@ class NewRecipe extends Component {
             label="Name"
             fieldId="recipe_name"
             type="text"
-            value={this.state.name}
+            value={this.props.recipe.name}
             error={this.state.errors.name}
-            onChange={this.handleNameInputChange}
+            onChange={this.props.handleRecipeNameChange}
           />
 
           <FormField
             label="Description"
             fieldId="recipe_description"
             type="textarea"
-            value={this.state.description}
+            value={this.props.recipe.description}
             error={this.state.errors.description}
-            onChange={this.handleDescriptionInputChange}
+            onChange={this.props.handleRecipeDescriptionChange}
           />
 
           <IngredientListContainer />
 
-          <AddIngredient
-            ingredientOptions={this.state.ingredientOptions}
-          />
-
-          <label htmlFor="recipe_tags">
-            Tags
-          </label>
-          <TagsInput value={this.state.tags} onChange={::this.handleTagsChange} />
+          <AddIngredient />
 
           <input type="submit" name="commit" value="Create Recipe" />
         </form>
@@ -116,5 +97,11 @@ class NewRecipe extends Component {
     );
   }
 }
+
+NewRecipe.propTypes = {
+  recipe: PropTypes.object.isRequired,
+  handleRecipeNameChange: PropTypes.func.isRequired,
+  handleRecipeDescriptionChange: PropTypes.func.isRequired,
+};
 
 export default NewRecipe;

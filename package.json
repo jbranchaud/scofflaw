@@ -2,9 +2,9 @@
   "name": "scofflaw",
   "version": "0.0.1",
   "description": "a tool for recording and finding cocktail recipes",
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/jbranchaud/scofflaw"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jbranchaud/scofflaw"
   },
   "main": "index.js",
   "scripts": {
@@ -16,11 +16,11 @@
   "dependencies": {
     "jquery": "^2.2.2",
     "lodash": "^4.6.1",
+    "lodash-inflection": "^1.3.2",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-redux": "^4.4.1",
     "react-select": "^1.0.0-beta11",
-    "react-tagsinput": "^3.4.1",
     "redux": "^3.3.1"
   },
   "devDependencies": {

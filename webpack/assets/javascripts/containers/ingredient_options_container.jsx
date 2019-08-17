@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 
 import _keys from 'lodash/keys';
+import _get from 'lodash/get';
+import _map from 'lodash/map';
 
 import IngredientOptions from 'components/recipes/ingredient_options';
 
@@ -12,26 +14,28 @@ import {
 } from '../actions';
 
 const mapStateToProps = (state) => {
-  const options = state.ingredients.addIngredient.options;
-  const ingredientTypes = _keys(options);
-  const ingredientNames = options[state.ingredients.addIngredient.currentIngredientType];
-
-  const valuesToOptions = (values) => {
-    return values.map((value) => {
-      return { value, label: value };
-    });
-  };
-
-  const ingredientTypeOptions = valuesToOptions(ingredientTypes);
-  const ingredientNameOptions = valuesToOptions(ingredientNames);
-  const amountTypeOptions = valuesToOptions(state.ingredients.addIngredient.amountTypes);
+  const options = _get(state, 'recipe.ingredients.addIngredient.options');
 
   const {
     currentIngredientType,
     currentIngredientName,
     currentAmountType,
     currentIngredientAmount,
-  } = state.ingredients.addIngredient;
+  } = _get(state, 'recipe.ingredients.addIngredient', {});
+
+  const ingredientTypes = _keys(options);
+  const ingredientNames = _get(options, currentIngredientType);
+  const amountTypes = _get(state, 'recipe.ingredients.addIngredient.amountTypes');
+
+  const valuesToOptions = (values) => {
+    return _map(values, (value) => {
+      return { value, label: value };
+    });
+  };
+
+  const ingredientTypeOptions = valuesToOptions(ingredientTypes);
+  const ingredientNameOptions = valuesToOptions(ingredientNames);
+  const amountTypeOptions = valuesToOptions(amountTypes);
 
   return {
     currentIngredientType,

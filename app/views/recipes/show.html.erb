@@ -1,0 +1,10 @@
+<h1><%= recipe.name %></h1>
+<h3><%= recipe.description %></h3>
+
+[ <%= link_to 'Edit', edit_recipe_path(recipe) %> ]
+
+<ul>
+  <% IngredientAmountDecorator.wrap(recipe.ingredient_amounts).each do |ingredient_amount| %>
+    <li><%= ingredient_amount.display_name %></li>
+  <% end %>
+</ul>

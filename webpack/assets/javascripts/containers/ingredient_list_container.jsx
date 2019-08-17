@@ -4,7 +4,7 @@ import IngredientList from 'components/recipes/ingredient_list';
 
 const mapStateToProps = (state) => {
   return {
-    ingredients: state.ingredients.ingredientList,
+    ingredients: state.recipe.ingredients.ingredientList,
   };
 };
 

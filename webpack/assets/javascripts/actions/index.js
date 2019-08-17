@@ -1,5 +1,19 @@
 let nextRecipeId = 0;
 
+export const changeName = ({ newRecipeName }) => {
+  return {
+    type: 'CHANGE_NAME',
+    newRecipeName,
+  };
+};
+
+export const changeDescription = ({ newRecipeDescription }) => {
+  return {
+    type: 'CHANGE_DESCRIPTION',
+    newRecipeDescription,
+  };
+};
+
 export const addIngredient = () => {
   return {
     type: 'ADD_INGREDIENT',

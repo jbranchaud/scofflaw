@@ -1,9 +1,9 @@
 {
   "spec/features/*_spec.rb": {
     "type": "feature",
-    "template": ["require \"integration_helper\"","","feature \"{blank}\" do", "end"]
+    "template": ["require \"rails_helper\"","","feature \"{blank}\" do", "end"]
   },
-  "spec/support/pages/*.rb": {
+  "spec/pages/*.rb": {
     "type": "page",
     "template": [ "module Pages", "  class {camelcase}", "    include Capybara::DSL", "", "  end", "end"]
   },

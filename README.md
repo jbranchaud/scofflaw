@@ -20,18 +20,20 @@ Using Rails, React.js, Redux, and PostgreSQL
 
 The JavaScript is bundled into the asset pipeline using Webpack. During
 development, you will likely want Webpack to continually bundle assets as
-they change. This can be done with `webpack-dev-server`:
-
-```
-$ cd webpack
-$ webpack-dev-server
-```
-
-Alternatively, we can use the `--watch` flag with `webpack`:
+they change.
 
 ```
 $ cd webpack
 $ webpack --watch
+```
+
+### ctags
+
+Make navigating through the code base more pleasant with tags. To generate
+tags for this project, run the following command from the root directory:
+
+```bash
+$ ctags -R --languages=ruby --exclude=.git --exclude=log .
 ```
 
 ## Testing

@@ -73,7 +73,7 @@ class NewIngredientType extends Component {
             name="ingredient_type[name]"
             id="ingredient_type_name"
             value={this.state.name}
-            onChange={this.handleNameChange}
+            onChange={this.handleChangeName}
           />
 
           <input

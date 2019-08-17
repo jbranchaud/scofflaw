@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
-import ingredients from './ingredients';
+import recipe from './recipe';
 
 const recipeApp = combineReducers({
-  ingredients,
+  recipe,
 });
 
 export default recipeApp;

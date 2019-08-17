@@ -1,6 +1,10 @@
 class RecipesController < ApplicationController
+  # skip_before_filter :verify_authenticity_token, :only => :create
 
   def create
+    puts params
+    puts recipe_params
+    require 'pry'; binding.pry;
     new_recipe = Recipe.new(recipe_params)
     if new_recipe.save
       render json: {}, status: 200
@@ -20,6 +24,13 @@ class RecipesController < ApplicationController
     Recipe.all
   end
   helper_method :recipes
+
+  def recipe
+    if params[:id]
+      Recipe.find(params[:id])
+    end
+  end
+  helper_method :recipe
 
   def errors_to_json(errors)
     errors.each_with_object({}) do |error, hsh|
